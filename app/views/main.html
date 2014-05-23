@@ -22,7 +22,7 @@
     <h3>{{section.identifier}}</h3>
     <form class="form-horizontal">
       <!-- <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question> -->
-      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body"></question>
+      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" idx="outerIndex" type="q.type" title="q.title" help="q.help" body="q.body"></question>
     </form>
   </div>
 </div>

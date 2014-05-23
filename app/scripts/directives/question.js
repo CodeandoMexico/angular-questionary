@@ -21,10 +21,10 @@ angular.module('questionModule', [])
         template += '<input class="form-control" type="number" ng-model="body.value">';
         break;
       case 'radio':
-        template += '<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="radio" name="radio{{outerIndex}}" ng-value="opt" ng-model="body.value" />&nbsp;<span ng-bind="opt"></span></label></div>';
+        template += '<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="radio" name="radio{{idx}}" ng-value="opt" ng-model="body.value" />&nbsp;<span ng-bind="opt"></span></label></div>';
         break;
       case 'checkbox':
-        template += '<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="checkbox" name="checkbox{{outerIndex}}" ng-value="opt" ng-model="opt.checked" />&nbsp;<span ng-bind="opt.label"></span></label></div>';
+        template += '<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="checkbox" name="checkbox{{idx}}" ng-value="opt" ng-model="opt.checked" />&nbsp;<span ng-bind="opt.label"></span></label></div>';
         break;
 
       }
@@ -46,6 +46,7 @@ angular.module('questionModule', [])
         type      : '=',
         body      : '=',
         code      : '=',
+        idx       : '='
       },
       link: linker
     };
