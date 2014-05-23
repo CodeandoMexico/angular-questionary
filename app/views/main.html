@@ -18,16 +18,10 @@
 
 <div class="row marketing">
 
-  <!-- <h2>Form Directive</h4>
   <div class="section-container" ng-repeat="section in questionary">
     <h3>{{section.identifier}}</h3>
     <form class="form-horizontal">
-      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question>
-    </form>
-  </div> -->
-  <div class="section-container" ng-repeat="section in questionary">
-    <h3>{{section.identifier}}</h3>
-    <form class="form-horizontal">
+      <!-- <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question> -->
       <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body"></question>
     </form>
   </div>
