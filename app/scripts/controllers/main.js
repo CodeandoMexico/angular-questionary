@@ -14,7 +14,7 @@ angular.module('questionaryApp')
             // help   : 'Escribe el valor de la respuesta',
             type   : 'number',
             body   : {
-              value  : null,
+              value  : 5,
             }
           },
           {
@@ -32,7 +32,7 @@ angular.module('questionaryApp')
             type     : 'radio',
             body     : {
               value    : 'Ninguno',
-              options  : ['Primaria', 'Secundaria / Secundaria Técnica', 'Bachillerato / Preparatoria / Preparatoria Técnica', 'Licenciatura / Ingeniería', 'Maestría ó superior']
+              options  : ['Ninguno', 'Primaria', 'Secundaria / Secundaria Técnica', 'Bachillerato / Preparatoria / Preparatoria Técnica', 'Licenciatura / Ingeniería', 'Maestría ó superior']
             }
           },
           {
@@ -84,11 +84,11 @@ angular.module('questionaryApp')
             body   : {
               options: [
                 { label: 'No hay suficientes oportunidades laborales para encontrar un empleo', checked: true },
-                { label: 'Prefiero tener mi propia empresa que ser un empleado', checked: true },
+                { label: 'Prefiero tener mi propia empresa que ser un empleado', checked: false },
                 { label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente', checked: true },
-                { label: 'Quiero desarrollar mi creatividad', checked: true },
+                { label: 'Quiero desarrollar mi creatividad', checked: false },
                 { label: 'Hago lo que más me gusta hacer', checked: true },
-                { label: 'Tengo algo innovador que es (o será) rentable en el mercado', checked: true },
+                { label: 'Tengo algo innovador que es (o será) rentable en el mercado', checked: false },
               ]
             }
           },

@@ -8,23 +8,23 @@
 </div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <section ng-repeat="section in questionary" title="{{section.identifier}}" description="Esta es una descripcion ejemplo">
+    <question ng-repeat="q in section.questions" idx="$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q">
+      <h4 class="question-title">{{q.title}}</h4>
+      <h5 class="question-description">{{q.help}}</h5>
+    </question>
+  </section>
+  <!--  here starts the questionary -->
+  <!-- <div class="section-container" ng-repeat="section in questionary">
+    <h2>{{section.identifier}}</h2>
+    <form class="form-horizontal">
+      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" idx="outerIndex" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question>
+    </form>
+  </div> -->
 </div>
 
 <div class="row marketing">
 
-  <div class="section-container" ng-repeat="section in questionary">
-    <h3>{{section.identifier}}</h3>
-    <form class="form-horizontal">
-      <!-- <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question> -->
-      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" idx="outerIndex" type="q.type" title="q.title" help="q.help" body="q.body"></question>
-    </form>
-  </div>
 </div>
 
 <div class="footer">
