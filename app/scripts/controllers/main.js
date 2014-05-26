@@ -12,7 +12,7 @@ angular.module('questionaryApp')
     // if the idx changes then also change the view
     $scope.$watch('sectionIdx', function(newValue, oldValue){
       if(newValue === oldValue) return;
-      console.log(newValue, oldValue);
+      // console.log(newValue, oldValue);
       // upper and lower limit restiction
       if(newValue < 0) {
         $scope.sectionIdx = oldValue;
@@ -28,7 +28,7 @@ angular.module('questionaryApp')
     });
 
     $scope.nextSection = function(){
-      console.log('nextSection');
+      // console.log('nextSection');
       $scope.sectionIdx += 1;
     };
     $scope.previousSection = function(){

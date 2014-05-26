@@ -12,9 +12,10 @@
   <!-- <section ng-repeat="section in questionary" title="{{section.identifier}}" description="Esta es una descripcion ejemplo"> -->
     <!-- <question ng-repeat="q in section.questions" ng-init="outerIdx=$index" idx="outerIdx" type="q.type" body="q.body" debug="false"> -->
   <section title="{{currentSection.identifier}}" description="Esta es una descripcion ejemplo">
-    <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" type="q.type" body="q.body" debug="true">
-      <h4 class="question-title">{{q.title}}</h4>
-      <h5 class="question-description">{{q.help}}</h5>
+    <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" title="q.title" description="q.description" type="q.type" body="q.body" debug="true">
+      <!-- <h4 class="question-title">{{q.title}}</h4>
+      <h5 class="question-description">{{q.help}}</h5> -->
+      <question ng-if="q.body.selected_value.question" idx="outerIdx" title="q.body.selected_value.question.title" description="q.body.selected_value.question.description" type="q.body.selected_value.question.type" body="q.body.selected_value.question.body"></question>
     </question>
   </section>
   <button class="btn btn-primary" ng-disabled="sectionIdx <= 0" ng-click="previousSection()">Atrás</button>

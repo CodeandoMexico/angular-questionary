@@ -28,7 +28,7 @@ app.directive('section', function(){
 
 app.directive('question', ['$compile', function ($compile) {
   return {
-    template: '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><ng-form name="questionForm"><div class="question-body" ng-include="template[type]"></div><div class="nested-question" ng-transclude></div></ng-form><pre ng-if="debug">{{ codeData | json}}</pre></div>',
+    template: '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>',
     restrict: 'EA',
     controller: ['$scope', function($scope){
         $scope.codeData = {
@@ -56,8 +56,10 @@ app.directive('question', ['$compile', function ($compile) {
     },
     link: function(scope, element){
       var selectWatcher = scope.$watch('type', function(newValue, oldValue){
+        // console.log()
+        // if(newValue === oldValue) return;
         // change the initial value to the object
-        if(newValue === 'select'){
+        if(newValue == 'select'){
           scope.body.selected_value = scope.body.options[0];
           console.log(scope.body.selected_value);
         }
