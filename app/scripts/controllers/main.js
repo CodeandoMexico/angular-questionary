@@ -17,22 +17,33 @@ angular.module('questionaryApp')
               value  : 5,
             }
           },
-          {
-            title    : 'Sexo',
-            // help     : 'Selecciona uno de los valores',
-            type     : 'radio',
-            body     : {
-              value    : 'Masculino',
-              options  : ['Masculino', 'Femenino']
-            }
-          },
+          // {
+          //   title    : 'Sexo',
+          //   // help     : 'Selecciona uno de los valores',
+          //   type     : 'radio',
+          //   body     : {
+          //     selected_value    : 0,
+          //     options  : [
+          //       { value: 0, label: 'Masculino' },
+          //       { value: 1, label: 'Femenino' }
+          //     ]
+          //   }
+          // },
           {
             title    : 'Nivel de estudios',
             // help     : 'Selecciona uno de los valores',
             type     : 'radio',
             body     : {
-              value    : 'Ninguno',
-              options  : ['Ninguno', 'Primaria', 'Secundaria / Secundaria Técnica', 'Bachillerato / Preparatoria / Preparatoria Técnica', 'Licenciatura / Ingeniería', 'Maestría ó superior']
+              selected_value    : 'Ninguno',
+              options : ['Ninguno', 'Primaria', 'Secundaria', 'Preparatoria']
+              // options  : [
+              //   { value: 0, label: 'Ninguno' },
+              //   { value: 1, label: 'Primaria' },
+              //   { value: 2, label: 'Secundaria / Secundaria Técnica' },
+              //   { value: 3, label: 'Bachillerato / Preparatoria / Preparatoria Técnica' },
+              //   { value: 4, label: 'Licenciatura / Ingeniería' },
+              //   { value: 5, label: 'Maestría ó superior' }
+              // ]
             }
           },
           {
@@ -41,7 +52,10 @@ angular.module('questionaryApp')
             type     : 'radio',
             body     : {
               value    : 'No, vivo en otra entidad',
-              options  : ['No, vivo en otra entidad', 'Sí, vivo en el D.F.']
+              options  : [
+                { label: 'No, vivo en otra entidad' },
+                { label: 'Sí, vivo en el D.F.'}
+              ]
             }
           },
           {
@@ -50,7 +64,13 @@ angular.module('questionaryApp')
             type     : 'radio',
             body     : {
               value    : 'Del. 1',
-              options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
+              options  : [
+                { label: 'Del. 1' } ,
+                { label: 'Del. 2' } ,
+                { label: 'Del. 4' } ,
+                { label: 'Del. 8' } ,
+                { label: 'Del. 16' }
+              ]
             }
           },
           {
@@ -59,7 +79,10 @@ angular.module('questionaryApp')
             type     : 'radio',
             body     : {
               value    : 'No, aún no está operando',
-              options  : ['No, aún no está operando', 'Sí, ya está en operación']
+              options  : [
+                { label: 'No, aún no está operando' },
+                { label: 'Sí, ya está en operación'}
+              ]
             }
           },
           {
@@ -68,7 +91,13 @@ angular.module('questionaryApp')
             type     : 'radio',
             body     : {
               value    : 'Del. 1',
-              options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
+              options  : [
+                { label: 'Del. 1' } ,
+                { label: 'Del. 2' } ,
+                { label: 'Del. 4' } ,
+                { label: 'Del. 8' } ,
+                { label: 'Del. 16' }
+              ]
             }
           },
         ]
@@ -113,7 +142,18 @@ angular.module('questionaryApp')
             type     : 'radio',
             body     : {
               value    : 'Industrias manufactureras',
-              options  : ['Industrias manufactureras', 'Comercio', 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles', 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos', 'Culturales y de esparcimiento, deportivos y recreativos', 'Organizaciones con fines altruistas y medio ambientales', 'Agricultura, ganadería, aprovechamiento forestal y pesca', 'Tecnologías de la información y la comunicación', 'Otros', 'No sé']
+              options  : [
+                { label: 'Industrias manufactureras' },
+                { label: 'Comercio' },
+                { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
+                { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                { label: 'Organizaciones con fines altruistas y medio ambientales' },
+                { label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                { label: 'Tecnologías de la información y la comunicación' },
+                { label: 'Otros' },
+                { label: 'No sé' }
+              ]
             }
           },
           {

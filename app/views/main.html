@@ -9,7 +9,7 @@
 
 <div class="jumbotron">
   <section ng-repeat="section in questionary" title="{{section.identifier}}" description="Esta es una descripcion ejemplo">
-    <question ng-repeat="q in section.questions" idx="$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q">
+    <question ng-repeat="q in section.questions" idx="$index" type="q.type" body="q.body" debug="true">
       <h4 class="question-title">{{q.title}}</h4>
       <h5 class="question-description">{{q.help}}</h5>
     </question>
