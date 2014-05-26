@@ -8,7 +8,7 @@ app.run(['$templateCache', function($templateCache){
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
   $templateCache.put('number-input.html','<input class="form-control" type="number" ng-model="body.value">');
-  $templateCache.put('radio-input.html','<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="radio" name="radio{{idx}}" ng-value="opt" ng-model="body.selected_value" />&nbsp;<span ng-bind="opt"></span></label></div>');
+  $templateCache.put('radio-input.html','<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="radio" name="radio{{idx}}" value="{{opt}}" ng-model="body.selected_value" />&nbsp;<span ng-bind="opt"></span></label></div>');
   $templateCache.put('checkbox-input.html','<div ng-repeat="opt in body.options" class="row-fluid"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked" />&nbsp;<span ng-bind="opt.label"></span></label></div>');
 }]);
 
@@ -26,7 +26,7 @@ app.directive('section', function(){
 
 app.directive('question', ['$compile', function ($compile) {
   return {
-    template: '<div class="question-container"><div class="question-header" ng-transclude></div><div class="question-body" ng-include="template[type]"></div><pre ng-if="debug">{{ codeData | json}}</pre></div>',
+    template: '<div class="question-container"><div class="question-header" ng-transclude></div><ng-form name="questionForm"><div class="question-body" ng-include="template[type]"></div></ng-form><pre ng-if="debug">{{ codeData | json}}</pre></div>',
     restrict: 'EA',
     controller: ['$scope', function($scope){
         $scope.codeData = {

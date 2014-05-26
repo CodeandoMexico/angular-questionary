@@ -1,26 +1,23 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
+  <!-- <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
     <li><a ng-href="#">About</a></li>
     <li><a ng-href="#">Contact</a></li>
-  </ul>
+  </ul> -->
   <h3 class="text-muted">questionary</h3>
 </div>
 
 <div class="jumbotron">
-  <section ng-repeat="section in questionary" title="{{section.identifier}}" description="Esta es una descripcion ejemplo">
-    <question ng-repeat="q in section.questions" idx="$index" type="q.type" body="q.body" debug="true">
+  <!--  here starts the questionary -->
+  <!-- <section ng-repeat="section in questionary" title="{{section.identifier}}" description="Esta es una descripcion ejemplo"> -->
+  <section title="{{currentSection.identifier}}" description="Esta es una descripcion ejemplo">
+    <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" type="q.type" body="q.body" debug="true">
       <h4 class="question-title">{{q.title}}</h4>
       <h5 class="question-description">{{q.help}}</h5>
     </question>
   </section>
-  <!--  here starts the questionary -->
-  <!-- <div class="section-container" ng-repeat="section in questionary">
-    <h2>{{section.identifier}}</h2>
-    <form class="form-horizontal">
-      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" idx="outerIndex" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question>
-    </form>
-  </div> -->
+  <button class="btn btn-primary" ng-click="previousSection()">Atrás</button>
+  <button class="btn btn-primary" ng-click="nextSection()">Siguiente</button>
 </div>
 
 <div class="row marketing">
