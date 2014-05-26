@@ -3,7 +3,18 @@
 angular.module('questionaryApp')
   .service('Questionary', function Questionary() {
     // AngularJS will instantiate a singleton by calling "new" on this function
-    return {
+
+    var delegationQuestion = {
+      title    : 'Delegación',
+      // help     : 'Selecciona uno de los valores',
+      type     : 'select',
+      body     : {
+        selected_value    : 'Del. 16',
+        options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
+      }
+    };
+
+    var questionary = {
       questions: [
         {
           identifier : '1.B.1 Características Sociodemográficas',
@@ -38,19 +49,15 @@ angular.module('questionaryApp')
             {
               title    : '¿Resides en el D.F.?',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
-              body     : {
-                selected_value    : 'No, vivo en otra entidad',
-                options  : ['No, vivo en otra entidad', 'Sí, vivo en el D.F.']
-              }
-            },
-            {
-              title    : 'Delegación',
-              // help     : 'Selecciona uno de los valores',
               type     : 'select',
+              nested   : true,
               body     : {
-                selected_value    : 'Del. 16',
-                options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
+                // selected_value    : null,
+                options  : [
+                  {label: 'No, vivo en otra entidad' },
+                  // a question is going to be appended here, in the question property
+                  {label: 'Sí, vivo en el D.F.', question: null },
+                ]
               }
             },
             {
@@ -448,4 +455,9 @@ angular.module('questionaryApp')
         },
       ]
     };
+
+    // appending nesting questions, for testing purposes
+    questionary.questions[0].questions[3].body.options[1].question = angular.copy(delegationQuestion);
+
+    return questionary;
   });
