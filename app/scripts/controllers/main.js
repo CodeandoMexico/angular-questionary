@@ -5,6 +5,7 @@ angular.module('questionaryApp')
     // types of questions are: text, number, radio, checkbox
     // initialize values
     var questionary = Questionary.questions;
+    $scope.numerOfSections = questionary.length;
     $scope.sectionIdx = 0;
     $scope.currentSection = questionary[$scope.sectionIdx];
 
@@ -12,6 +13,17 @@ angular.module('questionaryApp')
     $scope.$watch('sectionIdx', function(newValue, oldValue){
       if(newValue === oldValue) return;
       console.log(newValue, oldValue);
+      // upper and lower limit restiction
+      if(newValue < 0) {
+        $scope.sectionIdx = oldValue;
+        return;
+      }
+      else if(newValue >= questionary.length) {
+        $scope.sectionIdx = oldValue;
+        return;
+      }
+
+      // assign the section
       $scope.currentSection = questionary[$scope.sectionIdx];
     });
 

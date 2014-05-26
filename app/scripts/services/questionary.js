@@ -29,7 +29,7 @@ angular.module('questionaryApp')
             {
               title    : 'Nivel de estudios',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
+              type     : 'select',
               body     : {
                 selected_value    : 'Primaria',
                 options  : ['Ninguno', 'Primaria', 'Secundaria / Secundaria Técnica', 'Bachillerato / Preparatoria / Preparatoria Técnica', 'Licenciatura / Ingeniería', 'Maestría ó superior']
@@ -47,9 +47,9 @@ angular.module('questionaryApp')
             {
               title    : 'Delegación',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
+              type     : 'select',
               body     : {
-                selected_value    : 'Del. 1',
+                selected_value    : 'Del. 16',
                 options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
               }
             },
@@ -65,7 +65,7 @@ angular.module('questionaryApp')
             {
               title    : 'Delegación',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
+              type     : 'select',
               body     : {
                 selected_value    : 'Del. 1',
                 options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
@@ -80,30 +80,30 @@ angular.module('questionaryApp')
             {
               title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque… ',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'checkbox',
+              type   : 'order',
               body   : {
                 options: [
-                  { label: 'No hay suficientes oportunidades laborales para encontrar un empleo', checked: true },
-                  { label: 'Prefiero tener mi propia empresa que ser un empleado', checked: true },
-                  { label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente', checked: true },
-                  { label: 'Quiero desarrollar mi creatividad', checked: true },
-                  { label: 'Hago lo que más me gusta hacer', checked: true },
-                  { label: 'Tengo algo innovador que es (o será) rentable en el mercado', checked: true },
+                  { value: 0, label: 'No hay suficientes oportunidades laborales para encontrar un empleo' },
+                  { value: 1, label: 'Prefiero tener mi propia empresa que ser un empleado' },
+                  { value: 2, label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente' },
+                  { value: 3, label: 'Quiero desarrollar mi creatividad' },
+                  { value: 4, label: 'Hago lo que más me gusta hacer' },
+                  { value: 5, label: 'Tengo algo innovador que es (o será) rentable en el mercado' },
                 ]
               }
             },
             {
               title  : '[ORDINAL] El principal objetivo de mi empresa es…',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'checkbox',
+              type   : 'order',
               body   : {
                 options: [
-                  { label: 'Obtener ingresos para solventar los gastos básicos personales/familiares', checked: true },
-                  { label: 'Tener mi propio negocio sin depender de un tercero', checked: true },
-                  { label: 'Realizar la actividad que más me gusta hacer y vivir de ello', checked: true },
-                  { label: 'Exponer un proyecto artístico', checked: true },
-                  { label: 'Generar un impacto positivo en la población y/o el medio ambiente', checked: true },
-                  { label: 'Realizar un proyecto empresarial innovador y exitoso', checked: true },
+                  { value: 0, label: 'Obtener ingresos para solventar los gastos básicos personales/familiares' },
+                  { value: 1, label: 'Tener mi propio negocio sin depender de un tercero' },
+                  { value: 2, label: 'Realizar la actividad que más me gusta hacer y vivir de ello' },
+                  { value: 3, label: 'Exponer un proyecto artístico' },
+                  { value: 4, label: 'Generar un impacto positivo en la población y/o el medio ambiente' },
+                  { value: 5, label: 'Realizar un proyecto empresarial innovador y exitoso' },
                 ]
               }
             },
@@ -312,30 +312,30 @@ angular.module('questionaryApp')
             {
               title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque...',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'checkbox',
+              type   : 'order',
               body   : {
                 options: [
-                  { label: 'No hay suficientes oportunidades laborales para encontrar un empleo', checked: true },
-                  { label: 'Prefiero emprender mi propio negocio que ser un empleado', checked: true },
-                  { label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente', checked: true },
-                  { label: 'Quiero desarrollar mi creatividad', checked: true },
-                  { label: 'Hago lo que más me gusta hacer', checked: true },
-                  { label: 'Tengo algo innovador que es (o será) rentable en el mercado', checked: true },
+                  { value: 0, label: 'No hay suficientes oportunidades laborales para encontrar un empleo' },
+                  { value: 1, label: 'Prefiero emprender mi propio negocio que ser un empleado' },
+                  { value: 2, label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente' },
+                  { value: 3, label: 'Quiero desarrollar mi creatividad' },
+                  { value: 4, label: 'Hago lo que más me gusta hacer' },
+                  { value: 5, label: 'Tengo algo innovador que es (o será) rentable en el mercado' },
                 ]
               }
             },
             {
               title  : '[ORDINAL] El principal objetivo de mi empresa será...',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'checkbox',
+              type   : 'order',
               body   : {
                 options: [
-                  { label: 'Obtener ingresos para solventar los gastos básicos personales/familiares', checked: true },
-                  { label: 'Tener mi propio negocio sin depender de un tercero', checked: true },
-                  { label: 'Realizar la actividad que más me gusta hacer y vivir de ello', checked: true },
-                  { label: 'Exponer un proyecto artístico', checked: true },
-                  { label: 'Generar un impacto positivo en la población y/o el medio ambiente', checked: true },
-                  { label: 'Realizar un proyecto empresarial innovador y exitoso', checked: true },
+                  { value: 0, label: 'Obtener ingresos para solventar los gastos básicos personales/familiares' },
+                  { value: 1, label: 'Tener mi propio negocio sin depender de un tercero' },
+                  { value: 2, label: 'Realizar la actividad que más me gusta hacer y vivir de ello' },
+                  { value: 3, label: 'Exponer un proyecto artístico' },
+                  { value: 4, label: 'Generar un impacto positivo en la población y/o el medio ambiente' },
+                  { value: 5, label: 'Realizar un proyecto empresarial innovador y exitoso' },
                 ]
               }
             },
