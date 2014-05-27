@@ -2,22 +2,27 @@
 
 angular.module('questionaryApp')
   .service('Questionary', function Questionary() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
-
     var delegationQuestion = {
       title    : 'Delegación',
-      // help     : 'Selecciona uno de los valores',
+      help     : 'Selecciona uno de los valores',
       type     : 'select',
       body     : {
-        selected_value    : 'Del. 16',
-        options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
+        options  : [
+          {label: 'Del. 1' },
+          {label: 'Del. 2' },
+          {label: 'Del. 4' },
+          {label: 'Del. 8' },
+          {label: 'Del. 16'}
+        ]
       }
     };
 
     var questionary = {
-      questions: [
-        {
+      start_at: '1.B.1',
+      sections: {
+        '1.B.1': {
           identifier : '1.B.1 Características Sociodemográficas',
+          path       : null,
           grouped    : true,
           questions : [
             {
@@ -42,8 +47,14 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'select',
               body     : {
-                selected_value    : 'Primaria',
-                options  : ['Ninguno', 'Primaria', 'Secundaria / Secundaria Técnica', 'Bachillerato / Preparatoria / Preparatoria Técnica', 'Licenciatura / Ingeniería', 'Maestría ó superior']
+                options  : [
+                  {label: 'Ninguno' },
+                  {label: 'Primaria' },
+                  {label: 'Secundaria / Secundaria Técnica' },
+                  {label: 'Bachillerato / Preparatoria / Preparatoria Técnica' },
+                  {label: 'Licenciatura / Ingeniería' },
+                  {label: 'Maestría ó superior' }
+                ]
               }
             },
             {
@@ -63,24 +74,17 @@ angular.module('questionaryApp')
             {
               title    : '¿El negocio ya está en operación?',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
-              body     : {
-                selected_value    : 'No, aún no está operando',
-                options  : ['No, aún no está operando', 'Sí, ya está en operación']
-              }
-            },
-            {
-              title    : 'Delegación',
-              // help     : 'Selecciona uno de los valores',
               type     : 'select',
               body     : {
-                selected_value    : 'Del. 1',
-                options  : ['Del. 1', 'Del. 2' ,'Del. 4' ,'Del. 8' ,'Del. 16']
+                options  : [
+                  {label: 'No, aún no está operando'},
+                  {label: 'Sí, ya está en operación', question: null}
+                ]
               }
             },
           ]
         },
-        {
+        '2.A': {
           identifier : '2.A Perfiles',
           grouped    : true,
           questions : [
@@ -168,7 +172,7 @@ angular.module('questionaryApp')
             },
           ],
         },
-        {
+        '3.A': {
           identifier : '3.A Etapas',
           grouped    : true,
           questions : [
@@ -254,7 +258,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '4.A.1': {
           identifier : '4.A.1',
           grouped    : true,
           questions : [
@@ -278,7 +282,7 @@ angular.module('questionaryApp')
             }
           ]
         },
-        {
+        '5.A.1': {
           identifier : '5.A.1',
           grouped    : true,
           questions : [
@@ -312,7 +316,7 @@ angular.module('questionaryApp')
             }
           ]
         },
-        {
+        '2.C.1': {
           identifier : '2.C.1',
           grouped    : true,
           questions : [
@@ -409,7 +413,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '4.C.1': {
           identifier : '4.C.1',
           grouped    : true,
           questions : [
@@ -431,7 +435,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '5.C.1': {
           identifier : '5.C.1',
           grouped    : true,
           questions : [
@@ -453,11 +457,13 @@ angular.module('questionaryApp')
             },
           ]
         },
-      ]
+      }
     };
 
     // appending nesting questions, for testing purposes
-    questionary.questions[0].questions[3].body.options[1].question = angular.copy(delegationQuestion);
+    console.log(questionary);
+    questionary.sections['1.B.1'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
+    questionary.sections['1.B.1'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
 
     return questionary;
   });
