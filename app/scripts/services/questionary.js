@@ -18,9 +18,11 @@ angular.module('questionaryApp')
     };
 
     var questionary = {
-      questions: [
-        {
+      start_at: '1.B.1',
+      sections: {
+        '1.B.1': {
           identifier : '1.B.1 Características Sociodemográficas',
+          path       : null,
           grouped    : true,
           questions : [
             {
@@ -82,7 +84,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '2.A': {
           identifier : '2.A Perfiles',
           grouped    : true,
           questions : [
@@ -170,7 +172,7 @@ angular.module('questionaryApp')
             },
           ],
         },
-        {
+        '3.A': {
           identifier : '3.A Etapas',
           grouped    : true,
           questions : [
@@ -256,7 +258,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '4.A.1': {
           identifier : '4.A.1',
           grouped    : true,
           questions : [
@@ -280,7 +282,7 @@ angular.module('questionaryApp')
             }
           ]
         },
-        {
+        '5.A.1': {
           identifier : '5.A.1',
           grouped    : true,
           questions : [
@@ -314,7 +316,7 @@ angular.module('questionaryApp')
             }
           ]
         },
-        {
+        '2.C.1': {
           identifier : '2.C.1',
           grouped    : true,
           questions : [
@@ -411,7 +413,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '4.C.1': {
           identifier : '4.C.1',
           grouped    : true,
           questions : [
@@ -433,7 +435,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        {
+        '5.C.1': {
           identifier : '5.C.1',
           grouped    : true,
           questions : [
@@ -455,12 +457,13 @@ angular.module('questionaryApp')
             },
           ]
         },
-      ]
+      }
     };
 
     // appending nesting questions, for testing purposes
-    questionary.questions[0].questions[3].body.options[1].question = angular.copy(delegationQuestion);
-    questionary.questions[0].questions[4].body.options[1].question = angular.copy(delegationQuestion);
+    console.log(questionary);
+    questionary.sections['1.B.1'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
+    questionary.sections['1.B.1'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
 
     return questionary;
   });

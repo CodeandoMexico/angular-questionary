@@ -61,7 +61,7 @@ app.directive('question', ['$compile', function ($compile) {
         // change the initial value to the object
         if(newValue == 'select'){
           scope.body.selected_value = scope.body.options[0];
-          console.log(scope.body.selected_value);
+          // console.log(scope.body.selected_value);
         }
       });
     }

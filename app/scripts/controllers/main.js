@@ -4,10 +4,10 @@ angular.module('questionaryApp')
   .controller('MainCtrl', ['$scope', 'Questionary', function ($scope, Questionary) {
     // types of questions are: text, number, radio, checkbox
     // initialize values
-    var questionary = Questionary.questions;
-    $scope.numerOfSections = questionary.length;
-    $scope.sectionIdx = 0;
-    $scope.currentSection = questionary[$scope.sectionIdx];
+    var first_section = Questionary.start_at;
+    var questionary = Questionary.sections;
+    // $scope.sectionIdx = 0;
+    $scope.currentSection = questionary[first_section];
 
     // if the idx changes then also change the view
     $scope.$watch('sectionIdx', function(newValue, oldValue){
