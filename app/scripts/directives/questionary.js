@@ -3,7 +3,11 @@
 // angular.module('questionaryApp')
 var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
+
+  // directive's skeleton templates
+  $templateCache.put('questionary.html', '<div ng-transclude></div>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><h3 ng-if="description">{{description}}</h3><div class="questions-container" ng-transclude></div></div>');
+  $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
 
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
@@ -13,6 +17,27 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
 }]);
+
+app.directive('questionary', function(){
+  return {
+    templateUrl: 'questionary.html',
+    restrict: 'EA',
+    transclude: true,
+    scope: {
+      firstSection: '@',
+      lastSection: '@',
+      sections: '=',
+      currentSection: '='
+    },
+    controller: ['$scope', function($scope){
+      $scope.currentSection = $scope.sections[$scope.firstSection];
+      // console.log($scope.firstSection);
+      // console.log($scope.lastSection);
+      // console.log($scope.sections);
+      // console.log($scope.currentSection);
+    }]
+  }
+})
 
 app.directive('section', function(){
   return {
@@ -28,7 +53,7 @@ app.directive('section', function(){
 
 app.directive('question', ['$compile', function ($compile) {
   return {
-    template: '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>',
+    templateUrl: 'question.html',
     restrict: 'EA',
     controller: ['$scope', function($scope){
         $scope.codeData = {
