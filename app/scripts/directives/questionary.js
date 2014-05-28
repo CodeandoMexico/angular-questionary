@@ -78,9 +78,8 @@ app.directive('questionary', function(){
     link: function(scope){
       scope.$on('PATH_CHANGE', function(event, args){
         console.log('PATH_CHANGE DETECTED');
-        console.log(event);
-        console.log(args);
-        // scope.nextSection = args.nextSection;
+        // we need to change the next section
+        scope.nextSection = scope.sections[args.new_path];
       });
     }
   }
@@ -140,8 +139,8 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
         var type = scope.type;
         if((type === 'select' || type === 'radio')){
           if(angular.isDefined(newValue.change_path)){
-            console.log('new path' + newValue.change_path);
-            $rootScope.$broadcast('PATH_CHANGE',{});
+            // console.log('new path' + newValue.change_path);
+            $rootScope.$broadcast('PATH_CHANGE', {new_path: newValue.change_path});
           }
           return;
         }
