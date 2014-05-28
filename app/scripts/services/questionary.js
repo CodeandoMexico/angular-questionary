@@ -18,11 +18,11 @@ angular.module('questionaryApp')
     };
 
     var questionary = {
-      start_at: '1.B.1',
+      // start_at: '1.B.1',
       sections: {
         '1.B.1': {
           identifier : '1.B.1 Características Sociodemográficas',
-          path       : null,
+          next       : '5.C.1',
           grouped    : true,
           questions : [
             {
@@ -67,7 +67,7 @@ angular.module('questionaryApp')
                 options  : [
                   {label: 'No, vivo en otra entidad' },
                   // a question is going to be appended here, in the question property
-                  {label: 'Sí, vivo en el D.F.', question: null },
+                  {label: 'Sí, vivo en el D.F.', question: null, change_path: '2.A' },
                 ]
               }
             },
@@ -461,7 +461,7 @@ angular.module('questionaryApp')
     };
 
     // appending nesting questions, for testing purposes
-    console.log(questionary);
+    // console.log(questionary);
     questionary.sections['1.B.1'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B.1'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
 

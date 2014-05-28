@@ -5,7 +5,7 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<div ng-transclude></div>')
+  $templateCache.put('questionary.html', '<div><div ng-transclude></div><button class="btn btn-primary" ng-click="moveToPreviousSection()">Regresar</button><button class="btn btn-primary" ng-click="moveToNextSection()">Continuar</button></div>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><h3 ng-if="description">{{description}}</h3><div class="questions-container" ng-transclude></div></div>');
   $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
 
@@ -27,15 +27,62 @@ app.directive('questionary', function(){
       firstSection: '@',
       lastSection: '@',
       sections: '=',
-      currentSection: '='
+      currentSection: '=',
     },
     controller: ['$scope', function($scope){
+      // initialize variables
       $scope.currentSection = $scope.sections[$scope.firstSection];
-      // console.log($scope.firstSection);
-      // console.log($scope.lastSection);
+      $scope.nextSection = $scope.sections[$scope.currentSection.next];
+      // $scope.previousSection = null;
+      $scope.walkedPath = [];
+
+      // create helpers
+      function oneStepForward(){
+        $scope.walkedPath.push($scope.currentSection); // let's save where we've been through
+        $scope.currentSection = $scope.nextSection; // go to the next section
+        $scope.nextSection = $scope.sections[$scope.currentSection.next]; // get the next section
+      }
+
+      function oneStepBackward(){
+        $scope.nextSection = $scope.curentSection;
+        $scope.currentSection = $scope.walkedPath.pop();
+      }
+
+      // console.log('current section');
       // console.log($scope.sections);
       // console.log($scope.currentSection);
-    }]
+      // console.log($scope.nextSection);
+      $scope.moveToNextSection = function(){
+        // if there's a next section we should go there
+        if(angular.isObject($scope.nextSection)){
+          console.log('moving one section ahead');
+          oneStepForward();
+        }
+        else{
+          console.log('disappear next button');
+        }
+      };
+      $scope.moveToPreviousSection = function(){
+        // if there's a next section we should go there
+        $scope.numberOfWalkedSections = $scope.walkedPath.length;
+        var previousSection = $scope.walkedPath[$scope.numberOfWalkedSections - 1];
+        if(angular.isObject(previousSection)){
+          console.log('moving one section backward');
+          oneStepBackward();
+        }
+        else{
+          console.log('disappear previous button')
+        }
+      };
+    }],
+    link: function(scope){
+      scope.$on('PATH_CHANGE', function(event, args){
+        console.log('PATH_CHANGE DETECTED');
+        console.log(event);
+        console.log(args);
+        // scope.nextSection = args.nextSection;
+      });
+    }
   }
 })
 
@@ -46,12 +93,12 @@ app.directive('section', function(){
     transclude: true,
     scope: {
       title : '@',
-      description: '@'
+      description: '@',
     }
   }
 })
 
-app.directive('question', ['$compile', function ($compile) {
+app.directive('question', ['$rootScope','$compile', function ($rootScope, $compile) {
   return {
     templateUrl: 'question.html',
     restrict: 'EA',
@@ -89,6 +136,20 @@ app.directive('question', ['$compile', function ($compile) {
           // console.log(scope.body.selected_value);
         }
       });
+      var answerWatcher = scope.$watch('body.selected_value', function(newValue, oldValue){
+        var type = scope.type;
+        if((type === 'select' || type === 'radio')){
+          if(angular.isDefined(newValue.change_path)){
+            console.log('new path' + newValue.change_path);
+            $rootScope.$broadcast('PATH_CHANGE',{});
+          }
+          return;
+        }
+        else{
+          console.log('it doesn\'t apply');
+          return;
+        }
+      }, true);
     }
   };
 }]);
