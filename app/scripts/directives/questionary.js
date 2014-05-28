@@ -5,13 +5,13 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<div><div ng-transclude></div><button class="btn btn-primary" ng-click="moveToPreviousSection()">Regresar</button><button class="btn btn-primary" ng-click="moveToNextSection()">Continuar</button></div>')
+  $templateCache.put('questionary.html', '<div><div ng-transclude></div><a ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()">Regresar</a><a ng-if="navigation.hasNext" ng-click="moveToNextSection()">Continuar</a></div>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><h3 ng-if="description">{{description}}</h3><div class="questions-container" ng-transclude></div></div>');
   $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
 
   // answer templates
-  $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
-  $templateCache.put('number-input.html','<input class="form-control" type="number" min="0" ng-model="body.value">');
+  $templateCache.put('text-input.html','<div class="input-group margin-bottom-sm"><span class="input-group-addon"><i class="fa fa-text-height fa-fw"></i><input class="form-control" type="text" ng-model="body.value"></div>');
+  $templateCache.put('number-input.html','<div class="input-group margin-bottom-sm"><span class="input-group-addon"><i class="fa fa-slack fa-fw"></i></span><input class="form-control" type="number" min="0" ng-model="body.value"></div>');
   $templateCache.put('radio-input.html','<div class="radio" ng-repeat="opt in body.options"><label><input type="radio" name="radio{{idx}}" value="{{opt}}" ng-model="body.selected_value">{{opt}}</label></div>');
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
@@ -33,8 +33,12 @@ app.directive('questionary', function(){
       // initialize variables
       $scope.currentSection = $scope.sections[$scope.firstSection];
       $scope.nextSection = $scope.sections[$scope.currentSection.next];
-      // $scope.previousSection = null;
       $scope.walkedPath = [];
+      $scope.navigation = {
+        hasNext: false,
+        hasPrevious: false
+      };
+      // $scope.previousSection = null;
 
       // create helpers
       function oneStepForward(){
@@ -64,9 +68,8 @@ app.directive('questionary', function(){
       };
       $scope.moveToPreviousSection = function(){
         // if there's a next section we should go there
-        $scope.numberOfWalkedSections = $scope.walkedPath.length;
-        var previousSection = $scope.walkedPath[$scope.numberOfWalkedSections - 1];
-        if(angular.isObject(previousSection)){
+        var numberOfWalkedSections = $scope.walkedPath.length;
+        if(numberOfWalkedSections - 1 >= 0){
           console.log('moving one section backward');
           oneStepBackward();
         }
@@ -77,10 +80,20 @@ app.directive('questionary', function(){
     }],
     link: function(scope){
       scope.$on('PATH_CHANGE', function(event, args){
-        console.log('PATH_CHANGE DETECTED');
+        // console.log('PATH_CHANGE DETECTED');
         // we need to change the next section
         scope.nextSection = scope.sections[args.new_path];
       });
+      scope.$watch('currentSection', function(newValue, oldValue){
+        // console.log(scope.walkedPath.length);
+        var numberOfWalkedSections = scope.walkedPath.length + 1;
+        // console.log(numberOfWalkedSections);
+        // console.log(scope.sections.length);
+        // check if has a next and previous section
+        scope.navigation.hasNext = angular.isObject(scope.nextSection)
+        scope.navigation.hasPrevious = (numberOfWalkedSections - 1 > 0) ? true : false
+        // console.log(scope.navigation.hasPrevious);
+      }, true);
     }
   }
 })
@@ -145,7 +158,7 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
           return;
         }
         else{
-          console.log('it doesn\'t apply');
+          // console.log('it doesn\'t apply');
           return;
         }
       }, true);
