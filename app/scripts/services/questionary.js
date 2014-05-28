@@ -21,8 +21,8 @@ angular.module('questionaryApp')
       // start_at: '1.B.1',
       sections: {
         '1.B': {
-          identifier : '1.B.1 Características Sociodemográficas',
-          next       : '2.C',
+          identifier : '1.B Características Sociodemográficas',
+          next       : '2.A',
           grouped    : true,
           questions : [
             {
@@ -78,7 +78,7 @@ angular.module('questionaryApp')
               body     : {
                 options  : [
                   {label: 'No, aún no está operando'},
-                  {label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
+                  {label: 'Sí, ya está en operación', question: null, change_path: '2.C' }
                 ]
               }
             },
@@ -317,8 +317,9 @@ angular.module('questionaryApp')
           ]
         },
         '2.C': {
-          identifier : '2.C.1',
+          identifier : '2.C ',
           grouped    : true,
+          next: '4.C',
           questions : [
             {
               title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque...',
@@ -376,20 +377,20 @@ angular.module('questionaryApp')
             {
               title    : '¿Tu negocio pertenecerá a alguno de los siguientes sectores?',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
+              type     : 'select',
               body     : {
-                selected_value    : 'Industrias manufactureras',
+                // selected_value    : 'Industrias manufactureras',
                 options  : [
-                  'Industrias manufactureras',
-                  'Comercio',
-                  'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles',
-                  'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos',
-                  'Culturales y de esparcimiento, deportivos y recreativos',
-                  'Organizaciones con fines altruistas y medio ambientales',
-                  'Agricultura, ganadería, aprovechamiento forestal y pesca',
-                  'Tecnologías de la información y la comunicación',
-                  'Otros',
-                  'No sé'
+                  { label: 'Industrias manufactureras' },
+                  { label: 'Comercio' },
+                  { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                  { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
+                  { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                  { label: 'Organizaciones con fines altruistas y medio ambientales' },
+                  { label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                  { label: 'Tecnologías de la información y la comunicación' },
+                  { label: 'Otros' },
+                  { label: 'No sé' }
                 ]
               }
             },
@@ -413,9 +414,10 @@ angular.module('questionaryApp')
             },
           ]
         },
-        '4.C.1': {
-          identifier : '4.C.1',
+        '4.C': {
+          identifier : '4.C',
           grouped    : true,
+          next: '5.C',
           questions : [
             {
               title  : 'De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoge de 1 a 3 prioridades.',
@@ -435,7 +437,7 @@ angular.module('questionaryApp')
             },
           ]
         },
-        '5.C.1': {
+        '5.C': {
           identifier : '5.C.1',
           grouped    : true,
           questions : [
