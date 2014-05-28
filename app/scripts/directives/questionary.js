@@ -76,8 +76,8 @@ app.directive('questionary', function(){
       };
     }],
     link: function(scope){
-      scope.$on('NEXT_SECTION', function(event, args){
-        console.log('NEXT_SECTION DETECTED');
+      scope.$on('PATH_CHANGE', function(event, args){
+        console.log('PATH_CHANGE DETECTED');
         console.log(event);
         console.log(args);
         // scope.nextSection = args.nextSection;
@@ -98,7 +98,7 @@ app.directive('section', function(){
   }
 })
 
-app.directive('question', ['$compile', function ($compile) {
+app.directive('question', ['$rootScope','$compile', function ($rootScope, $compile) {
   return {
     templateUrl: 'question.html',
     restrict: 'EA',
@@ -136,6 +136,20 @@ app.directive('question', ['$compile', function ($compile) {
           // console.log(scope.body.selected_value);
         }
       });
+      var answerWatcher = scope.$watch('body.selected_value', function(newValue, oldValue){
+        var type = scope.type;
+        if((type === 'select' || type === 'radio')){
+          if(angular.isDefined(newValue.change_path)){
+            console.log('new path' + newValue.change_path);
+            $rootScope.$broadcast('PATH_CHANGE',{});
+          }
+          return;
+        }
+        else{
+          console.log('it doesn\'t apply');
+          return;
+        }
+      }, true);
     }
   };
 }]);
