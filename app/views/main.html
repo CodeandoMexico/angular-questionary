@@ -1,36 +1,27 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
+  <!-- <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
     <li><a ng-href="#">About</a></li>
     <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">questionary</h3>
+  </ul> -->
+  <h3 class="text-muted">Brand</h3>
 </div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <!--  here starts the questionary -->
+  <questionary first-section="1.B.1" last-section="5.C" sections="sections" current-section="currentSection">
+    <section title="{{currentSection.identifier}}" description="Esta es una descripcion ejemplo">
+      <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" title="q.title" description="q.description" type="q.type" body="q.body" debug="false">
+        <!--  the next question is if it depends on the previous question -->
+        <question nested="true" ng-if="q.body.selected_value.question" ng-init="nestedQuestion=q.body.selected_value.question" idx="outerIdx" title="nestedQuestion.title" description="nestedQuestion.description" type="nestedQuestion.type" body="nestedQuestion.body"></question>
+      </question>
+    </section>
+  </questionary>
+
 </div>
 
 <div class="row marketing">
 
-  <!-- <h2>Form Directive</h4>
-  <div class="section-container" ng-repeat="section in questionary">
-    <h3>{{section.identifier}}</h3>
-    <form class="form-horizontal">
-      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body" code="q"></question>
-    </form>
-  </div> -->
-  <div class="section-container" ng-repeat="section in questionary">
-    <h3>{{section.identifier}}</h3>
-    <form class="form-horizontal">
-      <question ng-repeat="q in section.questions" ng-init="outerIndex=$index" type="q.type" title="q.title" help="q.help" body="q.body"></question>
-    </form>
-  </div>
 </div>
 
 <div class="footer">

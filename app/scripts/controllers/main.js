@@ -1,55 +1,40 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.questionary = [
-      {
-        identifier : '1.B.1',
-        grouped    : true,
-        questions : [
-          {
-            title  : 'Pregunta del tipo texto',
-            help   : 'Escribe el valor de la respuesta',
-            type   : 'text',
-            body   : {
-              value  : null,
-            }
-          },
+  .controller('MainCtrl', ['$scope', 'Questionary', function ($scope, Questionary) {
+    // types of questions are: text, number, radio, checkbox
+    // initialize values
+    // var first_section = Questionary.start_at;
+    $scope.sections = Questionary.sections;
+    $scope.currentSection = null;
+    // $scope.sectionIdx = 0;
+    // $scope.currentSection = sections[first_section];
 
-          {
-            title  : 'Pregunta del tipo numérico',
-            help   : 'Escribe el valor de la respuesta numérico',
-            type   : 'number',
-            body   : {
-              value  : 0,
-            }
-          },
+    // if the idx changes then also change the view
+    // $scope.$watch('sectionIdx', function(newValue, oldValue){
+    //   if(newValue === oldValue) return;
+    //   // console.log(newValue, oldValue);
+    //   // upper and lower limit restiction
+    //   if(newValue < 0) {
+    //     $scope.sectionIdx = oldValue;
+    //     return;
+    //   }
+    //   else if(newValue >= questionary.length) {
+    //     $scope.sectionIdx = oldValue;
+    //     return;
+    //   }
+    //
+    //   // assign the section
+    //   $scope.currentSection = questionary[$scope.sectionIdx];
+    // });
 
-          {
-            title    : 'Pregunta del tipo radio',
-            help     : 'Selecciona uno de los valores',
-            type     : 'radio',
-            body     : {
-              value    : 'Femenino',
-              options  : ['Masculino', 'Femenino']
-            }
-          },
+    // $scope.nextSection = function(){
+    //   // console.log('nextSection');
+    //   $scope.sectionIdx += 1;
+    // };
+    // $scope.previousSection = function(){
+    //   $scope.sectionIdx -= 1;
+    // };
 
-          {
-            title    : 'Pregunta del tipo checkbox',
-            help     : 'Selecciona múltiples valores',
-            type     : 'checkbox',
-            body     : {
-              value    : null,
-              options  : [
-                {label: 'Carro',     checked: false},
-                {label: 'Bicicleta', checked: true},
-                {label: 'Patineta',  checked: false},
-                {label: 'Avión',     checked: true},
-              ]
-            }
-          }
-        ]
-      }
-    ];
-  });
+    // console.log($scope.questionary);
+  }]);
