@@ -67,7 +67,7 @@ angular.module('questionaryApp')
                 options  : [
                   {label: 'No, vivo en otra entidad' },
                   // a question is going to be appended here, in the question property
-                  {label: 'Sí, vivo en el D.F.', question: null, change_path: '2.A' },
+                  {label: 'Sí, vivo en el D.F.', question: null },
                 ]
               }
             },
@@ -78,7 +78,7 @@ angular.module('questionaryApp')
               body     : {
                 options  : [
                   {label: 'No, aún no está operando'},
-                  {label: 'Sí, ya está en operación', question: null}
+                  {label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
                 ]
               }
             },

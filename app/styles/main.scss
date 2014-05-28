@@ -6,6 +6,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+$white: #ffffff;
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -17,6 +19,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: #ededed;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -65,10 +68,27 @@ body {
 /* Supporting marketing content */
 .marketing {
     margin: 40px 0;
+    background: white;
+    border: 1px solid #DCDCDC;
 }
 
 .marketing p + h4 {
     margin-top: 28px;
+}
+
+// questionary custom css
+.questionary-container {
+    margin: 40px;
+}
+
+.navigation-container a{
+  text-decoration: none;
+  font-size: 30px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.navigation-control .next a{
 }
 
 /* Responsive: Portrait tablets and up */

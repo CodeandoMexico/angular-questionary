@@ -5,7 +5,7 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<div><div ng-transclude></div><a ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()">Regresar</a><a ng-if="navigation.hasNext" ng-click="moveToNextSection()">Continuar</a></div>')
+  $templateCache.put('questionary.html', '<div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><a class="navigation-control previous" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()">Regresar</a><a class="navigation-control next" ng-if="navigation.hasNext" ng-click="moveToNextSection()">Continuar</a></div></div>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><h3 ng-if="description">{{description}}</h3><div class="questions-container" ng-transclude></div></div>');
   $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
 
