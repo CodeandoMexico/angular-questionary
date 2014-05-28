@@ -44,7 +44,7 @@ app.directive('questionary', function(){
       }
 
       function oneStepBackward(){
-        $scope.nextSection = $scope.curentSection;
+        $scope.nextSection = $scope.currentSection;
         $scope.currentSection = $scope.walkedPath.pop();
       }
 
@@ -130,7 +130,7 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
         // console.log()
         // if(newValue === oldValue) return;
         // change the initial value to the object
-        if(newValue == 'select'){
+        if(newValue == 'select' && (scope.body.selected_value === 'null' || angular.isUndefined(scope.body.selected_value))){
           scope.body.selected_value = scope.body.options[0];
           // console.log(scope.body.selected_value);
         }
