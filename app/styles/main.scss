@@ -81,11 +81,27 @@ body {
     margin: 40px;
 }
 
+.question-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.question-title {
+    font-size: 18px;
+}
+
+.question-description {
+    font-size: 14px;
+}
+
+
 .navigation-container a{
-  text-decoration: none;
-  font-size: 30px;
-  cursor: pointer;
-  cursor: hand;
+    // margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    cursor: pointer;
+    cursor: hand;
 }
 
 .navigation-control .next a{
