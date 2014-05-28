@@ -79,10 +79,19 @@ app.directive('questionary', function(){
       };
     }],
     link: function(scope){
+      // helpers
+      function changePath(newPath){
+        scope.nextSection = scope.sections[newPath];
+      }
       scope.$on('PATH_CHANGE', function(event, args){
         // console.log('PATH_CHANGE DETECTED');
         // we need to change the next section
-        scope.nextSection = scope.sections[args.new_path];
+        // scope.nextSection = scope.sections[args.new_path];
+        changePath(args.new_path);
+      });
+      scope.$on('DEFAULT_PATH', function(event, args){
+        // scope.nextSection = scope.sections[scope.currentSection.next];
+        changePath(scope.currentSection.next);
       });
       scope.$watch('currentSection', function(newValue, oldValue){
         // console.log(scope.walkedPath.length);
@@ -149,16 +158,17 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
         }
       });
       var answerWatcher = scope.$watch('body.selected_value', function(newValue, oldValue){
+        if(newValue === oldValue) return;
         var type = scope.type;
         if((type === 'select' || type === 'radio')){
-          if(angular.isDefined(newValue.change_path)){
-            // console.log('new path' + newValue.change_path);
+          if(angular.isString(newValue.change_path)){
+            console.log('new path' + newValue.change_path);
             $rootScope.$broadcast('PATH_CHANGE', {new_path: newValue.change_path});
           }
-          return;
-        }
-        else{
-          // console.log('it doesn\'t apply');
+          else{
+            console.log('default path');
+            $rootScope.$broadcast('DEFAULT_PATH', {});
+          }
           return;
         }
       }, true);
