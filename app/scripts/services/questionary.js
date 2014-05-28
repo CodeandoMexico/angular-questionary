@@ -20,9 +20,9 @@ angular.module('questionaryApp')
     var questionary = {
       // start_at: '1.B.1',
       sections: {
-        '1.B.1': {
+        '1.B': {
           identifier : '1.B.1 Características Sociodemográficas',
-          next       : '5.C.1',
+          next       : '2.C',
           grouped    : true,
           questions : [
             {
@@ -316,7 +316,7 @@ angular.module('questionaryApp')
             }
           ]
         },
-        '2.C.1': {
+        '2.C': {
           identifier : '2.C.1',
           grouped    : true,
           questions : [
@@ -462,8 +462,8 @@ angular.module('questionaryApp')
 
     // appending nesting questions, for testing purposes
     // console.log(questionary);
-    questionary.sections['1.B.1'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
-    questionary.sections['1.B.1'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
+    questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
+    questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
 
     return questionary;
   });

@@ -10,8 +10,8 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
 
   // answer templates
-  $templateCache.put('text-input.html','<div class="input-group margin-bottom-sm"><span class="input-group-addon"><i class="fa fa-text-height fa-fw"></i><input class="form-control" type="text" ng-model="body.value"></div>');
-  $templateCache.put('number-input.html','<div class="input-group margin-bottom-sm"><span class="input-group-addon"><i class="fa fa-slack fa-fw"></i></span><input class="form-control" type="number" min="0" ng-model="body.value"></div>');
+  $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
+  $templateCache.put('number-input.html','<input class="form-control" type="number" min="0" ng-model="body.value">');
   $templateCache.put('radio-input.html','<div class="radio" ng-repeat="opt in body.options"><label><input type="radio" name="radio{{idx}}" value="{{opt}}" ng-model="body.selected_value">{{opt}}</label></div>');
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
