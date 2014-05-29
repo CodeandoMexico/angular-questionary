@@ -5,9 +5,9 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<div><div ng-transclude></div><a ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()">Regresar</a><a ng-if="navigation.hasNext" ng-click="moveToNextSection()">Continuar</a></div>')
-  $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><h3 ng-if="description">{{description}}</h3><div class="questions-container" ng-transclude></div></div>');
-  $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
+  $templateCache.put('questionary.html', '<div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><a class="navigation-control previous pull-left" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"><span class="glyphicon glyphicon-arrow-left"></span></a><a class="navigation-control next pull-right" ng-if="navigation.hasNext" ng-click="moveToNextSection()">&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a></div></div>')
+  $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><p class="text-muted" ng-if="description">{{description}}</p><div class="questions-container" ng-transclude></div></div>');
+  $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p class="question-title">{{ title }}</p><p class="question-description">{{ description }}</p></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
 
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
@@ -16,6 +16,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
+  $templateCache.put('prioritize-input.html','<ol class="prioritization-container"><li class="prioritization-option" ng-repeat="opt in body.options"><div class="row"><div class="col-md-2"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number"></div><div class="col-md-10"><p>{{opt.label}}</p></div></div></li></ol>');
 }]);
 
 app.directive('questionary', function(){
@@ -79,10 +80,19 @@ app.directive('questionary', function(){
       };
     }],
     link: function(scope){
+      // helpers
+      function changePath(newPath){
+        scope.nextSection = scope.sections[newPath];
+      }
       scope.$on('PATH_CHANGE', function(event, args){
         // console.log('PATH_CHANGE DETECTED');
         // we need to change the next section
-        scope.nextSection = scope.sections[args.new_path];
+        // scope.nextSection = scope.sections[args.new_path];
+        changePath(args.new_path);
+      });
+      scope.$on('DEFAULT_PATH', function(event, args){
+        // scope.nextSection = scope.sections[scope.currentSection.next];
+        changePath(scope.currentSection.next);
       });
       scope.$watch('currentSection', function(newValue, oldValue){
         // console.log(scope.walkedPath.length);
@@ -126,6 +136,7 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
           checkbox: 'checkbox-input.html',
           select: 'select-input.html',
           order: 'order-input.html',
+          prioritize: 'prioritize-input.html'
         }
     }],
     transclude: true,
@@ -149,16 +160,17 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
         }
       });
       var answerWatcher = scope.$watch('body.selected_value', function(newValue, oldValue){
+        if(newValue === oldValue) return;
         var type = scope.type;
         if((type === 'select' || type === 'radio')){
-          if(angular.isDefined(newValue.change_path)){
-            // console.log('new path' + newValue.change_path);
+          if(angular.isString(newValue.change_path)){
+            console.log('new path' + newValue.change_path);
             $rootScope.$broadcast('PATH_CHANGE', {new_path: newValue.change_path});
           }
-          return;
-        }
-        else{
-          // console.log('it doesn\'t apply');
+          else{
+            console.log('default path');
+            $rootScope.$broadcast('DEFAULT_PATH', {});
+          }
           return;
         }
       }, true);
