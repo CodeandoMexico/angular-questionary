@@ -30,7 +30,7 @@ angular.module('questionaryApp')
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
               body   : {
-                value  : null,
+                value  : 35,
               }
             },
             {
@@ -254,7 +254,6 @@ angular.module('questionaryApp')
                   { label: 'Computadora / Laptop / tablet', checked: false },
                   { label: 'Acepta tarjetas de crédito, depósitos o transferencias bancarias como medios de pago u obtención de recursos', checked: false },
                   { label: 'Programa de cómputo especial para realizar el trabajo (diferente a Excel, Power-Point y Word)', checked: false },
-                  { label: 'Ninguna de las anteriores', checked: false },
                 ]
               }
             },

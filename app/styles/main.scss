@@ -106,9 +106,16 @@ body {
 
 // prioritize field
 .prioritization-option {
-  margin: 10px;
-  list-style-type: none;
+    margin: 10px;
+    list-style-type: none;
 }
+
+/* validations */
+// numbers
+.ng-valid-number .ng-valid {
+
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
