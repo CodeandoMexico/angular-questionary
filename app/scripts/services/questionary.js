@@ -86,10 +86,11 @@ angular.module('questionaryApp')
         },
         '2.A': {
           identifier : '2.A Perfiles',
+          next       : '3.A',
           grouped    : true,
           questions : [
             {
-              title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque… ',
+              title  : 'La razón principal por la que llevo a cabo este proyecto es porque… ',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
@@ -104,7 +105,7 @@ angular.module('questionaryApp')
               }
             },
             {
-              title  : '[ORDINAL] El principal objetivo de mi empresa es…',
+              title  : 'El principal objetivo de mi empresa es…',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
@@ -268,9 +269,10 @@ angular.module('questionaryApp')
             },
           ]
         },
-        '4.A.1': {
-          identifier : '4.A.1',
+        '4.A': {
+          identifier : '4.A',
           grouped    : true,
+          next       : '5.A',
           questions : [
             {
               title  : ' De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoger de 1 a 3 prioridades',
@@ -292,8 +294,8 @@ angular.module('questionaryApp')
             }
           ]
         },
-        '5.A.1': {
-          identifier : '5.A.1',
+        '5.A': {
+          identifier : '5.A',
           grouped    : true,
           questions : [
             {
@@ -332,7 +334,7 @@ angular.module('questionaryApp')
           next: '4.C',
           questions : [
             {
-              title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque...',
+              title  : 'La razón principal por la que llevo a cabo este proyecto es porque...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
@@ -347,7 +349,7 @@ angular.module('questionaryApp')
               }
             },
             {
-              title  : '[ORDINAL] El principal objetivo de mi empresa será...',
+              title  : 'El principal objetivo de mi empresa será...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
