@@ -7,7 +7,7 @@ app.run(['$templateCache', function($templateCache){
   // directive's skeleton templates
   $templateCache.put('questionary.html', '<div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><a class="navigation-control previous pull-left" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"><span class="glyphicon glyphicon-arrow-left"></span></a><a class="navigation-control next pull-right" ng-if="navigation.hasNext" ng-click="moveToNextSection()">&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a></div></div>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><p class="text-muted" ng-if="description">{{description}}</p><div class="questions-container" ng-transclude></div></div>');
-  $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><p class="question-title">{{ title }}</p><p class="question-description">{{ description }}</p></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
+  $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p class="question-title">{{ title }}</p><p class="question-description">{{ description }}</p></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
 
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
@@ -16,7 +16,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
-  $templateCache.put('prioritize-input.html','<ol><li ng-repeat="opt in body.options"><input type="number" min="1" max="{{body.options.length}}" class="form-control prioritize-question">{{opt.label}}</li></ol>');
+  $templateCache.put('prioritize-input.html','<ol class="prioritization-container"><li class="prioritization-option" ng-repeat="opt in body.options"><div class="row"><div class="col-md-2"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number"></div><div class="col-md-10"><p>{{opt.label}}</p></div></div></li></ol>');
 }]);
 
 app.directive('questionary', function(){

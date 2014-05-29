@@ -104,7 +104,10 @@ body {
     cursor: hand;
 }
 
-.navigation-control .next a{
+// prioritize field
+.prioritization-option {
+  margin: 10px;
+  list-style-type: none;
 }
 
 /* Responsive: Portrait tablets and up */
