@@ -121,10 +121,20 @@ angular.module('questionaryApp')
             {
               title    : '¿Tu negocio pertenece a alguno de los siguientes sectores?',
               // help     : 'Selecciona uno de los valores',
-              type     : 'radio',
+              type     : 'select',
               body     : {
-                selected_value    : 'Industrias manufactureras',
-                options  : ['Industrias manufactureras', 'Comercio', 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles', 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos', 'Culturales y de esparcimiento, deportivos y recreativos', 'Organizaciones con fines altruistas y medio ambientales', 'Agricultura, ganadería, aprovechamiento forestal y pesca', 'Tecnologías de la información y la comunicación', 'Otros', 'No sé']
+                options  : [
+                { label: 'Industrias manufactureras'  },
+                { label: 'Comercio' },
+                { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
+                { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                { label: 'Organizaciones con fines altruistas y medio ambientales' },
+                { label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                { label: 'Tecnologías de la información y la comunicación' },
+                { label: 'Otros' },
+                { label: 'No sé' }
+                ]
               }
             },
             {
