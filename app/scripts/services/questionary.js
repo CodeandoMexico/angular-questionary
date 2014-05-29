@@ -91,7 +91,7 @@ angular.module('questionaryApp')
             {
               title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque… ',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'order',
+              type   : 'prioritize',
               body   : {
                 options: [
                   { value: 0, label: 'No hay suficientes oportunidades laborales para encontrar un empleo' },
@@ -106,7 +106,7 @@ angular.module('questionaryApp')
             {
               title  : '[ORDINAL] El principal objetivo de mi empresa es…',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'order',
+              type   : 'prioritize',
               body   : {
                 options: [
                   { value: 0, label: 'Obtener ingresos para solventar los gastos básicos personales/familiares' },
@@ -334,7 +334,7 @@ angular.module('questionaryApp')
             {
               title  : '[ORDINAL] La razón principal por la que llevo a cabo este proyecto es porque...',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'order',
+              type   : 'prioritize',
               body   : {
                 options: [
                   { value: 0, label: 'No hay suficientes oportunidades laborales para encontrar un empleo' },
@@ -349,7 +349,7 @@ angular.module('questionaryApp')
             {
               title  : '[ORDINAL] El principal objetivo de mi empresa será...',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'order',
+              type   : 'prioritize',
               body   : {
                 options: [
                   { value: 0, label: 'Obtener ingresos para solventar los gastos básicos personales/familiares' },

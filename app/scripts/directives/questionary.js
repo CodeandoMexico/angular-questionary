@@ -16,6 +16,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
+  $templateCache.put('prioritize-input.html','<ol><li ng-repeat="opt in body.options"><input type="number" min="1" max="{{body.options.length}}" class="form-control prioritize-question">{{opt.label}}</li></ol>');
 }]);
 
 app.directive('questionary', function(){
@@ -135,6 +136,7 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
           checkbox: 'checkbox-input.html',
           select: 'select-input.html',
           order: 'order-input.html',
+          prioritize: 'prioritize-input.html'
         }
     }],
     transclude: true,
