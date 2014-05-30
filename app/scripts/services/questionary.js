@@ -193,26 +193,31 @@ angular.module('questionaryApp')
         '3.A': {
           identifier : '3.A Etapas',
           grouped    : true,
+          next       : '4.A',
           questions : [
             {
-              title  : '¿Cuanto tiempo lleva este proyecto/negocio en operación?',
+              title  : '¿Cuánto tiempo lleva este proyecto/negocio en operación?',
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
               body   : {
-                value  : null,
+                value  : 1,
               }
             },
             {
-              title  : 'Selecciona las frases que mejor describen los lugares en donde se vende tu producto (puedes seleccionar varias opciones si concuerda con tu perfil)',
+              title  : 'Selecciona las frases que describen el o los lugares en donde vendes/ofreces tu producto y a quiénes va dirigido (puedes seleccionar varias opciones si concuerda con tu perfil)',
               help   : 'Escribe el valor de la respuesta',
               type   : 'checkbox',
               body   : {
                 options: [
-                  { label: 'La zona cercana a mi punto de venta (cuadra, colonia)', checked: false },
-                  { label: 'Se vende en varias colonias de la Ciudad de México (más de una delegación)', checked: false },
-                  { label: 'Se vende fuera de la zona del DF y área metropolitana', checked: false },
-                  { label: 'Se exporta al extranjero', checked: false },
-                  { label: 'Se vende o anuncia en internet', checked: false },
+                  { value: 'a',label: 'Se vende/ofrece en una cuadra o colonia de la Ciudad de México.', checked: false },
+                  { value: 'b',label: 'Se vende/ofrece en varias colonias de la Ciudad de México.', checked: false },
+                  { value: 'c',label: 'Se vende/ofrece fuera de la zona del DF y área metropolitana.', checked: false },
+                  { value: 'd',label: 'Se exporta al extranjero.', checked: false },
+                  { value: 'e',label: 'Se vende/ofrece o anuncia en internet.', checked: false },
+                  { value: 'f',label: 'Se vende/ofrece al publico en general (al consumidor final).', checked: false },
+                  { value: 'g',label: 'Se vende/ofrece a empresas que a su vez venden al público u otras empresas.', checked: false },
+                  { value: 'h',label: 'Se vende/ofrece al menudeo.', checked: false },
+                  { value: 'i',label: 'Se vende/ofrece al mayoreo.', checked: false },
                 ]
               }
             },
@@ -221,8 +226,13 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Llevo personalmente todas las cuentas de mi negocio sin apuntar nada',
-                options  : ['Llevo personalmente todas las cuentas de mi negocio sin apuntar nada', 'Llevo las cuentas de mi negocio a mano, en una libreta en donde apunto los ingresos, gastos, etc.', 'Llevo las cuentas de mi negocio en Excel o un programa similar', 'Hay uno o varios empleados especializados en, o contrato el servicio para, llevar a cabo la contabilidad de la empresa']
+                selected_value    : 'Llevo personalmente todas las cuentas de mi negocio sin apuntar nada.',
+                options  : [
+                  'Llevo personalmente todas las cuentas de mi negocio sin apuntar nada.',
+                  'Llevo las cuentas de mi negocio a mano, en una libreta en donde apunto los ingresos, gastos, etc.',
+                  'Llevo las cuentas de mi negocio en Excel o un programa similar.',
+                  'Hay uno o varios empleados especializados en, o contrato el servicio para, llevar a cabo la contabilidad de la empresa.'
+                ]
               }
             },
             {
@@ -230,8 +240,12 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Todas las decisiones del día a día las toma el dueño(s) de la empresa',
-                options  : ['Todas las decisiones del día a día las toma el dueño(s) de la empresa', 'En la empresa, además del dueño(s), hay uno o dos empleados de confianza que toman decisiones sobre la operación del negocio', 'En la empresa, además del dueño(s), hay una estructura de decisión mayor a 3 personas']
+                selected_value    : 'Todas las decisiones del día a día las toma el dueño(s) de la empresa.',
+                options  : [
+                  'Todas las decisiones del día a día las toma el dueño(s) de la empresa.',
+                  'En la empresa, además del dueño(s), hay uno o dos empleados de confianza que toman decisiones sobre la operación del negocio.',
+                  'En la empresa, además del dueño(s), hay una estructura de decisión mayor a 3 personas.'
+                ]
               }
             },
             {
@@ -249,7 +263,11 @@ angular.module('questionaryApp')
               type     : 'radio',
               body     : {
                 selected_value    : 'Ninguna, no se necesita / no tengo recursos',
-                options  : ['Ninguna, no se necesita / no tengo recursos', 'Sirve de apoyo para algunos procesos administrativos (procesamiento de nómina, costos, gastos, ventas, etc.)', 'Juega un papel importante en la empresa (en el proceso de elaboración del producto o servicio que ofrece la empresa, además de apoyar la gestión y administración de la empresa)']
+                options  : [
+                  'Ninguna, no se necesita / no tengo recursos',
+                  'Sirve de apoyo para algunos procesos administrativos (procesamiento de nómina, costos, gastos, ventas, etc.)',
+                  'Juega un papel clave en el proceso de elaboración/comercialización del producto o servicio que ofrece mi empresa (además de apoyar la gestión y administración de la empresa).'
+                ]
               }
             },
             {
@@ -270,7 +288,7 @@ angular.module('questionaryApp')
               type     : 'radio',
               body     : {
                 selected_value    : 'No, lo solicité pero me rechazaron / No lo he solicitado porque creo que no me lo darían',
-                options  : ['No, lo solicité pero me rechazaron / No lo he solicitado porque creo que no me lo darían', 'Sí', 'No, no lo he necesitado pero pienso (o sé) que sí me lo darían']
+                options  : ['Sí', 'No']
               }
             },
           ]
@@ -278,22 +296,22 @@ angular.module('questionaryApp')
         '4.A': {
           identifier : '4.A',
           grouped    : true,
-          next       : '5.A',
+          next       : '5.A??????',
           questions : [
             {
-              title  : ' De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoger de 1 a 3 prioridades',
+              title  : 'De la siguiente lista enumera las primeras 3 prioridades actuales que tenga tu empresa. Puedes escoger de 1 a 3 prioridades.',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'checkbox',
+              type   : 'prioritize',
               body   : {
                 options: [
-                  { label: 'Conseguir financiamiento/ Acceder a instrumentos financieros', checked: false },
-                  { label: 'Diseñar o mejorar mi plan de negocios', checked: false },
-                  { label: 'Incrementar la productividad/ Mejorar procesos', checked: false },
-                  { label: 'Entrar a la formalidad', checked: false },
-                  { label: 'Contratar personal', checked: false },
-                  { label: 'Capacitar al personal de la empresa', checked: false },
-                  { label: 'Expandir mi mercado', checked: false },
-                  { label: 'Incorporar tecnología e innovación', checked: false },
+                  { value: 'a', label: 'Conseguir financiamiento / Acceder a instrumentos financieros.' },
+                  { value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
+                  { value: 'c', label: 'Incrementar la productividad / Mejorar procesos.' },
+                  { value: 'd', label: 'Entrar a la formalidad.' },
+                  { value: 'e', label: 'Contratar personal.' },
+                  { value: 'f', label: 'Capacitar al personal de la empresa.' },
+                  { value: 'g', label: 'Expandir mi mercado' },
+                  { value: 'h', label: 'Incorporar tecnología e innovación.' },
 
                 ]
               }
@@ -340,32 +358,32 @@ angular.module('questionaryApp')
           next: '4.C',
           questions : [
             {
-              title  : 'La razón principal por la que llevo a cabo este proyecto es porque...',
+              title  : 'La razón PRINCIPAL por la que quiero llevar a cabo este proyecto es porque...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 0, label: 'No hay suficientes oportunidades laborales para encontrar un empleo' },
-                  { value: 1, label: 'Prefiero emprender mi propio negocio que ser un empleado' },
-                  { value: 2, label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente' },
-                  { value: 3, label: 'Quiero desarrollar mi creatividad' },
-                  { value: 4, label: 'Hago lo que más me gusta hacer' },
-                  { value: 5, label: 'Tengo algo innovador que es (o será) rentable en el mercado' },
+                  { value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
+                  { value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
+                  { value: 'b', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
+                  { value: 'd', label: 'Quiero desarrollar mi creatividad.' },
+                  { value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
+                  { value: 'f', label: 'Tengo una idea o proyecto muy innovador que será muy rentable y tendré grandes ganancias.' },
                 ]
               }
             },
             {
-              title  : 'El principal objetivo de mi empresa será...',
+              title  : 'El PRINCIPAL objetivo de mi empresa será...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 0, label: 'Obtener ingresos para solventar los gastos básicos personales/familiares' },
-                  { value: 1, label: 'Tener mi propio negocio sin depender de un tercero' },
-                  { value: 2, label: 'Realizar la actividad que más me gusta hacer y vivir de ello' },
-                  { value: 3, label: 'Exponer un proyecto artístico' },
-                  { value: 4, label: 'Generar un impacto positivo en la población y/o el medio ambiente' },
-                  { value: 5, label: 'Realizar un proyecto empresarial innovador y exitoso' },
+                  { value: 'a', label: 'Obtener ingresos para solventar los gastos básicos personales/familiares.' },
+                  { value: 'b', label: 'Tener mi propio negocio sin depender de un tercero.' },
+                  { value: 'c', label: 'Que yo sea independiente y tenga tiempo para mí.' },
+                  { value: 'd', label: 'Exponer un proyecto artístico.' },
+                  { value: 'e', label: 'Generar un impacto positivo en la población y/o el medio ambiente.' },
+                  { value: 'f', label: 'Realizar un proyecto empresarial muy innovador, exitoso y con grandes ganancias.' },
                 ]
               }
             },
@@ -374,22 +392,25 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'NO tengo empleo y NO tengo otro negocio',
+                selected_value    : 'NO tengo empleo y NO tengo otro negocio.',
                 options  : [
-                  'NO tengo empleo y NO tengo otro negocio',
-                  'SÍ tengo empleo y NO tengo otro negocio',
-                  'NO tengo empleo y SÍ tengo otro negocio',
-                  'SÍ tengo empleo y SÍ tengo otro negocio'
+                  'NO tengo empleo y NO tengo otro negocio.',
+                  'SÍ tengo empleo y NO tengo otro negocio.',
+                  'NO tengo empleo y SÍ tengo otro negocio.',
+                  'SÍ tengo empleo y SÍ tengo otro negocio.'
                 ]
               }
             },
             {
-              title    : 'Imagina que ya tienes tu negocio con el cual las ganacias son igual a 100, si te ofrecieran un empleo con un salario de 105 ¿qué preferirías?',
+              title    : 'Imagina que ya tienes tu negocio con el cual las ganancias son igual a 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Aceptar el empleo y dejar de trabajar en mi empresa',
-                options  : ['Aceptar el empleo y dejar de trabajar en mi empresa', 'No aceptar el empleo y seguir con mi empresa']
+                selected_value    : 'Aceptar el empleo y dejar de trabajar en mi empresa.',
+                options  : [
+                  'Aceptar el empleo y dejar de trabajar en mi empresa.',
+                  'No aceptar el empleo y seguir con mi empresa.'
+                ]
               }
             },
             {
@@ -417,8 +438,12 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Es nuevo y distinto a lo que existe y/o el proceso de elaboración/comercialización es innovador',
-                options  : ['Es nuevo y distinto a lo que existe y/o el proceso de elaboración/comercialización es innovador', 'En algunas características son diferentes a los de mi competencia o lo ofrezco a personas que no lo tienen', 'Ya existe y es ofrecido por otros' ]
+                selected_value    : 'Será muy nuevo y distinto a lo que ya existe y/o el proceso de elaboración será muy innovador.',
+                options  : [
+                  'Será muy nuevo y distinto a lo que ya existe y/o el proceso de elaboración será muy innovador.',
+                  'En algunas características será diferente a los de mi competencia o lo voy a ofrecer a personas que no lo conocen o que no tienen acceso a él.',
+                  'Ya existe y es ofrecido por otros.'
+                ]
               }
             },
             {
@@ -440,23 +465,23 @@ angular.module('questionaryApp')
             {
               title  : 'De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoge de 1 a 3 prioridades.',
               help   : 'Escribe el valor de la respuesta',
-              type   : 'checkbox',
+              type   : 'prioritize',
               body   : {
                 options: [
-                  { label: 'Conseguir financiamiento/ Acceder a instrumentos financieros.', checked: true },
-                  { label: 'Diseñar o mejorar mi plan de negocios.', checked: true },
-                  { label: 'Maximizar la productividad/ Desarrollar procesos.', checked: false },
-                  { label: 'Entrar a la formalidad.', checked: false },
-                  { label: 'Capacitar al equipo emprendedor/personal de la empresa.', checked: false },
-                  { label: 'Expandir mis opciones de mercado.', checked: true },
-                  { label: 'Incorporar tecnología e innovación.', checked: true },
+                  { value: 'a', label: 'Conseguir financiamiento/ Acceder a instrumentos financieros.' },
+                  { value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
+                  { value: 'c', label: 'Incrementar la productividad/ Mejorar procesos.' },
+                  { value: 'd', label: 'Entrar a la formalidad.' },
+                  { value: 'e', label: 'Capacitar al personal de la empresa.' },
+                  { value: 'f', label: 'Expandir mi mercado.' },
+                  { value: 'g', label: 'Incorporar tecnología e innovación.' },
                 ]
               }
             },
           ]
         },
         '5.C': {
-          identifier : '5.C.1',
+          identifier : '5.C??????',
           grouped    : true,
           questions : [
             {
