@@ -95,27 +95,27 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 0, label: 'No hay suficientes oportunidades laborales para encontrar un empleo' },
-                  { value: 1, label: 'Prefiero tener mi propia empresa que ser un empleado' },
-                  { value: 2, label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente' },
-                  { value: 3, label: 'Quiero desarrollar mi creatividad' },
-                  { value: 4, label: 'Hago lo que más me gusta hacer' },
-                  { value: 5, label: 'Tengo algo innovador que es (o será) rentable en el mercado' },
+                  { value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
+                  { value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
+                  { value: 'c', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
+                  { value: 'd', label: 'Quiero desarrollar mi creatividad.' },
+                  { value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
+                  { value: 'f', label: 'Tengo una idea o proyecto muy innovador que es (o será) muy rentable y tendré grandes ganancias.' },
                 ]
               }
             },
             {
-              title  : 'El principal objetivo de mi empresa es…',
+              title  : 'El principal objetivo de mi empresa es...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 0, label: 'Obtener ingresos para solventar los gastos básicos personales/familiares' },
-                  { value: 1, label: 'Tener mi propio negocio sin depender de un tercero' },
-                  { value: 2, label: 'Realizar la actividad que más me gusta hacer y vivir de ello' },
-                  { value: 3, label: 'Exponer un proyecto artístico' },
-                  { value: 4, label: 'Generar un impacto positivo en la población y/o el medio ambiente' },
-                  { value: 5, label: 'Realizar un proyecto empresarial innovador y exitoso' },
+                  { value: 'a', label: 'Obtener ingresos para solventar los gastos básicos personales / familiares.' },
+                  { value: 'b', label: 'Tener mi propio negocio sin depender de un tercero.' },
+                  { value: 'c', label: 'Que yo sea independiente y tenga tiempo para mí.' },
+                  { value: 'd', label: 'Exponer un proyecto artístico.' },
+                  { value: 'e', label: 'Generar un impacto positivo en la población y/o el medio ambiente.' },
+                  { value: 'f', label: 'Realizar un proyecto empresarial muy innovador, exitoso y con grandes ganancias.' },
                 ]
               }
             },
@@ -128,10 +128,10 @@ angular.module('questionaryApp')
                 { label: 'Industrias manufactureras'  },
                 { label: 'Comercio' },
                 { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
+                { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
                 { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
                 { label: 'Organizaciones con fines altruistas y medio ambientales' },
-                { label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                { label: 'Agricultura, ganadería, aprovechamiento forestal' },
                 { label: 'Tecnologías de la información y la comunicación' },
                 { label: 'Otros' },
                 { label: 'No sé' }
@@ -143,24 +143,15 @@ angular.module('questionaryApp')
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
               body   : {
-                value  : null,
+                value  : 0,
               }
             },
             {
-              title  : '¿Cuántos dueños (socios) tiene este negocio?',
+              title  : 'Del total de personas que trabajan en la empresa, ¿cuántos son familiares (padres, hijos, abuelos, hermanos, tíos, primos, sobrinos, cuñados) de los dueños? Incluye a los dueños en tu respuesta.',
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
               body   : {
-                value  : null,
-              }
-            },
-
-            {
-              title  : 'Del total de personas que trabajan en la empresa, ¿cuántos son familiares de los dueños  (incluye: padres, hijos, abuelos, hermanos, tíos, primos, sobrinos, cuñados)?',
-              // help   : 'Escribe el valor de la respuesta',
-              type   : 'number',
-              body   : {
-                value  : null,
+                value  : 0,
               }
             },
             {
@@ -168,17 +159,33 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Es nuevo y distinto a lo que existe y/o el proceso de elaboración/comercialización es innovador',
-                options  : ['Es nuevo y distinto a lo que existe y/o el proceso de elaboración/comercialización es innovador', 'En algunas características son diferentes a los de mi competencia o lo ofrezco a personas que no lo tienen', 'Ya existe y es ofrecido por otros' ]
+                selected_value    : 'Es nuevo y distinto a lo que existe y/o el proceso de elaboración / comercialización es innovador.',
+                options  : [
+                  'Es nuevo y distinto a lo que existe y/o el proceso de elaboración / comercialización es innovador.',
+                  'En algunas características son diferentes a los de mi competencia o lo ofrezco a personas que no lo tienen.',
+                  'Ya existe y es ofrecido por otros.'
+                ]
               }
             },
             {
-              title    : 'Piensa en las ganancias que tiene tu empresa , imagina que ese monto vale 100, si te ofrecieran un empleo con un salario de 105 ¿qué preferirías?....',
+              title    : 'Las siguientes frases describen maneras distintas de obtener ingresos, selecciona la frase con la que más te identificas',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Aceptar el empleo y dejar de trabajar en mi empresa',
-                options  : ['Aceptar el empleo y dejar de trabajar en mi empresa', 'No aceptar el empleo y seguir con mi empresa']
+                selected_value    : 'Tengo un ingreso relativamente estable (no importa cuanto dinero) que se caracteriza por un flujo diario (o casi diario) de dinero.',
+                options  : [
+                  'Tengo un ingreso relativamente estable (no importa cuanto dinero) que se caracteriza por un flujo diario (o casi diario) de dinero.',
+                  'Tengo un ingreso inestable que se caracteriza por un flujo irregular de dinero (por proyecto/por evento/por servicio) con lapsos de tiempo sin ingreso amplios.',
+                ]
+              }
+            },
+            {
+              title    : 'Piensa en las ganancias que tiene tu empresa , imagina que ese monto vale 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
+              // help     : 'Selecciona uno de los valores',
+              type     : 'radio',
+              body     : {
+                selected_value    : 'Aceptar el empleo y dejar de trabajar en mi empresa.',
+                options  : ['Aceptar el empleo y dejar de trabajar en mi empresa.', 'No aceptar el empleo y seguir con mi empresa.']
               }
             },
           ],
