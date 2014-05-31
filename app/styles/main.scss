@@ -112,8 +112,9 @@ body {
 
 /* validations */
 // numbers
-.ng-valid-number .ng-valid {
-
+.ng-invalid .ng-invalid-unique-priority {
+    // @extend .has-error;
+    border-color: red;
 }
 
 

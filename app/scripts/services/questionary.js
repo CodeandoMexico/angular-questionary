@@ -95,12 +95,12 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
-                  { value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
-                  { value: 'c', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
-                  { value: 'd', label: 'Quiero desarrollar mi creatividad.' },
-                  { value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
-                  { value: 'f', label: 'Tengo una idea o proyecto muy innovador que es (o será) muy rentable y tendré grandes ganancias.' },
+                  { priority: null, value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
+                  { priority: null, value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
+                  { priority: null, value: 'c', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
+                  { priority: null, value: 'd', label: 'Quiero desarrollar mi creatividad.' },
+                  { priority: null, value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
+                  { priority: null, value: 'f', label: 'Tengo una idea o proyecto muy innovador que es (o será) muy rentable y tendré grandes ganancias.' },
                 ]
               }
             },
@@ -110,12 +110,12 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 'a', label: 'Obtener ingresos para solventar los gastos básicos personales / familiares.' },
-                  { value: 'b', label: 'Tener mi propio negocio sin depender de un tercero.' },
-                  { value: 'c', label: 'Que yo sea independiente y tenga tiempo para mí.' },
-                  { value: 'd', label: 'Exponer un proyecto artístico.' },
-                  { value: 'e', label: 'Generar un impacto positivo en la población y/o el medio ambiente.' },
-                  { value: 'f', label: 'Realizar un proyecto empresarial muy innovador, exitoso y con grandes ganancias.' },
+                  { priority: null, value: 'a', label: 'Obtener ingresos para solventar los gastos básicos personales / familiares.' },
+                  { priority: null, value: 'b', label: 'Tener mi propio negocio sin depender de un tercero.' },
+                  { priority: null, value: 'c', label: 'Que yo sea independiente y tenga tiempo para mí.' },
+                  { priority: null, value: 'd', label: 'Exponer un proyecto artístico.' },
+                  { priority: null, value: 'e', label: 'Generar un impacto positivo en la población y/o el medio ambiente.' },
+                  { priority: null, value: 'f', label: 'Realizar un proyecto empresarial muy innovador, exitoso y con grandes ganancias.' },
                 ]
               }
             },
@@ -304,14 +304,14 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 'a', label: 'Conseguir financiamiento / Acceder a instrumentos financieros.' },
-                  { value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
-                  { value: 'c', label: 'Incrementar la productividad / Mejorar procesos.' },
-                  { value: 'd', label: 'Entrar a la formalidad.' },
-                  { value: 'e', label: 'Contratar personal.' },
-                  { value: 'f', label: 'Capacitar al personal de la empresa.' },
-                  { value: 'g', label: 'Expandir mi mercado' },
-                  { value: 'h', label: 'Incorporar tecnología e innovación.' },
+                  { priority: null, value: 'a', label: 'Conseguir financiamiento / Acceder a instrumentos financieros.' },
+                  { priority: null, value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
+                  { priority: null, value: 'c', label: 'Incrementar la productividad / Mejorar procesos.' },
+                  { priority: null, value: 'd', label: 'Entrar a la formalidad.' },
+                  { priority: null, value: 'e', label: 'Contratar personal.' },
+                  { priority: null, value: 'f', label: 'Capacitar al personal de la empresa.' },
+                  { priority: null, value: 'g', label: 'Expandir mi mercado' },
+                  { priority: null, value: 'h', label: 'Incorporar tecnología e innovación.' },
 
                 ]
               }
@@ -363,12 +363,12 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
-                  { value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
-                  { value: 'b', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
-                  { value: 'd', label: 'Quiero desarrollar mi creatividad.' },
-                  { value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
-                  { value: 'f', label: 'Tengo una idea o proyecto muy innovador que será muy rentable y tendré grandes ganancias.' },
+                  { priority: null, value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
+                  { priority: null, value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
+                  { priority: null, value: 'b', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
+                  { priority: null, value: 'd', label: 'Quiero desarrollar mi creatividad.' },
+                  { priority: null, value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
+                  { priority: null, value: 'f', label: 'Tengo una idea o proyecto muy innovador que será muy rentable y tendré grandes ganancias.' },
                 ]
               }
             },
@@ -378,12 +378,12 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 'a', label: 'Obtener ingresos para solventar los gastos básicos personales/familiares.' },
-                  { value: 'b', label: 'Tener mi propio negocio sin depender de un tercero.' },
-                  { value: 'c', label: 'Que yo sea independiente y tenga tiempo para mí.' },
-                  { value: 'd', label: 'Exponer un proyecto artístico.' },
-                  { value: 'e', label: 'Generar un impacto positivo en la población y/o el medio ambiente.' },
-                  { value: 'f', label: 'Realizar un proyecto empresarial muy innovador, exitoso y con grandes ganancias.' },
+                  { priority: null, value: 'a', label: 'Obtener ingresos para solventar los gastos básicos personales/familiares.' },
+                  { priority: null, value: 'b', label: 'Tener mi propio negocio sin depender de un tercero.' },
+                  { priority: null, value: 'c', label: 'Que yo sea independiente y tenga tiempo para mí.' },
+                  { priority: null, value: 'd', label: 'Exponer un proyecto artístico.' },
+                  { priority: null, value: 'e', label: 'Generar un impacto positivo en la población y/o el medio ambiente.' },
+                  { priority: null, value: 'f', label: 'Realizar un proyecto empresarial muy innovador, exitoso y con grandes ganancias.' },
                 ]
               }
             },
@@ -468,13 +468,13 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { value: 'a', label: 'Conseguir financiamiento/ Acceder a instrumentos financieros.' },
-                  { value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
-                  { value: 'c', label: 'Incrementar la productividad/ Mejorar procesos.' },
-                  { value: 'd', label: 'Entrar a la formalidad.' },
-                  { value: 'e', label: 'Capacitar al personal de la empresa.' },
-                  { value: 'f', label: 'Expandir mi mercado.' },
-                  { value: 'g', label: 'Incorporar tecnología e innovación.' },
+                  { priority: null, value: 'a', label: 'Conseguir financiamiento/ Acceder a instrumentos financieros.' },
+                  { priority: null, value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
+                  { priority: null, value: 'c', label: 'Incrementar la productividad/ Mejorar procesos.' },
+                  { priority: null, value: 'd', label: 'Entrar a la formalidad.' },
+                  { priority: null, value: 'e', label: 'Capacitar al personal de la empresa.' },
+                  { priority: null, value: 'f', label: 'Expandir mi mercado.' },
+                  { priority: null, value: 'g', label: 'Incorporar tecnología e innovación.' },
                 ]
               }
             },
