@@ -22,7 +22,7 @@ angular.module('questionaryApp')
       sections: {
         '1.B': {
           identifier : '1.B Características Sociodemográficas',
-          next       : '2.A',
+          next       : '2.C',
           grouped    : true,
           questions : [
             {
@@ -78,7 +78,7 @@ angular.module('questionaryApp')
               body     : {
                 options  : [
                   {label: 'No, aún no está operando'},
-                  {label: 'Sí, ya está en operación', question: null, change_path: '2.C' }
+                  {label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
                 ]
               }
             },
