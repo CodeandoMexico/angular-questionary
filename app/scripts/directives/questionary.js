@@ -150,9 +150,8 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
       body      : '=',
       debug      : '=',
       idx       : '=',
-      nested   : '='
     },
-    link: function(scope, element){
+    link: function(scope, element, attrs){
       var selectWatcher = scope.$watch('type', function(newValue, oldValue){
         // console.log()
         // if(newValue === oldValue) return;
@@ -166,11 +165,11 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
         if(newValue === oldValue) return;
         var type = scope.type;
         if((type === 'select' || type === 'radio')){
-          if(angular.isString(newValue.change_path)){
+          if(angular.isString(newValue.change_path) && attrs.nested === 'true'){
             console.log('new path' + newValue.change_path);
             $rootScope.$broadcast('PATH_CHANGE', {new_path: newValue.change_path});
           }
-          else{
+          else if(attrs.nested === 'true'){
             console.log('default path');
             $rootScope.$broadcast('DEFAULT_PATH', {});
           }
