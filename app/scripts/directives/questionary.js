@@ -5,7 +5,7 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<form novalidate><div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><a class="navigation-control previous pull-left" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"><span class="glyphicon glyphicon-arrow-left"></span></a><a class="navigation-control next pull-right" ng-if="navigation.hasNext" ng-click="moveToNextSection()">&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a></div></div></form>')
+  $templateCache.put('questionary.html', '<form novalidate><div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><a class="navigation-control previous pull-left" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"><span class="glyphicon glyphicon-arrow-left"></span></a><a class="navigation-control next pull-right" ng-click="moveToNextSection()">&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a></div></div></form>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><p class="text-muted" ng-if="description">{{description}}</p><div class="questions-container" ng-transclude></div></div>');
   $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p>{{ questionForm.$valid }}</p><p class="question-title">{{ title }}</p><p class="question-description">{{ description }}</p><div ng-include="\'errors.html\'"></div></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
 
@@ -32,6 +32,7 @@ app.directive('questionary', function(){
       lastSection: '@',
       sections: '=',
       currentSection: '=',
+      onFinish: '&'
     },
     controller: ['$scope', function($scope){
       // initialize variables
@@ -68,6 +69,7 @@ app.directive('questionary', function(){
         }
         else{
           console.log('disappear next button');
+          $scope.onFinish();
         }
       };
       $scope.moveToPreviousSection = function(){
@@ -103,8 +105,8 @@ app.directive('questionary', function(){
         // console.log(numberOfWalkedSections);
         // console.log(scope.sections.length);
         // check if has a next and previous section
-        scope.navigation.hasNext = angular.isObject(scope.nextSection)
-        scope.navigation.hasPrevious = (numberOfWalkedSections - 1 > 0) ? true : false
+        // scope.navigation.hasNext = angular.isObject(scope.nextSection);
+        scope.navigation.hasPrevious = (numberOfWalkedSections - 1 > 0) ? true : false;
         // console.log(scope.navigation.hasPrevious);
       }, true);
     }
