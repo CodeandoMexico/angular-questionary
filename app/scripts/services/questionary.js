@@ -516,7 +516,8 @@ angular.module('questionaryApp')
       // var url = baseUrl + 'respuestas/';
       console.log(questionary.sections);
       var url = baseUrl + 'submit';
-      return $http.post(url, questionary.sections);
+      return $http.post(url, angular.toJson(questionary.sections));
+      // return $http.get(url);
     }
 
     return questionary;
