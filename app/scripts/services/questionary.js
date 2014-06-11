@@ -26,6 +26,7 @@ angular.module('questionaryApp')
           grouped    : true,
           questions : [
             {
+              id     : '1.B.1',
               title  : 'Edad',
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
@@ -34,6 +35,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '1.B.2',
               title    : 'Sexo',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -43,6 +45,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '1.B.3',
               title    : 'Nivel de estudios',
               // help     : 'Selecciona uno de los valores',
               type     : 'select',
@@ -58,6 +61,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '1.B.4',
               title    : '¿Resides en el D.F.?',
               // help     : 'Selecciona uno de los valores',
               type     : 'select',
@@ -72,6 +76,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '1.B.5',
               title    : '¿El negocio ya está en operación?',
               // help     : 'Selecciona uno de los valores',
               type     : 'select',
@@ -82,6 +87,16 @@ angular.module('questionaryApp')
                 ]
               }
             },
+            {
+              id     : '1.B.6',
+              title    : '¿Hablas algún dialecto o lengua indígena?',
+              // help     : 'Selecciona uno de los valores',
+              type     : 'radio',
+              body     : {
+                selected_value    : 'Sí',
+                options  : ['Sí', 'No']
+              }
+            },
           ]
         },
         '2.A': {
@@ -90,6 +105,7 @@ angular.module('questionaryApp')
           grouped    : true,
           questions : [
             {
+              id     : '2.A.1',
               title  : 'La razón principal por la que llevo a cabo este proyecto es porque… ',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
@@ -105,6 +121,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.2',
               title  : 'El principal objetivo de mi empresa es...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
@@ -120,6 +137,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.3',
               title    : '¿Tu negocio pertenece a alguno de los siguientes sectores?',
               // help     : 'Selecciona uno de los valores',
               type     : 'select',
@@ -139,6 +157,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.4',
               title  : '¿Cuántas personas trabajan en la empresa (incluyendo a los dueños)?',
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
@@ -147,6 +166,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.5',
               title  : 'Del total de personas que trabajan en la empresa, ¿cuántos son familiares (padres, hijos, abuelos, hermanos, tíos, primos, sobrinos, cuñados) de los dueños? Incluye a los dueños en tu respuesta.',
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
@@ -155,6 +175,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.6',
               title    : '¿El producto/servicio que se ofrece es?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -168,6 +189,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.7',
               title    : 'Las siguientes frases describen maneras distintas de obtener ingresos, selecciona la frase con la que más te identificas',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -180,6 +202,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.A.8',
               title    : 'Piensa en las ganancias que tiene tu empresa , imagina que ese monto vale 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -196,6 +219,7 @@ angular.module('questionaryApp')
           next       : '4.A',
           questions : [
             {
+              id     : '3.A.1',
               title  : '¿Cuánto tiempo lleva este proyecto/negocio en operación?',
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
@@ -204,6 +228,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.2',
               title  : 'Selecciona las frases que describen el o los lugares en donde vendes/ofreces tu producto y a quiénes va dirigido (puedes seleccionar varias opciones si concuerda con tu perfil)',
               help   : 'Escribe el valor de la respuesta',
               type   : 'checkbox',
@@ -222,6 +247,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.3',
               title    : '¿Cuál de las siguientes frases describe mejor la manera en la que administro mi negocio?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -236,6 +262,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.4',
               title    : '¿Cuál de las siguientes frases describe mejor la toma de decisiones en la empresa?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -249,6 +276,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.5',
               title    : '¿El negocio tiene RFC (Registro Federal de Contribuyentes)?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -258,6 +286,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.6',
               title    : '¿Cuál es el nivel de respaldo que da la tecnología en tu negocio?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -271,6 +300,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.7',
               title  : 'Selecciona los insumos con los que cuenta tu negocio o se utilizan para realizar el producto o servicio que ofrece la empresa',
               help   : 'Escribe el valor de la respuesta',
               type   : 'checkbox',
@@ -283,6 +313,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '3.A.8',
               title    : ' ¿Alguna vez has obtenido un crédito para tu negocio de una institución bancaria o similar?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -299,6 +330,7 @@ angular.module('questionaryApp')
           next       : '5.A??????',
           questions : [
             {
+              id     : '4.A.1',
               title  : 'De la siguiente lista enumera las primeras 3 prioridades actuales que tenga tu empresa. Puedes escoger de 1 a 3 prioridades.',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
@@ -358,6 +390,7 @@ angular.module('questionaryApp')
           next: '4.C',
           questions : [
             {
+              id     : '2.C.1',
               title  : 'La razón PRINCIPAL por la que quiero llevar a cabo este proyecto es porque...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
@@ -373,6 +406,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.C.2',
               title  : 'El PRINCIPAL objetivo de mi empresa será...',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
@@ -388,6 +422,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.C.3',
               title    : '¿Cuál de las siguientes frases describe mejor tu situación laboral-empresarial actual?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -402,6 +437,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.C.4',
               title    : 'Imagina que ya tienes tu negocio con el cual las ganancias son igual a 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -414,6 +450,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.C.5',
               title    : '¿Tu negocio pertenecerá a alguno de los siguientes sectores?',
               // help     : 'Selecciona uno de los valores',
               type     : 'select',
@@ -434,6 +471,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.C.6',
               title    : '¿El producto/servicio que se ofrecerá será?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -447,6 +485,7 @@ angular.module('questionaryApp')
               }
             },
             {
+              id     : '2.C.7',
               title    : '¿Cuál es el nivel de respaldo que dará la tecnología en tu negocio?',
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
@@ -463,6 +502,7 @@ angular.module('questionaryApp')
           next: '5.C',
           questions : [
             {
+              id     : '4.C.1',
               title  : 'De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoge de 1 a 3 prioridades.',
               help   : 'Escribe el valor de la respuesta',
               type   : 'prioritize',
@@ -485,6 +525,7 @@ angular.module('questionaryApp')
           grouped    : true,
           questions : [
             {
+              id     : '5.C.1',
               title  : 'Las siguientes frases describen diferentes motivos o maneras de iniciar una empresa, elige la opción que más se identifique con tu proyecto.',
               help   : 'Escribe el valor de la respuesta',
               type   : 'radio',
@@ -512,11 +553,11 @@ angular.module('questionaryApp')
     var baseUrl = 'http://localhost:3000/';
     questionary.save = null;
 
-    questionary.submit = function() {
+    questionary.submit = function(data) {
       // var url = baseUrl + 'respuestas/';
       console.log(questionary.sections);
       var url = baseUrl + 'submit';
-      return $http.post(url, angular.toJson(questionary.sections));
+      return $http.post(url, angular.toJson(data));
       // return $http.get(url);
     }
 

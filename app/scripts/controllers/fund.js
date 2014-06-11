@@ -17,11 +17,10 @@ angular.module('questionaryApp')
       ]
     };
 
-    // look if there is a category in the url
+    // look if there is a category in the url, if not, return all the funds
     if(angular.isDefined(category)){
       Fund.category(category).then(function(res){
         $scope.funds = res.data;
-        // console.log(res.data);
       }, function(err){
         // there was an error we should redirect elsewhere
         $location.url('/404');

@@ -14,7 +14,7 @@
 
 <div class="row marketing">
   <!--  here starts the questionary -->
-  <questionary first-section="5.C" last-section="5.C" sections="sections" current-section="currentSection" on-finish="showResults()">
+  <questionary first-section="1.B" walked-path="walkedPath" sections="sections" current-section="currentSection" on-finish="showResults()">
     <section title="{{currentSection.identifier}}" description="Esta es una descripcion ejemplo">
       <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" title="q.title" description="q.description" type="q.type" body="q.body" debug="false" nested="true">
         <!--  the next question is if it depends on the previous question -->

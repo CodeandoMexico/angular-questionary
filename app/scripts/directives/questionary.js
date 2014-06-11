@@ -32,6 +32,7 @@ app.directive('questionary', function(){
       lastSection: '@',
       sections: '=',
       currentSection: '=',
+      walkedPath: '=',
       onFinish: '&'
     },
     controller: ['$scope', function($scope){
