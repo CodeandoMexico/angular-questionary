@@ -6,6 +6,7 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
+    'ngGrid',
     'questionModule'
   ])
   .run(['$http', function($http){
@@ -23,7 +24,18 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/fondos', {
+        templateUrl: 'views/fund.html',
+        controller: 'FundCtrl'
+      })
+      .when('/fondos/:category', {
+        templateUrl: 'views/fund.html',
+        controller: 'FundCtrl'
+      })
+      .when('/404', {
+        templateUrl: '404.html'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404'
       });
   }]);

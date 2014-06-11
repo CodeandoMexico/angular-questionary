@@ -117,6 +117,25 @@ body {
     border-color: red;
 }
 
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: auto;
+    float: left;
+}
+
+.ngViewport {
+    height: 200px;
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#fund-description {
+  margin: 20px;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
