@@ -6,6 +6,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+$white: #ffffff;
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -17,6 +19,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: #ededed;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -65,11 +68,74 @@ body {
 /* Supporting marketing content */
 .marketing {
     margin: 40px 0;
+    background: white;
+    border: 1px solid #DCDCDC;
 }
 
 .marketing p + h4 {
     margin-top: 28px;
 }
+
+// questionary custom css
+.questionary-container {
+    margin: 40px;
+}
+
+.question-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.question-title {
+    font-size: 18px;
+}
+
+.question-description {
+    font-size: 14px;
+}
+
+
+.navigation-container a{
+    // margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+// prioritize field
+.prioritization-option {
+    margin: 10px;
+    list-style-type: none;
+}
+
+/* validations */
+// numbers
+.ng-invalid .ng-invalid-unique-priority {
+    // @extend .has-error;
+    border-color: red;
+}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: auto;
+    float: left;
+}
+
+.ngViewport {
+    height: 200px;
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#fund-description {
+  margin: 20px;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

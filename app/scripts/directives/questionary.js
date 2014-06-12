@@ -5,17 +5,21 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<div><div ng-transclude></div><button class="btn btn-primary" ng-click="moveToPreviousSection()">Regresar</button><button class="btn btn-primary" ng-click="moveToNextSection()">Continuar</button></div>')
-  $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><h3 ng-if="description">{{description}}</h3><div class="questions-container" ng-transclude></div></div>');
-  $templateCache.put('question.html', '<div class="question-container"><div class="question-header"><h4 class="question-title">{{ title }}</h4><h5 class="question-description">{{ description }}</h5></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div>');
+  $templateCache.put('questionary.html', '<form novalidate><div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><a class="navigation-control previous pull-left" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"><span class="glyphicon glyphicon-arrow-left"></span></a><a class="navigation-control next pull-right" ng-click="moveToNextSection()">&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a></div></div></form>')
+  $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><p class="text-muted" ng-if="description">{{description}}</p><div class="questions-container" ng-transclude></div></div>');
+  $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p>{{ questionForm.$valid }}</p><p class="question-title">{{ title }}</p><p class="question-description">{{ description }}</p><div ng-include="\'errors.html\'"></div></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
 
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
-  $templateCache.put('number-input.html','<input class="form-control" type="number" min="0" ng-model="body.value">');
+  $templateCache.put('number-input.html','<div ng-class="{ \'has-error\': questionForm.question.$invalid }"><input name="question" class="form-control" ng-required="true" type="number" min="0" ng-model="body.value"></div>');
   $templateCache.put('radio-input.html','<div class="radio" ng-repeat="opt in body.options"><label><input type="radio" name="radio{{idx}}" value="{{opt}}" ng-model="body.selected_value">{{opt}}</label></div>');
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
+  $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="row prioritization-option" ng-repeat="opt in body.options"><div class="col-md-2"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"></div><div class="col-md-10"><p>{{opt.label}}</p></div></div></div>');
+
+  // errors template
+  $templateCache.put('errors.html', '<div class="error-container"><span ng-show="questionForm.question.$error.required">Este campo es requerido</span>');
 }]);
 
 app.directive('questionary', function(){
@@ -28,13 +32,19 @@ app.directive('questionary', function(){
       lastSection: '@',
       sections: '=',
       currentSection: '=',
+      walkedPath: '=',
+      onFinish: '&'
     },
     controller: ['$scope', function($scope){
       // initialize variables
       $scope.currentSection = $scope.sections[$scope.firstSection];
       $scope.nextSection = $scope.sections[$scope.currentSection.next];
-      // $scope.previousSection = null;
       $scope.walkedPath = [];
+      $scope.navigation = {
+        hasNext: false,
+        hasPrevious: false
+      };
+      // $scope.previousSection = null;
 
       // create helpers
       function oneStepForward(){
@@ -44,7 +54,7 @@ app.directive('questionary', function(){
       }
 
       function oneStepBackward(){
-        $scope.nextSection = $scope.curentSection;
+        $scope.nextSection = $scope.currentSection;
         $scope.currentSection = $scope.walkedPath.pop();
       }
 
@@ -60,13 +70,13 @@ app.directive('questionary', function(){
         }
         else{
           console.log('disappear next button');
+          $scope.onFinish();
         }
       };
       $scope.moveToPreviousSection = function(){
         // if there's a next section we should go there
-        $scope.numberOfWalkedSections = $scope.walkedPath.length;
-        var previousSection = $scope.walkedPath[$scope.numberOfWalkedSections - 1];
-        if(angular.isObject(previousSection)){
+        var numberOfWalkedSections = $scope.walkedPath.length;
+        if(numberOfWalkedSections - 1 >= 0){
           console.log('moving one section backward');
           oneStepBackward();
         }
@@ -76,12 +86,30 @@ app.directive('questionary', function(){
       };
     }],
     link: function(scope){
+      // helpers
+      function changePath(newPath){
+        scope.nextSection = scope.sections[newPath];
+      }
       scope.$on('PATH_CHANGE', function(event, args){
-        console.log('PATH_CHANGE DETECTED');
-        console.log(event);
-        console.log(args);
-        // scope.nextSection = args.nextSection;
+        // console.log('PATH_CHANGE DETECTED');
+        // we need to change the next section
+        // scope.nextSection = scope.sections[args.new_path];
+        changePath(args.new_path);
       });
+      scope.$on('DEFAULT_PATH', function(event, args){
+        // scope.nextSection = scope.sections[scope.currentSection.next];
+        changePath(scope.currentSection.next);
+      });
+      scope.$watch('currentSection', function(newValue, oldValue){
+        // console.log(scope.walkedPath.length);
+        var numberOfWalkedSections = scope.walkedPath.length + 1;
+        // console.log(numberOfWalkedSections);
+        // console.log(scope.sections.length);
+        // check if has a next and previous section
+        // scope.navigation.hasNext = angular.isObject(scope.nextSection);
+        scope.navigation.hasPrevious = (numberOfWalkedSections - 1 > 0) ? true : false;
+        // console.log(scope.navigation.hasPrevious);
+      }, true);
     }
   }
 })
@@ -114,6 +142,7 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
           checkbox: 'checkbox-input.html',
           select: 'select-input.html',
           order: 'order-input.html',
+          prioritize: 'prioritize-input.html'
         }
     }],
     transclude: true,
@@ -124,32 +153,85 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
       body      : '=',
       debug      : '=',
       idx       : '=',
-      nested   : '='
     },
-    link: function(scope, element){
+    link: function(scope, element, attrs){
       var selectWatcher = scope.$watch('type', function(newValue, oldValue){
         // console.log()
         // if(newValue === oldValue) return;
         // change the initial value to the object
-        if(newValue == 'select'){
+        if(newValue == 'select' && (scope.body.selected_value === 'null' || angular.isUndefined(scope.body.selected_value))){
           scope.body.selected_value = scope.body.options[0];
           // console.log(scope.body.selected_value);
         }
       });
       var answerWatcher = scope.$watch('body.selected_value', function(newValue, oldValue){
+        if(newValue === oldValue) return;
         var type = scope.type;
         if((type === 'select' || type === 'radio')){
-          if(angular.isDefined(newValue.change_path)){
+          if(angular.isString(newValue.change_path) && attrs.nested === 'true'){
             console.log('new path' + newValue.change_path);
-            $rootScope.$broadcast('PATH_CHANGE',{});
+            $rootScope.$broadcast('PATH_CHANGE', {new_path: newValue.change_path});
           }
-          return;
-        }
-        else{
-          console.log('it doesn\'t apply');
+          else if(attrs.nested === 'true'){
+            console.log('default path');
+            $rootScope.$broadcast('DEFAULT_PATH', {});
+          }
           return;
         }
       }, true);
     }
   };
 }]);
+
+// validation directives
+app.directive('uniquePriority', function(){
+  return {
+    // restrict: 'A',
+    require: 'ngModel',
+    scope: {
+      uniquePriority: '='
+    },
+    link: function(scope, element, attrs, ctrl){
+      function checkForUniquePriorities(priorities){
+          var unique = true;
+          var counter = 0;
+          angular.forEach(priorities, function(value){
+            if(value.priority != null && ctrl.$viewValue !== ''){
+              // console.log(ctrl.$viewValue);
+              // console.log(value);
+              // console.log(value.priority + ' ' + ctrl.$viewValue);
+              // unique = (value.priority == ctrl.$viewValue) ? false : true;
+              counter += (value.priority == ctrl.$viewValue) ? 1 : 0;
+            }
+          });
+          console.log(counter);
+          unique = (counter <= 1) ? true : false;
+          ctrl.$setValidity('uniquePriority', unique);
+      }
+
+      // console.log(scope.uniquePriority);
+      var questionPriorities = scope.uniquePriority;
+      // console.log(questionPriorities);
+      ctrl.$parsers.unshift(function(value){
+        // console.log('estuve aqui');
+        // console.log(value);
+        // var valid = checkForUniquePriorities(questionPriorities);
+        // ctrl.$setValidity('uniquePriority', valid);
+        checkForUniquePriorities(questionPriorities);
+        // console.log(valid);
+        return ctrl.$viewValue;
+
+      });
+
+      scope.$watch('uniquePriority', function(newValue, oldValue){
+        if(ctrl.$viewValue === '') return;
+        console.log('watch of: '+ ctrl.$viewValue);
+        // console.log(ctrl.$viewValue);
+        // console.log('someone changed');
+        // console.log(ctrl.$viewValue);
+        // console.log(newValue);
+        checkForUniquePriorities(newValue);
+      }, true);
+    }
+  };
+})
