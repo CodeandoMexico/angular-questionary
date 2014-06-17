@@ -8,11 +8,11 @@ angular.module('questionaryApp')
       type     : 'select',
       body     : {
         options  : [
-          {label: 'Del. 1' },
-          {label: 'Del. 2' },
-          {label: 'Del. 4' },
-          {label: 'Del. 8' },
-          {label: 'Del. 16'}
+          {value: 'a', label: 'Del. 1' },
+          {value: 'b', label: 'Del. 2' },
+          {value: 'c', label: 'Del. 4' },
+          {value: 'd', label: 'Del. 8' },
+          {value: 'e', label: 'Del. 16'}
         ]
       }
     };
@@ -42,8 +42,8 @@ angular.module('questionaryApp')
               body     : {
                 selected_value    : 'a',
                 options  : [
-                  { value: 'a', label: 'Masculino'},
-                  { value: 'b', label: 'Femenino'}
+                  { value: 'a', label: 'Hombre'},
+                  { value: 'b', label: 'Mujer'}
                 ]
               }
             },
@@ -54,12 +54,12 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                  {label: 'Ninguno' },
-                  {label: 'Primaria' },
-                  {label: 'Secundaria / Secundaria Técnica' },
-                  {label: 'Bachillerato / Preparatoria / Preparatoria Técnica' },
-                  {label: 'Licenciatura / Ingeniería' },
-                  {label: 'Maestría ó superior' }
+                  { value: 'a', label: 'Ninguno' },
+                  { value: 'b', label: 'Primaria' },
+                  { value: 'c', label: 'Secundaria / Secundaria Técnica' },
+                  { value: 'd', label: 'Bachillerato / Preparatoria / Preparatoria Técnica' },
+                  { value: 'e', label: 'Licenciatura / Ingeniería' },
+                  { value: 'f', label: 'Maestría ó superior' }
                 ]
               }
             },
@@ -72,9 +72,9 @@ angular.module('questionaryApp')
               body     : {
                 // selected_value    : null,
                 options  : [
-                  {label: 'No, vivo en otra entidad' },
+                  {value: 'a', label: 'No, vivo en otra entidad' },
                   // a question is going to be appended here, in the question property
-                  {label: 'Sí, vivo en el D.F.', question: null },
+                  {value: 'b', label: 'Sí, vivo en el D.F.', question: null },
                 ]
               }
             },
@@ -85,8 +85,8 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                  {label: 'No, aún no está operando'},
-                  {label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
+                  {value: 'a', label: 'No, aún no está operando'},
+                  {value: 'b', label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
                 ]
               }
             },
@@ -149,16 +149,16 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                { label: 'Industrias manufactureras'  },
-                { label: 'Comercio' },
-                { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
-                { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
-                { label: 'Organizaciones con fines altruistas y medio ambientales' },
-                { label: 'Agricultura, ganadería, aprovechamiento forestal' },
-                { label: 'Tecnologías de la información y la comunicación' },
-                { label: 'Otros' },
-                { label: 'No sé' }
+                { value: 'a', label: 'Industrias manufactureras'  },
+                { value: 'b', label: 'Comercio' },
+                { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
+                { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
+                { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal' },
+                { value: 'h', label: 'Tecnologías de la información y la comunicación' },
+                { value: 'i', label: 'Otros' },
+                { value: 'j', label: 'No sé' }
                 ]
               }
             },
@@ -243,15 +243,15 @@ angular.module('questionaryApp')
               type   : 'checkbox',
               body   : {
                 options: [
-                  { value: 'a',label: 'Se vende/ofrece en una cuadra o colonia de la Ciudad de México.', checked: false },
-                  { value: 'b',label: 'Se vende/ofrece en varias colonias de la Ciudad de México.', checked: false },
-                  { value: 'c',label: 'Se vende/ofrece fuera de la zona del DF y área metropolitana.', checked: false },
-                  { value: 'd',label: 'Se exporta al extranjero.', checked: false },
-                  { value: 'e',label: 'Se vende/ofrece o anuncia en internet.', checked: false },
-                  { value: 'f',label: 'Se vende/ofrece al publico en general (al consumidor final).', checked: false },
-                  { value: 'g',label: 'Se vende/ofrece a empresas que a su vez venden al público u otras empresas.', checked: false },
-                  { value: 'h',label: 'Se vende/ofrece al menudeo.', checked: false },
-                  { value: 'i',label: 'Se vende/ofrece al mayoreo.', checked: false },
+                  { value: 'a', label: 'Se vende/ofrece en una cuadra o colonia de la Ciudad de México.', checked: false },
+                  { value: 'b', label: 'Se vende/ofrece en varias colonias de la Ciudad de México.', checked: false },
+                  { value: 'c', label: 'Se vende/ofrece fuera de la zona del DF y área metropolitana.', checked: false },
+                  { value: 'd', label: 'Se exporta al extranjero.', checked: false },
+                  { value: 'e', label: 'Se vende/ofrece o anuncia en internet.', checked: false },
+                  { value: 'f', label: 'Se vende/ofrece al publico en general (al consumidor final).', checked: false },
+                  { value: 'g', label: 'Se vende/ofrece a empresas que a su vez venden al público u otras empresas.', checked: false },
+                  { value: 'h', label: 'Se vende/ofrece al menudeo.', checked: false },
+                  { value: 'i', label: 'Se vende/ofrece al mayoreo.', checked: false },
                 ]
               }
             },
@@ -318,9 +318,9 @@ angular.module('questionaryApp')
               type   : 'checkbox',
               body   : {
                 options: [
-                  { label: 'Computadora / Laptop / tablet', checked: false },
-                  { label: 'Acepta tarjetas de crédito, depósitos o transferencias bancarias como medios de pago u obtención de recursos', checked: false },
-                  { label: 'Programa de cómputo especial para realizar el trabajo (diferente a Excel, Power-Point y Word)', checked: false },
+                  { value: 'a', label: 'Computadora / Laptop / tablet', checked: false },
+                  { value: 'b', label: 'Acepta tarjetas de crédito, depósitos o transferencias bancarias como medios de pago u obtención de recursos', checked: false },
+                  { value: 'c', label: 'Programa de cómputo especial para realizar el trabajo (diferente a Excel, Power-Point y Word)', checked: false },
                 ]
               }
             },
@@ -413,7 +413,7 @@ angular.module('questionaryApp')
                 options: [
                   { priority: null, value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
                   { priority: null, value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
-                  { priority: null, value: 'b', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
+                  { priority: null, value: 'c', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
                   { priority: null, value: 'd', label: 'Quiero desarrollar mi creatividad.' },
                   { priority: null, value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
                   { priority: null, value: 'f', label: 'Tengo una idea o proyecto muy innovador que será muy rentable y tendré grandes ganancias.' },
@@ -472,16 +472,16 @@ angular.module('questionaryApp')
               body     : {
                 // selected_value    : 'Industrias manufactureras',
                 options  : [
-                  { label: 'Industrias manufactureras' },
-                  { label: 'Comercio' },
-                  { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                  { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
-                  { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
-                  { label: 'Organizaciones con fines altruistas y medio ambientales' },
-                  { label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
-                  { label: 'Tecnologías de la información y la comunicación' },
-                  { label: 'Otros' },
-                  { label: 'No sé' }
+                  { value: 'a', label: 'Industrias manufactureras' },
+                  { value: 'b', label: 'Comercio' },
+                  { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                  { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
+                  { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                  { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
+                  { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                  { value: 'h', label: 'Tecnologías de la información y la comunicación' },
+                  { value: 'i', label: 'Otros' },
+                  { value: 'j', label: 'No sé' }
                 ]
               }
             },
@@ -569,7 +569,7 @@ angular.module('questionaryApp')
     // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    var baseUrl = 'http://fondeso-backend.herokuapp.com/';
+    var baseUrl = 'http://localhost:3000/';
     questionary.save = null;
 
     questionary.submit = function(data) {
