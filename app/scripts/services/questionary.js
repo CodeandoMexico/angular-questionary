@@ -23,6 +23,7 @@ angular.module('questionaryApp')
         '1.B': {
           identifier : '1.B Características Sociodemográficas',
           next       : '2.C',
+          help       : 'Contesta las siguientes preguntas sobre ti y selecciona la respuesta con la que más te identificas.',
           grouped    : true,
           questions : [
             {
@@ -113,7 +114,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.1',
               title  : 'La razón principal por la que llevo a cabo este proyecto es porque… ',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'De la siguiente lista selecciona y ordena las 3 prioridades con las que más te identificas. Escoge 1 para la prioridad con la que más te identificas, 2 para la segunda y 3 para la tercera. No puedes repetir el mismo número.',
               type   : 'prioritize',
               body   : {
                 options: [
@@ -129,7 +130,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.2',
               title  : 'El principal objetivo de mi empresa es...',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'De la siguiente lista selecciona y ordena las 3 prioridades con las que más te identificas. Escoge 1 para la prioridad con la que más te identificas, 2 para la segunda y 3 para la tercera. No puedes repetir el mismo número.',
               type   : 'prioritize',
               body   : {
                 options: [
@@ -145,7 +146,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.3',
               title    : '¿Tu negocio pertenece a alguno de los siguientes sectores?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas de la lista desplegable del recuadro.',
               type     : 'select',
               body     : {
                 options  : [
@@ -165,7 +166,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.4',
               title  : '¿Cuántas personas trabajan en la empresa (incluyendo a los dueños)?',
-              // help   : 'Escribe el valor de la respuesta',
+              help   : 'Escribe en el recuadro tu respuesta.',
               type   : 'number',
               body   : {
                 value  : 0,
@@ -174,7 +175,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.5',
               title  : 'Del total de personas que trabajan en la empresa, ¿cuántos son familiares (padres, hijos, abuelos, hermanos, tíos, primos, sobrinos, cuñados) de los dueños? Incluye a los dueños en tu respuesta.',
-              // help   : 'Escribe el valor de la respuesta',
+              help   : 'Escribe en el recuadro tu respuesta.',
               type   : 'number',
               body   : {
                 value  : 0,
@@ -183,7 +184,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.6',
               title    : '¿El producto/servicio que se ofrece es?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -197,7 +198,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.7',
               title    : 'Las siguientes frases describen maneras distintas de obtener ingresos, selecciona la frase con la que más te identificas',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -210,7 +211,7 @@ angular.module('questionaryApp')
             {
               id     : '2.A.8',
               title    : 'Piensa en las ganancias que tiene tu empresa , imagina que ese monto vale 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -230,7 +231,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.1',
               title  : '¿Cuánto tiempo lleva este proyecto/negocio en operación?',
-              // help   : 'Escribe el valor de la respuesta',
+              help   : 'Escribe en el recuadro tu respuesta.',
               type   : 'number',
               body   : {
                 value  : 1,
@@ -239,7 +240,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.2',
               title  : 'Selecciona las frases que describen el o los lugares en donde vendes/ofreces tu producto y a quiénes va dirigido (puedes seleccionar varias opciones si concuerda con tu perfil)',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'Selecciona cada una de las respuestas si te identificas con ellas.',
               type   : 'checkbox',
               body   : {
                 options: [
@@ -258,7 +259,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.3',
               title    : '¿Cuál de las siguientes frases describe mejor la manera en la que administro mi negocio?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -273,7 +274,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.4',
               title    : '¿Cuál de las siguientes frases describe mejor la toma de decisiones en la empresa?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -287,7 +288,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.5',
               title    : '¿El negocio tiene RFC (Registro Federal de Contribuyentes)?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -300,7 +301,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.6',
               title    : '¿Cuál es el nivel de respaldo que da la tecnología en tu negocio?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -314,7 +315,7 @@ angular.module('questionaryApp')
             {
               id     : '3.A.7',
               title  : 'Selecciona los insumos con los que cuenta tu negocio o se utilizan para realizar el producto o servicio que ofrece la empresa',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'Selecciona cada una de las respuestas si te identificas con ellas.',
               type   : 'checkbox',
               body   : {
                 options: [
@@ -326,8 +327,8 @@ angular.module('questionaryApp')
             },
             {
               id     : '3.A.8',
-              title    : ' ¿Alguna vez has obtenido un crédito para tu negocio de una institución bancaria o similar?',
-              // help     : 'Selecciona uno de los valores',
+              title    : '¿Alguna vez has obtenido un crédito para tu negocio de una institución bancaria o similar?',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -342,7 +343,7 @@ angular.module('questionaryApp')
         '4.A': {
           identifier : '4.A',
           grouped    : true,
-          next       : '5.A??????',
+          next       : '5.A',
           questions : [
             {
               id     : '4.A.1',
@@ -366,12 +367,12 @@ angular.module('questionaryApp')
           ]
         },
         '5.A': {
-          identifier : '5.A',
+          identifier : '5.A Sección de desempate',
           grouped    : true,
           questions : [
             {
               title  : 'Las siguientes frases describen diferentes tipos de empresas, elige la opción que más se identifique con tu empresa.',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'Selecciona la respuesta con la que más te identificas.',
               type   : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -407,7 +408,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.1',
               title  : 'La razón PRINCIPAL por la que quiero llevar a cabo este proyecto es porque...',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'De la siguiente lista selecciona y ordena las 3 frases con las que más te identificas. Escoge 1 para la prioridad con la que más te identificas, 2 para la segunda y 3 para la tercera. No puedes repetir el mismo número.',
               type   : 'prioritize',
               body   : {
                 options: [
@@ -423,7 +424,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.2',
               title  : 'El PRINCIPAL objetivo de mi empresa será...',
-              help   : 'Escribe el valor de la respuesta',
+              help   : 'De la siguiente lista selecciona y ordena las 3 frases con las que más te identificas. Escoge 1 para la prioridad con la que más te identificas, 2 para la segunda y 3 para la tercera. No puedes repetir el mismo número.',
               type   : 'prioritize',
               body   : {
                 options: [
@@ -439,7 +440,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.3',
               title    : '¿Cuál de las siguientes frases describe mejor tu situación laboral-empresarial actual?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -454,7 +455,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.4',
               title    : 'Imagina que ya tienes tu negocio con el cual las ganancias son igual a 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -467,7 +468,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.5',
               title    : '¿Tu negocio pertenecerá a alguno de los siguientes sectores?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas de la lista desplegable del recuadro.',
               type     : 'select',
               body     : {
                 // selected_value    : 'Industrias manufactureras',
@@ -488,7 +489,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.6',
               title    : '¿El producto/servicio que se ofrecerá será?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -502,7 +503,7 @@ angular.module('questionaryApp')
             {
               id     : '2.C.7',
               title    : '¿Cuál es el nivel de respaldo que dará la tecnología en tu negocio?',
-              // help     : 'Selecciona uno de los valores',
+              help     : 'Selecciona la respuesta con la que más te identificas.',
               type     : 'radio',
               body     : {
                 selected_value    : 'a',
@@ -522,8 +523,8 @@ angular.module('questionaryApp')
           questions : [
             {
               id     : '4.C.1',
-              title  : 'De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoge de 1 a 3 prioridades.',
-              help   : 'Escribe el valor de la respuesta',
+              title  : 'De la siguiente lista selecciona la (o las) prioridad(es) actual(es) que tenga tu empresa. Puedes escoger de 1 a 3 prioridades.',
+              help   : 'De la siguiente lista selecciona y ordena las 3 prioridades con las que más te identificas. Escoge 1 para la prioridad con la que más te identificas, 2 para la segunda y 3 para la tercera. No puedes repetir el mismo número.',
               type   : 'prioritize',
               body   : {
                 options: [
@@ -540,7 +541,7 @@ angular.module('questionaryApp')
           ]
         },
         '5.C': {
-          identifier : '5.C??????',
+          identifier : '5.C Sección de desempate',
           grouped    : true,
           questions : [
             {
