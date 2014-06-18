@@ -6,8 +6,6 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
-$white: #ffffff;
-
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -138,6 +136,11 @@ body {
 
 .navigation-control {
     margin-bottom: 20px;
+}
+
+// error section
+.text-error {
+    color: red;
 }
 
 /* Responsive: Portrait tablets and up */

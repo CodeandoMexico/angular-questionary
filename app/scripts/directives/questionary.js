@@ -19,7 +19,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="row prioritization-option" ng-repeat="opt in body.options"><div class="col-md-2"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"></div><div class="col-md-10"><p>{{opt.label}}</p></div></div></div>');
 
   // errors template
-  $templateCache.put('errors.html', '<div class="error-container"><span ng-show="questionForm.question.$error.required">Este campo es requerido</span>');
+  $templateCache.put('errors.html', '<div class="error-container"><span class="text-error" ng-show="questionForm.question.$invalid">Por favor revisa tu respuesta.</span></div>');
 }]);
 
 app.directive('questionary', function(){
