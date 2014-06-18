@@ -7,7 +7,7 @@ angular.module('questionaryApp')
     var api = {
       all: function(){
         var url = baseUrl + '/';
-        // var url = "http://ip.jsontest.com/"
+        // var url = "http://ip.jsontest.com/";
         return $http.get(url);
       },
       category: function(category, stage){
