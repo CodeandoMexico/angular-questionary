@@ -23,6 +23,8 @@ angular.module('questionaryApp')
     if(angular.isDefined(category)){
       Fund.category(category, stage).then(function(res){
         $scope.funds = res.data;
+        // select the first item
+        $scope.fundSelected[0] = $scope.funds[0];
       }, function(err){
         // there was an error we should redirect elsewhere
         $location.url('/404');
@@ -30,7 +32,8 @@ angular.module('questionaryApp')
     } else {
       Fund.all().then(function(res){
         $scope.funds = res.data;
-        // console.log($scope.funds);
+        // select the first item
+        $scope.fundSelected[0] = $scope.funds[0];
       });
     }
 
