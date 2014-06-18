@@ -128,14 +128,17 @@ body {
 }
 
 .no-bullets {
-  list-style-type: none;
-  padding-left: 0;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 #fund-description {
-  margin: 20px;
+    margin: 20px;
 }
 
+.navigation-control {
+    margin-bottom: 20px;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
