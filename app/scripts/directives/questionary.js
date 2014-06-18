@@ -33,7 +33,8 @@ app.directive('questionary', function(){
       sections: '=',
       currentSection: '=',
       walkedPath: '=',
-      onFinish: '&'
+      onFinish: '&',
+      onChange: '&'
     },
     controller: ['$scope', function($scope){
       // initialize variables
@@ -51,11 +52,13 @@ app.directive('questionary', function(){
         $scope.walkedPath.push($scope.currentSection); // let's save where we've been through
         $scope.currentSection = $scope.nextSection; // go to the next section
         $scope.nextSection = $scope.sections[$scope.currentSection.next]; // get the next section
+        // $scope.onChange(); // execute custom code after
       }
 
       function oneStepBackward(){
         $scope.nextSection = $scope.currentSection;
         $scope.currentSection = $scope.walkedPath.pop();
+        // $scope.onChange(); // execute custom code after
       }
 
       // console.log('current section');
@@ -66,6 +69,7 @@ app.directive('questionary', function(){
         // if there's a next section we should go there
         if(angular.isObject($scope.nextSection)){
           console.log('moving one section ahead');
+          // $scope.onChange();
           oneStepForward();
         }
         else{
@@ -78,6 +82,7 @@ app.directive('questionary', function(){
         var numberOfWalkedSections = $scope.walkedPath.length;
         if(numberOfWalkedSections - 1 >= 0){
           console.log('moving one section backward');
+          // $scope.onChange();
           oneStepBackward();
         }
         else{

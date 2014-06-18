@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', ['$scope', '$location', 'Questionary', 'Fund', function ($scope, $location, Questionary, Fund) {
+  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', '$timeout', 'Questionary', 'Fund', function ($scope, $location, $anchorScroll, $timeout, Questionary, Fund) {
     // types of questions are: text, number, radio, checkbox
     $scope.sections = Questionary.sections;
     $scope.walkedPath = null;
@@ -18,5 +18,10 @@ angular.module('questionaryApp')
       }, function (err) {
         // there was an error so let's do something about it
       });
-    }
+    };
+
+    $scope.onSectionChange = function(){
+      $location.hash('top');
+      $anchorScroll();
+    };
   }]);

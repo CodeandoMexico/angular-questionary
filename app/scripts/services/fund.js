@@ -2,7 +2,8 @@
 
 angular.module('questionaryApp')
   .service('Fund', ['$http', function($http){
-    var baseUrl = 'http://localhost:3000/fondos';
+    // var baseUrl = 'http://localhost:3000/fondos';
+    var baseUrl = 'http://fondeso-backend.herokuapp.com/fondos';
     var api = {
       all: function(){
         var url = baseUrl + '/';
