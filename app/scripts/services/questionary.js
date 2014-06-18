@@ -341,7 +341,7 @@ angular.module('questionaryApp')
           ]
         },
         '4.A': {
-          identifier : '4.A',
+          identifier : '4.A Prioridades / Problemas',
           grouped    : true,
           next       : '5.A',
           questions : [
@@ -401,7 +401,7 @@ angular.module('questionaryApp')
           ]
         },
         '2.C': {
-          identifier : '2.C ',
+          identifier : '2.C Perfiles',
           grouped    : true,
           next: '4.C',
           questions : [
@@ -517,7 +517,7 @@ angular.module('questionaryApp')
           ]
         },
         '4.C': {
-          identifier : '4.C',
+          identifier : '4.C Prioridades / Problemas',
           grouped    : true,
           next: '5.C',
           questions : [
