@@ -32,6 +32,10 @@ angular
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
+      .when('/fondos/:category/:stage', {
+        templateUrl: 'views/fund.html',
+        controller: 'FundCtrl'
+      })
       .when('/404', {
         templateUrl: '404.html'
       })
