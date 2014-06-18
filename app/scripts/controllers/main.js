@@ -11,8 +11,10 @@ angular.module('questionaryApp')
       // submit the data to the service and see if it was successful
       Questionary.submit($scope.walkedPath).then(function(res){
         console.log(res);
+        var profile = res.data;
+        var redirect_to = '/fondos' + profile.uri;
         // redirect to the results when they come, it should return the category name
-        $location.url('/fondos');
+        $location.url(redirect_to);
       }, function (err) {
         // there was an error so let's do something about it
       });

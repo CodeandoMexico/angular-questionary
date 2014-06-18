@@ -8,11 +8,11 @@ angular.module('questionaryApp')
       type     : 'select',
       body     : {
         options  : [
-          {label: 'Del. 1' },
-          {label: 'Del. 2' },
-          {label: 'Del. 4' },
-          {label: 'Del. 8' },
-          {label: 'Del. 16'}
+          {value: 'a', label: 'Del. 1' },
+          {value: 'b', label: 'Del. 2' },
+          {value: 'c', label: 'Del. 4' },
+          {value: 'd', label: 'Del. 8' },
+          {value: 'e', label: 'Del. 16'}
         ]
       }
     };
@@ -40,8 +40,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Masculino',
-                options  : ['Masculino', 'Femenino']
+                selected_value    : 'a',
+                options  : [
+                  { value: 'a', label: 'Hombre'},
+                  { value: 'b', label: 'Mujer'}
+                ]
               }
             },
             {
@@ -51,12 +54,12 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                  {label: 'Ninguno' },
-                  {label: 'Primaria' },
-                  {label: 'Secundaria / Secundaria Técnica' },
-                  {label: 'Bachillerato / Preparatoria / Preparatoria Técnica' },
-                  {label: 'Licenciatura / Ingeniería' },
-                  {label: 'Maestría ó superior' }
+                  { value: 'a', label: 'Ninguno' },
+                  { value: 'b', label: 'Primaria' },
+                  { value: 'c', label: 'Secundaria / Secundaria Técnica' },
+                  { value: 'd', label: 'Bachillerato / Preparatoria / Preparatoria Técnica' },
+                  { value: 'e', label: 'Licenciatura / Ingeniería' },
+                  { value: 'f', label: 'Maestría ó superior' }
                 ]
               }
             },
@@ -69,9 +72,9 @@ angular.module('questionaryApp')
               body     : {
                 // selected_value    : null,
                 options  : [
-                  {label: 'No, vivo en otra entidad' },
+                  {value: 'a', label: 'No, vivo en otra entidad' },
                   // a question is going to be appended here, in the question property
-                  {label: 'Sí, vivo en el D.F.', question: null },
+                  {value: 'b', label: 'Sí, vivo en el D.F.', question: null },
                 ]
               }
             },
@@ -82,8 +85,8 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                  {label: 'No, aún no está operando'},
-                  {label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
+                  {value: 'a', label: 'No, aún no está operando'},
+                  {value: 'b', label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
                 ]
               }
             },
@@ -93,8 +96,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Sí',
-                options  : ['Sí', 'No']
+                selected_value    : 'a',
+                options  : [
+                  { value: 'a', label: 'Sí' },
+                  { value: 'b', label: 'No' }
+                  ]
               }
             },
           ]
@@ -143,16 +149,16 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                { label: 'Industrias manufactureras'  },
-                { label: 'Comercio' },
-                { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
-                { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
-                { label: 'Organizaciones con fines altruistas y medio ambientales' },
-                { label: 'Agricultura, ganadería, aprovechamiento forestal' },
-                { label: 'Tecnologías de la información y la comunicación' },
-                { label: 'Otros' },
-                { label: 'No sé' }
+                { value: 'a', label: 'Industrias manufactureras'  },
+                { value: 'b', label: 'Comercio' },
+                { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
+                { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
+                { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal' },
+                { value: 'h', label: 'Tecnologías de la información y la comunicación' },
+                { value: 'i', label: 'Otros' },
+                { value: 'j', label: 'No sé' }
                 ]
               }
             },
@@ -180,11 +186,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Es nuevo y distinto a lo que existe y/o el proceso de elaboración / comercialización es innovador.',
+                selected_value    : 'a',
                 options  : [
-                  'Es nuevo y distinto a lo que existe y/o el proceso de elaboración / comercialización es innovador.',
-                  'En algunas características son diferentes a los de mi competencia o lo ofrezco a personas que no lo tienen.',
-                  'Ya existe y es ofrecido por otros.'
+                  { value: 'a', label: 'Es nuevo y distinto a lo que existe y/o el proceso de elaboración / comercialización es innovador.'},
+                  { value: 'b', label: 'En algunas características son diferentes a los de mi competencia o lo ofrezco a personas que no lo tienen.'},
+                  { value: 'c', label: 'Ya existe y es ofrecido por otros.'}
                 ]
               }
             },
@@ -194,10 +200,10 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Tengo un ingreso relativamente estable (no importa cuanto dinero) que se caracteriza por un flujo diario (o casi diario) de dinero.',
+                selected_value    : 'a',
                 options  : [
-                  'Tengo un ingreso relativamente estable (no importa cuanto dinero) que se caracteriza por un flujo diario (o casi diario) de dinero.',
-                  'Tengo un ingreso inestable que se caracteriza por un flujo irregular de dinero (por proyecto/por evento/por servicio) con lapsos de tiempo sin ingreso amplios.',
+                  { value: 'a', label: 'Tengo un ingreso relativamente estable (no importa cuanto dinero) que se caracteriza por un flujo diario (o casi diario) de dinero.' },
+                  { value: 'b', label: 'Tengo un ingreso inestable que se caracteriza por un flujo irregular de dinero (por proyecto/por evento/por servicio) con lapsos de tiempo sin ingreso amplios.' },
                 ]
               }
             },
@@ -207,8 +213,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Aceptar el empleo y dejar de trabajar en mi empresa.',
-                options  : ['Aceptar el empleo y dejar de trabajar en mi empresa.', 'No aceptar el empleo y seguir con mi empresa.']
+                selected_value    : 'a',
+                options  : [
+                  { value: 'a', label: 'Aceptar el empleo y dejar de trabajar en mi empresa.'},
+                  { value: 'b', label: 'No aceptar el empleo y seguir con mi empresa.'}
+                ]
               }
             },
           ],
@@ -234,15 +243,15 @@ angular.module('questionaryApp')
               type   : 'checkbox',
               body   : {
                 options: [
-                  { value: 'a',label: 'Se vende/ofrece en una cuadra o colonia de la Ciudad de México.', checked: false },
-                  { value: 'b',label: 'Se vende/ofrece en varias colonias de la Ciudad de México.', checked: false },
-                  { value: 'c',label: 'Se vende/ofrece fuera de la zona del DF y área metropolitana.', checked: false },
-                  { value: 'd',label: 'Se exporta al extranjero.', checked: false },
-                  { value: 'e',label: 'Se vende/ofrece o anuncia en internet.', checked: false },
-                  { value: 'f',label: 'Se vende/ofrece al publico en general (al consumidor final).', checked: false },
-                  { value: 'g',label: 'Se vende/ofrece a empresas que a su vez venden al público u otras empresas.', checked: false },
-                  { value: 'h',label: 'Se vende/ofrece al menudeo.', checked: false },
-                  { value: 'i',label: 'Se vende/ofrece al mayoreo.', checked: false },
+                  { value: 'a', label: 'Se vende/ofrece en una cuadra o colonia de la Ciudad de México.', checked: false },
+                  { value: 'b', label: 'Se vende/ofrece en varias colonias de la Ciudad de México.', checked: false },
+                  { value: 'c', label: 'Se vende/ofrece fuera de la zona del DF y área metropolitana.', checked: false },
+                  { value: 'd', label: 'Se exporta al extranjero.', checked: false },
+                  { value: 'e', label: 'Se vende/ofrece o anuncia en internet.', checked: false },
+                  { value: 'f', label: 'Se vende/ofrece al publico en general (al consumidor final).', checked: false },
+                  { value: 'g', label: 'Se vende/ofrece a empresas que a su vez venden al público u otras empresas.', checked: false },
+                  { value: 'h', label: 'Se vende/ofrece al menudeo.', checked: false },
+                  { value: 'i', label: 'Se vende/ofrece al mayoreo.', checked: false },
                 ]
               }
             },
@@ -252,12 +261,12 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Llevo personalmente todas las cuentas de mi negocio sin apuntar nada.',
+                selected_value    : 'a',
                 options  : [
-                  'Llevo personalmente todas las cuentas de mi negocio sin apuntar nada.',
-                  'Llevo las cuentas de mi negocio a mano, en una libreta en donde apunto los ingresos, gastos, etc.',
-                  'Llevo las cuentas de mi negocio en Excel o un programa similar.',
-                  'Hay uno o varios empleados especializados en, o contrato el servicio para, llevar a cabo la contabilidad de la empresa.'
+                  { value: 'a', label:  'Llevo personalmente todas las cuentas de mi negocio sin apuntar nada.'},
+                  { value: 'b', label:  'Llevo las cuentas de mi negocio a mano, en una libreta en donde apunto los ingresos, gastos, etc.'},
+                  { value: 'c', label:  'Llevo las cuentas de mi negocio en Excel o un programa similar.'},
+                  { value: 'd', label:  'Hay uno o varios empleados especializados en, o contrato el servicio para, llevar a cabo la contabilidad de la empresa.'}
                 ]
               }
             },
@@ -267,11 +276,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Todas las decisiones del día a día las toma el dueño(s) de la empresa.',
+                selected_value    : 'a',
                 options  : [
-                  'Todas las decisiones del día a día las toma el dueño(s) de la empresa.',
-                  'En la empresa, además del dueño(s), hay uno o dos empleados de confianza que toman decisiones sobre la operación del negocio.',
-                  'En la empresa, además del dueño(s), hay una estructura de decisión mayor a 3 personas.'
+                  { value: 'a', label: 'Todas las decisiones del día a día las toma el dueño(s) de la empresa.'},
+                  { value: 'b', label: 'En la empresa, además del dueño(s), hay uno o dos empleados de confianza que toman decisiones sobre la operación del negocio.'},
+                  { value: 'c', label: 'En la empresa, además del dueño(s), hay una estructura de decisión mayor a 3 personas.'}
                 ]
               }
             },
@@ -281,8 +290,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Sí',
-                options  : ['Sí', 'No']
+                selected_value    : 'a',
+                options  : [
+                  { value: 'a', label: 'Sí'},
+                  { value: 'b', label: 'No'}
+                ]
               }
             },
             {
@@ -291,11 +303,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Ninguna, no se necesita / no tengo recursos',
+                selected_value    : 'a',
                 options  : [
-                  'Ninguna, no se necesita / no tengo recursos',
-                  'Sirve de apoyo para algunos procesos administrativos (procesamiento de nómina, costos, gastos, ventas, etc.)',
-                  'Juega un papel clave en el proceso de elaboración/comercialización del producto o servicio que ofrece mi empresa (además de apoyar la gestión y administración de la empresa).'
+                  { value: 'a', label: 'Ninguna, no se necesita / no tengo recursos'},
+                  { value: 'b', label: 'Sirve de apoyo para algunos procesos administrativos (procesamiento de nómina, costos, gastos, ventas, etc.)'},
+                  { value: 'c', label: 'Juega un papel clave en el proceso de elaboración/comercialización del producto o servicio que ofrece mi empresa (además de apoyar la gestión y administración de la empresa).'}
                 ]
               }
             },
@@ -306,9 +318,9 @@ angular.module('questionaryApp')
               type   : 'checkbox',
               body   : {
                 options: [
-                  { label: 'Computadora / Laptop / tablet', checked: false },
-                  { label: 'Acepta tarjetas de crédito, depósitos o transferencias bancarias como medios de pago u obtención de recursos', checked: false },
-                  { label: 'Programa de cómputo especial para realizar el trabajo (diferente a Excel, Power-Point y Word)', checked: false },
+                  { value: 'a', label: 'Computadora / Laptop / tablet', checked: false },
+                  { value: 'b', label: 'Acepta tarjetas de crédito, depósitos o transferencias bancarias como medios de pago u obtención de recursos', checked: false },
+                  { value: 'c', label: 'Programa de cómputo especial para realizar el trabajo (diferente a Excel, Power-Point y Word)', checked: false },
                 ]
               }
             },
@@ -318,8 +330,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'No, lo solicité pero me rechazaron / No lo he solicitado porque creo que no me lo darían',
-                options  : ['Sí', 'No']
+                selected_value    : 'a',
+                options  : [
+                  { value: 'a', label: 'Sí'},
+                  { value: 'b', label: 'No'}
+                ]
               }
             },
           ]
@@ -359,15 +374,15 @@ angular.module('questionaryApp')
               help   : 'Escribe el valor de la respuesta',
               type   : 'radio',
               body     : {
-                selected_value    : 'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera',
+                selected_value    : 'a',
                 options  : [
-                  'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera',
-                  'Mi empresa es igual a muchas otras y/o lo que vendo también lo venden muchos otros, pero aun así puedo obtener ganancias',
-                  'Lo que más me gusta de mi negocio, independientemente de las ganancias que tenga, es que me permite hacer lo que más me gusta y ser independiente',
-                  'Una parte central de mi empresa es desarrollar la creatividad y/o la expresión artística',
-                  'El objetivo central de mi empresa es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente',
-                  'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora'
-                  ]
+                  { value: 'a', label: 'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera' },
+                  { value: 'b', label: 'Mi empresa es igual a muchas otras y/o lo que vendo también lo venden muchos otros, pero aun así puedo obtener ganancias' },
+                  { value: 'c', label: 'Lo que más me gusta de mi negocio, independientemente de las ganancias que tenga, es que me permite hacer lo que más me gusta y ser independiente' },
+                  { value: 'd', label: 'Una parte central de mi empresa es desarrollar la creatividad y/o la expresión artística' },
+                  { value: 'e', label: 'El objetivo central de mi empresa es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente' },
+                  { value: 'f', label: 'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora' }
+                ]
               }
             },
             {
@@ -375,10 +390,10 @@ angular.module('questionaryApp')
               help   : 'Escribe el valor de la respuesta',
               type   : 'radio',
               body     : {
-                selected_value    : 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día',
+                selected_value    : 'a',
                 options  : [
-                  'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día',
-                  'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados',
+                  { value: 'a', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día'},
+                  { value: 'b', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados'},
                   ]
               }
             }
@@ -398,7 +413,7 @@ angular.module('questionaryApp')
                 options: [
                   { priority: null, value: 'a', label: 'No hay suficientes oportunidades laborales para encontrar un empleo.' },
                   { priority: null, value: 'b', label: 'Prefiero emprender mi propio proyecto que ser empleado.' },
-                  { priority: null, value: 'b', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
+                  { priority: null, value: 'c', label: 'Quiero generar un impacto positivo en la sociedad y/o medio ambiente.' },
                   { priority: null, value: 'd', label: 'Quiero desarrollar mi creatividad.' },
                   { priority: null, value: 'e', label: 'Quiero trabajar en algo agradable y que me de tiempo libre.' },
                   { priority: null, value: 'f', label: 'Tengo una idea o proyecto muy innovador que será muy rentable y tendré grandes ganancias.' },
@@ -427,12 +442,12 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'NO tengo empleo y NO tengo otro negocio.',
+                selected_value    : 'a',
                 options  : [
-                  'NO tengo empleo y NO tengo otro negocio.',
-                  'SÍ tengo empleo y NO tengo otro negocio.',
-                  'NO tengo empleo y SÍ tengo otro negocio.',
-                  'SÍ tengo empleo y SÍ tengo otro negocio.'
+                  { value: 'a', label: 'NO tengo empleo y NO tengo otro negocio.' },
+                  { value: 'b', label: 'SÍ tengo empleo y NO tengo otro negocio.' },
+                  { value: 'c', label: 'NO tengo empleo y SÍ tengo otro negocio.' },
+                  { value: 'd', label: 'SÍ tengo empleo y SÍ tengo otro negocio.' }
                 ]
               }
             },
@@ -442,10 +457,10 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Aceptar el empleo y dejar de trabajar en mi empresa.',
+                selected_value    : 'a',
                 options  : [
-                  'Aceptar el empleo y dejar de trabajar en mi empresa.',
-                  'No aceptar el empleo y seguir con mi empresa.'
+                  { value: 'a', label: 'Aceptar el empleo y dejar de trabajar en mi empresa.' },
+                  { value: 'b', label: 'No aceptar el empleo y seguir con mi empresa.' }
                 ]
               }
             },
@@ -457,16 +472,16 @@ angular.module('questionaryApp')
               body     : {
                 // selected_value    : 'Industrias manufactureras',
                 options  : [
-                  { label: 'Industrias manufactureras' },
-                  { label: 'Comercio' },
-                  { label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                  { label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
-                  { label: 'Culturales y de esparcimiento, deportivos y recreativos' },
-                  { label: 'Organizaciones con fines altruistas y medio ambientales' },
-                  { label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
-                  { label: 'Tecnologías de la información y la comunicación' },
-                  { label: 'Otros' },
-                  { label: 'No sé' }
+                  { value: 'a', label: 'Industrias manufactureras' },
+                  { value: 'b', label: 'Comercio' },
+                  { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                  { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos, de apoyo a negocios y manejo de desechos' },
+                  { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                  { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
+                  { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                  { value: 'h', label: 'Tecnologías de la información y la comunicación' },
+                  { value: 'i', label: 'Otros' },
+                  { value: 'j', label: 'No sé' }
                 ]
               }
             },
@@ -476,11 +491,11 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Será muy nuevo y distinto a lo que ya existe y/o el proceso de elaboración será muy innovador.',
+                selected_value    : 'a',
                 options  : [
-                  'Será muy nuevo y distinto a lo que ya existe y/o el proceso de elaboración será muy innovador.',
-                  'En algunas características será diferente a los de mi competencia o lo voy a ofrecer a personas que no lo conocen o que no tienen acceso a él.',
-                  'Ya existe y es ofrecido por otros.'
+                  { value:'a', label: 'Será muy nuevo y distinto a lo que ya existe y/o el proceso de elaboración será muy innovador.' },
+                  { value:'b', label: 'En algunas características será diferente a los de mi competencia o lo voy a ofrecer a personas que no lo conocen o que no tienen acceso a él.' },
+                  { value:'c', label: 'Ya existe y es ofrecido por otros.' }
                 ]
               }
             },
@@ -490,8 +505,12 @@ angular.module('questionaryApp')
               // help     : 'Selecciona uno de los valores',
               type     : 'radio',
               body     : {
-                selected_value    : 'Ninguna, no se necesitará / no tengo recursos para eso',
-                options  : ['Ninguna, no se necesitará / no tengo recursos para eso', 'Servirá de apoyo para algunos procesos administrativos (procesamiento de nómina, costos, gastos, ventas, etc.)', 'Jugará un papel importante en la empresa (en el proceso de elaboración del producto o servicio que ofrece la empresa, además de apoyar la gestión y administración de la empresa)']
+                selected_value    : 'a',
+                options  : [
+                  { value: 'a', label: 'Ninguna, no se necesitará / no tengo recursos para eso' },
+                  { value: 'b', label: 'Servirá de apoyo para algunos procesos administrativos (procesamiento de nómina, costos, gastos, ventas, etc.)' },
+                  { value: 'c', label: 'Jugará un papel importante en la empresa (en el proceso de elaboración del producto o servicio que ofrece la empresa, además de apoyar la gestión y administración de la empresa)' }
+                ]
               }
             },
           ]
@@ -530,14 +549,14 @@ angular.module('questionaryApp')
               help   : 'Escribe el valor de la respuesta',
               type   : 'radio',
               body   : {
-                selected_value : 'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.',
+                selected_value : 'a',
                 options: [
-                  'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.',
-                  'Mi empresa será similar a muchas otras y mi producto ya se vende, pero aun así puedo obtener ganancias.',
-                  'Mi negocio me permitirá hacer lo que más me gusta y ser independiente.',
-                  'Lo que quiero es desarrollar mi creatividad y/o expresión artística.',
-                  'El objetivo central de mi proyecto es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente.',
-                  'Tengo una idea innovadora con el potencial de ser exitosa y rentable.'
+                  { value: 'a', label: 'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.' },
+                  { value: 'b', label: 'Mi empresa será similar a muchas otras y mi producto ya se vende, pero aun así puedo obtener ganancias.' },
+                  { value: 'c', label: 'Mi negocio me permitirá hacer lo que más me gusta y ser independiente.' },
+                  { value: 'd', label: 'Lo que quiero es desarrollar mi creatividad y/o expresión artística.' },
+                  { value: 'e', label: 'El objetivo central de mi proyecto es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente.' },
+                  { value: 'f', label: 'Tengo una idea innovadora con el potencial de ser exitosa y rentable.'}
                 ]
               }
             },
@@ -550,7 +569,7 @@ angular.module('questionaryApp')
     // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    var baseUrl = 'http://fondeso-backend.herokuapp.com/';
+    var baseUrl = 'http://localhost:3000/';
     questionary.save = null;
 
     questionary.submit = function(data) {

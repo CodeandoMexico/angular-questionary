@@ -3,6 +3,8 @@
 angular.module('questionaryApp')
   .controller('FundCtrl', ['$scope', '$routeParams', 'Fund', '$location', function ($scope, $routeParams, Fund, $location) {
     var category = $routeParams.category; // save value for later
+    var stage = $routeParams.stage; // save value for later
+
     console.log($routeParams.category);
     $scope.fundSelected = [];
     $scope.funds = null;
@@ -19,7 +21,7 @@ angular.module('questionaryApp')
 
     // look if there is a category in the url, if not, return all the funds
     if(angular.isDefined(category)){
-      Fund.category(category).then(function(res){
+      Fund.category(category, stage).then(function(res){
         $scope.funds = res.data;
       }, function(err){
         // there was an error we should redirect elsewhere
