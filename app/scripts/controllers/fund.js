@@ -37,4 +37,43 @@ angular.module('questionaryApp')
       });
     }
 
+    $scope.generatePdf = function () {
+      // var docDefinition = [{ content: 'This is an sample PDF printed with pdfMake' }];
+      // pdfMake.createPdf(docDefinition).open();
+      var docDefinition = {
+        content: [{ text: 'Listado de fondos', style: 'title' }],
+        styles: {
+          title: {
+            bold: true,
+            fontSize: 20
+          },
+      		header: {
+      			bold: true,
+      			fontSize: 15
+      		}
+      	},
+      	defaultStyle: {
+      		fontSize: 12,
+      	}
+      };
+      // let's iterate for every fund
+      angular.forEach($scope.funds, function(f) {
+        // insert the fund title
+        var title = '\n' + f.nombre;
+        docDefinition.content.push({ text: title, style: 'header' });
+        // insert the fund description
+        var fundInfo = { ol: [] };
+        angular.forEach(f, function(value, key){
+          if(value !== null && value.length > 1) {
+            var data = value.toString();
+            fundInfo.ol.push(data);
+          }
+        });
+        docDefinition.content.push(fundInfo);
+      });
+      // console.log(docDefinition);
+      pdfMake.createPdf(docDefinition).open();
+      // pdfMake.createPdf(docDefinition).download();
+    }
+
   }]);
