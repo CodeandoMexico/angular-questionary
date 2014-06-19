@@ -233,10 +233,10 @@ app.directive('uniquePriority', function(){
 
       scope.$watch('uniquePriority', function(newValue, oldValue){
         // on initializing we don't want this validation to occur
-        if(angular.equals(newValue, oldValue)) {
-          ctrl.$setValidity('required', false);
-          return;
-        };
+        // if(angular.equals(newValue, oldValue)) {
+        //   ctrl.$setValidity('required', false);
+        //   return;
+        // };
         // console.log('type: ' + (typeof ctrl.$viewValue))
         // console.log('watch of: '+ ctrl.$viewValue);
         checkForUniquePriorities(newValue);
