@@ -13,16 +13,18 @@
 </div> -->
 
 <div class="row marketing">
-  <ul id="fund-description" class="no-bullets" ng-show="fundSelected.length > 0">
-    <!--  there's always one element in the array -->
-    <li><h4>{{ fundSelected[0].nombre }}</h4></li>
-    <li><strong>Instituci&oacute;n:</strong> {{ fundSelected[0].institucion }}</li>
-    <li><strong>Descripci&oacute;n:</strong> {{ fundSelected[0].descripcion }}</li>
-    <li ng-show="fundSelected[0].categoria"><strong>Categor&iacute;a:</strong> {{ fundSelected[0].categoria }}</li>
-    <li><strong>Caracter&iacute;sticas:</strong> {{ fundSelected[0].caracteristicas }}</li>
-    <li><strong>Informes:</strong> {{ fundSelected[0].informes }}</li>
-  </ul>
-  <div class="gridStyle" ng-grid="gridOptions"></div>
+  <div id="master" class="col-md-4 gridStyle" ng-grid="gridOptions"></div>
+  <div id="detail" class="col-md-8">
+    <ul id="fund-description" class="no-bullets" ng-show="fundSelected.length > 0">
+      <!--  there's always one element in the array -->
+      <li><h4>{{ fundSelected[0].nombre }}</h4></li>
+      <li><strong>Instituci&oacute;n:</strong> {{ fundSelected[0].institucion }}</li>
+      <li><strong>Descripci&oacute;n:</strong> {{ fundSelected[0].descripcion }}</li>
+      <li ng-show="fundSelected[0].categoria"><strong>Categor&iacute;a:</strong> {{ fundSelected[0].categoria }}</li>
+      <li><strong>Caracter&iacute;sticas:</strong> {{ fundSelected[0].caracteristicas }}</li>
+      <li><strong>Informes:</strong> {{ fundSelected[0].informes }}</li>
+    </ul>
+  </div>
 </div>
 
 <div class="footer">

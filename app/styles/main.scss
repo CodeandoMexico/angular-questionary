@@ -6,6 +6,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+$contentBackgroundColor: white;
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -116,9 +118,11 @@ body {
 }
 
 .gridStyle {
-    border: 1px solid rgb(212,212,212);
-    width: auto;
-    float: left;
+    margin: 0px;
+    padding: 0px;
+    // border: 1px solid rgb(212,212,212);
+    // width: auto;
+    // float: left;
 }
 
 .ngViewport {
@@ -136,6 +140,11 @@ body {
 
 .navigation-control {
     margin-bottom: 20px;
+}
+
+.cell-background {
+    border: 1px solid #DCDCDC;
+    background-color: $contentBackgroundColor;
 }
 
 // error section
