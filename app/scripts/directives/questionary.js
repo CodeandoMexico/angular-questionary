@@ -199,44 +199,48 @@ app.directive('uniquePriority', function(){
     link: function(scope, element, attrs, ctrl){
       function checkForUniquePriorities(priorities){
           var unique = true;
+          var present = false;
           var counter = 0;
+          var blankCount = 0;
+          var numberOfPriorities = priorities.length;
+          // console.log(priorities);
           angular.forEach(priorities, function(value){
             if(value.priority != null && ctrl.$viewValue !== ''){
-              // console.log(ctrl.$viewValue);
-              // console.log(value);
-              // console.log(value.priority + ' ' + ctrl.$viewValue);
-              // unique = (value.priority == ctrl.$viewValue) ? false : true;
+              // check for repeated numbers
               counter += (value.priority == ctrl.$viewValue) ? 1 : 0;
+            } else if(value.priority === null){
+              // how many blank priorities are there?
+              blankCount += 1;
             }
           });
-          console.log(counter);
-          unique = (counter <= 1) ? true : false;
+          // console.log('counter: ' + counter);
+          // console.log('blanks: ' + blankCount);
+          // console.log('#priorities: ' + numberOfPriorities);
+          unique = (counter <= 1) ? true : false; //
+          present = (blankCount < numberOfPriorities) ? true : false;
           ctrl.$setValidity('uniquePriority', unique);
+          ctrl.$setValidity('required', present);
       }
 
       // console.log(scope.uniquePriority);
       var questionPriorities = scope.uniquePriority;
       // console.log(questionPriorities);
       ctrl.$parsers.unshift(function(value){
-        // console.log('estuve aqui');
-        // console.log(value);
-        // var valid = checkForUniquePriorities(questionPriorities);
-        // ctrl.$setValidity('uniquePriority', valid);
-        checkForUniquePriorities(questionPriorities);
+        // checkForUniquePriorities(questionPriorities);
         // console.log(valid);
         return ctrl.$viewValue;
-
       });
 
       scope.$watch('uniquePriority', function(newValue, oldValue){
-        if(ctrl.$viewValue === '') return;
-        console.log('watch of: '+ ctrl.$viewValue);
-        // console.log(ctrl.$viewValue);
-        // console.log('someone changed');
-        // console.log(ctrl.$viewValue);
-        // console.log(newValue);
+        // on initializing we don't want this validation to occur
+        if(angular.equals(newValue, oldValue)) {
+          ctrl.$setValidity('required', false);
+          return;
+        };
+        // console.log('type: ' + (typeof ctrl.$viewValue))
+        // console.log('watch of: '+ ctrl.$viewValue);
         checkForUniquePriorities(newValue);
       }, true);
     }
   };
-})
+});
