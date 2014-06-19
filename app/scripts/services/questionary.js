@@ -22,7 +22,7 @@ angular.module('questionaryApp')
       sections: {
         '1.B': {
           identifier : '1.B Características Sociodemográficas',
-          next       : '2.C',
+          next       : '2.C.1',
           help       : 'Contesta las siguientes preguntas sobre ti y selecciona la respuesta con la que más te identificas.',
           grouped    : true,
           questions : [
@@ -87,7 +87,7 @@ angular.module('questionaryApp')
               body     : {
                 options  : [
                   {value: 'a', label: 'No, aún no está operando'},
-                  {value: 'b', label: 'Sí, ya está en operación', question: null, change_path: '2.A' }
+                  {value: 'b', label: 'Sí, ya está en operación', question: null, change_path: '2.A.1' }
                 ]
               }
             },
@@ -106,10 +106,10 @@ angular.module('questionaryApp')
             },
           ]
         },
-        '2.A': {
+        '2.A.1': {
           identifier : '2.A Perfiles',
-          next       : '3.A',
-          grouped    : true,
+          next       : '2.A.2',
+          grouped    : false,
           questions : [
             {
               id     : '2.A.1',
@@ -127,6 +127,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ],
+        },
+        '2.A.2': {
+          identifier : '2.A Perfiles',
+          next       : '2.A.3',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.2',
               title  : 'El principal objetivo de mi empresa es...',
@@ -143,6 +150,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ],
+        },
+        '2.A.3': {
+          identifier : '2.A Perfiles',
+          next       : '2.A.4',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.3',
               title    : '¿Tu negocio pertenece a alguno de los siguientes sectores?',
@@ -163,6 +177,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ],
+        },
+        '2.A.4': {
+          identifier : '2.A Perfiles',
+          next       : '2.A.5',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.4',
               title  : '¿Cuántas personas trabajan en la empresa (incluyendo a los dueños)?',
@@ -172,6 +193,13 @@ angular.module('questionaryApp')
                 value  : 0,
               }
             },
+          ],
+        },
+        '2.A.5': {
+          identifier : '2.A Perfiles',
+          next       : '2.A.6',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.5',
               title  : 'Del total de personas que trabajan en la empresa, ¿cuántos son familiares (padres, hijos, abuelos, hermanos, tíos, primos, sobrinos, cuñados) de los dueños? Incluye a los dueños en tu respuesta.',
@@ -181,6 +209,13 @@ angular.module('questionaryApp')
                 value  : 0,
               }
             },
+          ],
+        },
+        '2.A.6': {
+          identifier : '2.A Perfiles',
+          next       : '2.A.7',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.6',
               title    : '¿El producto/servicio que se ofrece es?',
@@ -195,6 +230,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ],
+        },
+        '2.A.7': {
+          identifier : '2.A Perfiles',
+          next       : '2.A.8',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.7',
               title    : 'Las siguientes frases describen maneras distintas de obtener ingresos, selecciona la frase con la que más te identificas',
@@ -208,6 +250,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ],
+        },
+        '2.A.8': {
+          identifier : '2.A Perfiles',
+          next       : '3.A.1',
+          grouped    : false,
+          questions : [
             {
               id     : '2.A.8',
               title    : 'Piensa en las ganancias que tiene tu empresa , imagina que ese monto vale 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
@@ -223,10 +272,10 @@ angular.module('questionaryApp')
             },
           ],
         },
-        '3.A': {
+        '3.A.1': {
           identifier : '3.A Etapas',
-          grouped    : true,
-          next       : '4.A',
+          grouped    : false,
+          next       : '3.A.2',
           questions : [
             {
               id     : '3.A.1',
@@ -237,6 +286,13 @@ angular.module('questionaryApp')
                 value  : 1,
               }
             },
+          ]
+        },
+        '3.A.2': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '3.A.3',
+          questions : [
             {
               id     : '3.A.2',
               title  : 'Selecciona las frases que describen el o los lugares en donde vendes/ofreces tu producto y a quiénes va dirigido (puedes seleccionar varias opciones si concuerda con tu perfil)',
@@ -256,6 +312,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '3.A.3': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '3.A.4',
+          questions : [
             {
               id     : '3.A.3',
               title    : '¿Cuál de las siguientes frases describe mejor la manera en la que administro mi negocio?',
@@ -271,6 +334,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '3.A.4': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '3.A.5',
+          questions : [
             {
               id     : '3.A.4',
               title    : '¿Cuál de las siguientes frases describe mejor la toma de decisiones en la empresa?',
@@ -285,6 +355,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '3.A.5': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '3.A.6',
+          questions : [
             {
               id     : '3.A.5',
               title    : '¿El negocio tiene RFC (Registro Federal de Contribuyentes)?',
@@ -298,6 +375,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '3.A.6': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '3.A.7',
+          questions : [
             {
               id     : '3.A.6',
               title    : '¿Cuál es el nivel de respaldo que da la tecnología en tu negocio?',
@@ -312,6 +396,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '3.A.7': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '3.A.8',
+          questions : [
             {
               id     : '3.A.7',
               title  : 'Selecciona los insumos con los que cuenta tu negocio o se utilizan para realizar el producto o servicio que ofrece la empresa',
@@ -325,6 +416,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '3.A.8': {
+          identifier : '3.A Etapas',
+          grouped    : false,
+          next       : '4.A',
+          questions : [
             {
               id     : '3.A.8',
               title    : '¿Alguna vez has obtenido un crédito para tu negocio de una institución bancaria o similar?',
@@ -342,8 +440,8 @@ angular.module('questionaryApp')
         },
         '4.A': {
           identifier : '4.A Prioridades / Problemas',
-          grouped    : true,
-          next       : '5.A',
+          grouped    : false,
+          next       : '5.A.1',
           questions : [
             {
               id     : '4.A.1',
@@ -366,9 +464,10 @@ angular.module('questionaryApp')
             }
           ]
         },
-        '5.A': {
+        '5.A.1': {
           identifier : '5.A Sección de desempate',
-          grouped    : true,
+          grouped    : false,
+          next       : '5.A.2',
           questions : [
             {
               title  : 'Las siguientes frases describen diferentes tipos de empresas, elige la opción que más se identifique con tu empresa.',
@@ -386,6 +485,12 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '5.A.2': {
+          identifier : '5.A Sección de desempate',
+          grouped    : false,
+          questions : [
             {
               title  : 'Las siguientes frases describen el estado de desarrollo de distintas empresas, elige la opción que más se identifique con tu proyecto',
               help   : 'Escribe el valor de la respuesta',
@@ -400,10 +505,10 @@ angular.module('questionaryApp')
             }
           ]
         },
-        '2.C': {
+        '2.C.1': {
           identifier : '2.C Perfiles',
-          grouped    : true,
-          next: '4.C',
+          grouped    : false,
+          next       : '2.C.2',
           questions : [
             {
               id     : '2.C.1',
@@ -421,6 +526,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '2.C.2': {
+          identifier : '2.C Perfiles',
+          grouped    : false,
+          next: '2.C.3',
+          questions : [
             {
               id     : '2.C.2',
               title  : 'El PRINCIPAL objetivo de mi empresa será...',
@@ -437,6 +549,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '2.C.3': {
+          identifier : '2.C Perfiles',
+          grouped    : false,
+          next       : '2.C.4',
+          questions : [
             {
               id     : '2.C.3',
               title    : '¿Cuál de las siguientes frases describe mejor tu situación laboral-empresarial actual?',
@@ -452,6 +571,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '2.C.4': {
+          identifier : '2.C Perfiles',
+          grouped    : false,
+          next: '2.C.5',
+          questions : [
             {
               id     : '2.C.4',
               title    : 'Imagina que ya tienes tu negocio con el cual las ganancias son igual a 100, si te ofrecieran un empleo con un salario de 110 ¿qué preferirías?',
@@ -465,6 +591,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '2.C.5': {
+          identifier : '2.C Perfiles',
+          grouped    : false,
+          next: '2.C.6',
+          questions : [
             {
               id     : '2.C.5',
               title    : '¿Tu negocio pertenecerá a alguno de los siguientes sectores?',
@@ -486,6 +619,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '2.C.6': {
+          identifier : '2.C Perfiles',
+          grouped    : false,
+          next: '2.C.7',
+          questions : [
             {
               id     : '2.C.6',
               title    : '¿El producto/servicio que se ofrecerá será?',
@@ -500,6 +640,13 @@ angular.module('questionaryApp')
                 ]
               }
             },
+          ]
+        },
+        '2.C.7': {
+          identifier : '2.C Perfiles',
+          grouped    : false,
+          next: '4.C',
+          questions : [
             {
               id     : '2.C.7',
               title    : '¿Cuál es el nivel de respaldo que dará la tecnología en tu negocio?',
@@ -518,7 +665,7 @@ angular.module('questionaryApp')
         },
         '4.C': {
           identifier : '4.C Prioridades / Problemas',
-          grouped    : true,
+          grouped    : false,
           next: '5.C',
           questions : [
             {
@@ -542,7 +689,7 @@ angular.module('questionaryApp')
         },
         '5.C': {
           identifier : '5.C Sección de desempate',
-          grouped    : true,
+          grouped    : false,
           questions : [
             {
               id     : '5.C.1',
