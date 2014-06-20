@@ -37,43 +37,43 @@ angular.module('questionaryApp')
       });
     }
 
-    $scope.generatePdf = function () {
-      // var docDefinition = [{ content: 'This is an sample PDF printed with pdfMake' }];
-      // pdfMake.createPdf(docDefinition).open();
-      var docDefinition = {
-        content: [{ text: 'Listado de fondos', style: 'title' }],
-        styles: {
-          title: {
-            bold: true,
-            fontSize: 20
-          },
-      		header: {
-      			bold: true,
-      			fontSize: 15
-      		}
-      	},
-      	defaultStyle: {
-      		fontSize: 12,
-      	}
-      };
+    $scope.generatePdf = function() {
+      var doc = new jsPDF('p','in','letter');
+      // let's set the title for the pdf
+      doc.setFontSize(22);
+      doc.text(20, 20, 'Fondos');
+      var margin = 0.5 // inches on a 8.5 x 11 inch sheet.
+      var verticalOffset = margin
+      var separator = 35;
+
       // let's iterate for every fund
       angular.forEach($scope.funds, function(f) {
         // insert the fund title
-        var title = '\n' + f.nombre;
-        docDefinition.content.push({ text: title, style: 'header' });
-        // insert the fund description
-        var fundInfo = { ol: [] };
+        doc.setFontSize(16);
+        doc.text(20, separator, f.nombre);
+
+        // set font size for the description and add a space between the title
+        doc.setFontSize(12);
+        separator += 10;
         angular.forEach(f, function(value, key){
           if(value !== null && value.length > 1) {
-            var data = value.toString();
-            fundInfo.ol.push(data);
+            // var property = key + ': ' + value;
+            // insert the fund description
+            var lines = doc.setFont('Times', 'Roman')
+                  .setFontSize(14)
+                  .splitTextToSize(value.toString(), 7.5);
+            doc.text(0.5, verticalOffset, lines);
+            verticalOffset += (lines.length + 0.5) * 14 / 72;
           }
         });
-        docDefinition.content.push(fundInfo);
+        doc.addPage();
+        separator += 20; // add a space between lines
       });
-      // console.log(docDefinition);
-      pdfMake.createPdf(docDefinition).open();
-      // pdfMake.createPdf(docDefinition).download();
-    }
+
+      // open the document in a new window
+      doc.output('dataurlnewwindow');
+      // doc.save('test.pdf');
+    };
+
 
   }]);
