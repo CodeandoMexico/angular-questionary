@@ -39,41 +39,66 @@ angular.module('questionaryApp')
 
     $scope.generatePdf = function() {
       var doc = new jsPDF('p','in','letter');
-      // let's set the title for the pdf
-      doc.setFontSize(22);
-      doc.text(20, 20, 'Fondos');
       var margin = 0.5 // inches on a 8.5 x 11 inch sheet.
-      var verticalOffset = margin
-      var separator = 35;
+      var verticalOffset = margin + 0.5;
+      // let's set the title for the pdf
+      addMainTitle(doc, verticalOffset);
+      verticalOffset += 0.5;
 
       // let's iterate for every fund
       angular.forEach($scope.funds, function(f) {
         // insert the fund title
-        doc.setFontSize(16);
-        doc.text(20, separator, f.nombre);
-
-        // set font size for the description and add a space between the title
-        doc.setFontSize(12);
-        separator += 10;
-        angular.forEach(f, function(value, key){
-          if(value !== null && value.length > 1) {
-            // var property = key + ': ' + value;
-            // insert the fund description
-            var lines = doc.setFont('Times', 'Roman')
-                  .setFontSize(14)
-                  .splitTextToSize(value.toString(), 7.5);
-            doc.text(0.5, verticalOffset, lines);
-            verticalOffset += (lines.length + 0.5) * 14 / 72;
-          }
-        });
+        addFundTitle(doc, verticalOffset, f);
+        addFundDescription(doc, verticalOffset, f);
         doc.addPage();
-        separator += 20; // add a space between lines
       });
 
       // open the document in a new window
       doc.output('dataurlnewwindow');
       // doc.save('test.pdf');
     };
+
+    function addMainTitle(doc, verticalOffset){
+      // let's set the title for the pdf
+      var mainTitle = doc.setFont("helvetica")
+                      .setFontType("bold")
+                      .setFontSize(24)
+                      .splitTextToSize('Fondos', 7.5);
+      doc.text(0.5, verticalOffset, mainTitle);
+      verticalOffset += 0.5;
+    }
+
+    function addFundTitle(doc, verticalOffset ,f) {
+      var title = doc.setFont("helvetica")
+                  .setFontType("bold")
+                  .setFontSize(16)
+                  .splitTextToSize(f.nombre, 7.5);
+      doc.text(0.5, verticalOffset, title);
+    }
+
+    function addFundDescription(doc, verticalOffset, f) {
+      var properties = '\n\n';
+      var propertyTitle = {
+        // nombre: '\n',
+        institucion: 'Institución\n',
+        descripcion: 'Descripción\n',
+        categoria: 'Categoría\n',
+        caracteristicas: 'Características\n',
+        informes: 'Informes\n',
+      };
+      angular.forEach(f, function(value, key){
+        if(angular.isDefined(propertyTitle[key]) && value !== null && value.length > 1) {
+          // insert the fund description
+          properties += propertyTitle[key] + value + '\n\n';
+        }
+      });
+      var lines = doc.setFont('Times', 'Roman')
+            .setFontSize(14)
+            .splitTextToSize(properties.toString(), 7.5);
+      doc.text(0.5, verticalOffset, lines);
+      // verticalOffset += (lines.length + 0.5) * 14 / 72;
+      verticalOffset = 1;
+    }
 
 
   }]);
