@@ -44,14 +44,8 @@ angular.module('questionaryApp')
         }
       },
 
-      // helpers for the controller
+      // helpers
       checkForNecessityProfile: function (givenAnswerA, givenAnswerB, givenAnswerC, givenAnswerD){
-        // console.log(givenAnswerA + ' ' + givenAnswerB + ' ' + givenAnswerC + ' ' + givenAnswerD);
-        // console.log(this.forQuestionAnswerShouldBe('necessity_education', givenAnswerA));
-        // console.log(this.forQuestionAnswerShouldBe('necessity_reason_to_build_this_project_and_principal_business_objective', givenAnswerB));
-        // console.log(this.forQuestionAnswerShouldBe('necessity_current_laboral_situation', givenAnswerC));
-        // console.log(this.forQuestionAnswerShouldBe('necessity_if_someone_offered_me_a_job', givenAnswerD));
-
         return this.forQuestionAnswerShouldBe('necessity_education', givenAnswerA) &&
                this.forQuestionAnswerShouldBe('necessity_reason_to_build_this_project_and_principal_business_objective', givenAnswerB) &&
                this.forQuestionAnswerShouldBe('necessity_current_laboral_situation', givenAnswerC) &&
@@ -59,12 +53,6 @@ angular.module('questionaryApp')
       },
 
       checkForProfessionalProfile: function (givenAnswerA, givenAnswerB, givenAnswerC, givenAnswerD){
-        // console.log(givenAnswerA + ' ' + givenAnswerB + ' ' + givenAnswerC + ' ' + givenAnswerD);
-        // console.log(this.forQuestionAnswerShouldBe('necessity_education', givenAnswerA));
-        // console.log(this.forQuestionAnswerShouldBe('necessity_reason_to_build_this_project_and_principal_business_objective', givenAnswerB));
-        // console.log(this.forQuestionAnswerShouldBe('necessity_current_laboral_situation', givenAnswerC));
-        // console.log(this.forQuestionAnswerShouldBe('necessity_if_someone_offered_me_a_job', givenAnswerD));
-
         return this.forQuestionAnswerShouldBe('professional_education', givenAnswerA) &&
                this.forQuestionAnswerShouldBe('professional_reason_to_build_this_project_and_principal_business_objective', givenAnswerB) &&
                this.forQuestionAnswerShouldBe('professional_current_laboral_situation', givenAnswerC) &&
