@@ -28,17 +28,42 @@ angular.module('questionaryApp')
     // watcher for special cases
     $scope.$watch('sections', function(newValue, oldValue){
       if (newValue === oldValue) { return ; }
-      var answerContainer = [newValue['2.C.1'].questions[0].body.options[0].priority, newValue['2.C.2'].questions[0].body.options[0].priority];
+      // answer array containers for one question
+      var necessityAnswerContainer = [
+        newValue['2.C.1'].questions[0].body.options[0].priority,
+        newValue['2.C.2'].questions[0].body.options[0].priority
+      ];
+      var professionalAnswerContainer = [
+        newValue['2.C.1'].questions[0].body.options[0].priority,
+        newValue['2.C.1'].questions[0].body.options[1].priority,
+        newValue['2.C.2'].questions[0].body.options[0].priority,
+        newValue['2.C.2'].questions[0].body.options[1].priority
+      ];
+
+      // check if there is a necessity profile
       var hasNecessityProfile = FondesoProfile.checkForNecessityProfile(
         newValue['1.B'].questions[2].body.selected_value.value,
-        answerContainer,
+        necessityAnswerContainer,
         newValue['2.C.3'].questions[0].body.selected_value,
         newValue['2.C.4'].questions[0].body.selected_value
       );
-      console.log('Does it fulfill the case?: ' + hasNecessityProfile);
-      console.log('Current path has section: ' + Questionary.walkedPathHasSection('2.C.4', $scope.walkedPath));
+
+      // check if there is a professional profile
+      var hasProfessionalProfile = FondesoProfile.checkForProfessionalProfile(
+        newValue['1.B'].questions[2].body.selected_value.value,
+        professionalAnswerContainer,
+        newValue['2.C.3'].questions[0].body.selected_value,
+        newValue['2.C.4'].questions[0].body.selected_value
+      );
+
+      // is it a necessity profile and is on the correct section?
       if( hasNecessityProfile && Questionary.walkedPathHasSection('2.C.4', $scope.walkedPath) ){
         alert('Se detectó un perfil de necesidad');
+      }
+
+      // is it a professional profile and is on the correct section?
+      if( hasProfessionalProfile && Questionary.walkedPathHasSection('2.C.4', $scope.walkedPath) ){
+        alert('Se detectó un perfil de profesionista');
       }
     }, true);
   }]);
