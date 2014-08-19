@@ -12,9 +12,9 @@ angular.module('questionaryApp')
       Questionary.submit($scope.walkedPath).then(function(res){
         console.log(res);
         var profile = res.data;
-        var redirect_to = '/fondos' + profile.uri;
+        var redirectTo = '/fondos' + profile.uri;
         // redirect to the results when they come, it should return the category name
-        $location.url(redirect_to);
+        $location.url(redirectTo);
       }, function (err) {
         // there was an error so let's do something about it
       });
@@ -36,5 +36,9 @@ angular.module('questionaryApp')
         newValue['2.C.4'].questions[0].body.selected_value
       );
       console.log('Does it fulfill the case?: ' + hasNecessityProfile);
+      console.log('Current path has section: ' + Questionary.walkedPathHasSection('2.C.4', $scope.walkedPath));
+      if( hasNecessityProfile && Questionary.walkedPathHasSection('2.C.4', $scope.walkedPath) ){
+        alert('Se detectó un perfil de necesidad');
+      }
     }, true);
   }]);

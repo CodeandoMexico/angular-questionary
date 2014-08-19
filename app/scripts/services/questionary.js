@@ -18,7 +18,15 @@ angular.module('questionaryApp')
     };
 
     var questionary = {
-      // start_at: '1.B.1',
+      walkedPathHasSection: function (lookId, path) {
+        var questionarySection = this.sections[lookId];
+        for(var sectionId=0; sectionId < path.length; sectionId++){
+          if( angular.equals(path[sectionId], questionarySection) ) {
+            return true;
+          }
+        }
+        return false;
+      },
       sections: {
         '1.B': {
           identifier : '1.B Características Sociodemográficas',
