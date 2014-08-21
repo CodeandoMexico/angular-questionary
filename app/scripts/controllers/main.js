@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', '$timeout', 'Questionary', 'FondesoSpecialCase', function ($scope, $location, $anchorScroll, $timeout, Questionary, FondesoSpecialCase) {
+  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoProfile', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoProfile) {
     // types of questions are: text, number, radio, checkbox
     $scope.sections = Questionary.sections;
     $scope.walkedPath = null;
@@ -12,11 +12,12 @@ angular.module('questionaryApp')
       Questionary.submit($scope.walkedPath).then(function(res){
         console.log(res);
         var profile = res.data;
-        var redirectTo = '/fondos' + profile.uri;
+        // var redirectTo = '/profile' + profile.uri;
         // redirect to the results when they come, it should return the category name
-        $location.url(redirectTo);
+        $location.url( redirectTo(profile.uri) );
       }, function (err) {
         // there was an error so let's do something about it
+        console.log('There was an error' + err);
       });
     };
 
@@ -31,7 +32,8 @@ angular.module('questionaryApp')
 
       // is it a necessity profile and is on the correct section?
       if( FondesoSpecialCase.checkForNecessityProfile($scope.sections, newValue) ){
-        alert('Se detectó un perfil de necesidad');
+        // we've got to redirect this to the necessity funds
+        $location.url( redirectTo('/necesidad-startup/') );
       }
 
       // is it a professional profile and is on the correct section?
@@ -39,4 +41,12 @@ angular.module('questionaryApp')
         alert('Se detectó un perfil de profesionista');
       }
     }, true);
+
+    // private
+
+    function redirectTo(uri) {
+      console.log('/profile/' + uri);
+      return '/profile/' + uri;
+    }
+
   }]);
