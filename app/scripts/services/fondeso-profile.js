@@ -2,7 +2,7 @@
 
 angular.module('questionaryApp')
   .service('FondesoProfile', ['$http', function($http){
-    var baseUrl = 'http://fondeso-staging.herokuapp.com';
+    var baseUrl = 'http://fondeso.herokuapp.com';
     var api = {
       all: function(){
         var url = baseUrl + '/funds.json';
