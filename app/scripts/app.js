@@ -28,11 +28,7 @@ angular
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
-      .when('/fondos/:category', {
-        templateUrl: 'views/fund.html',
-        controller: 'FundCtrl'
-      })
-      .when('/fondos/:category/:stage', {
+      .when('/profile/:category', {
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })

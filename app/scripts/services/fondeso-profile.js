@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .service('Fund', ['$http', function($http){
+  .service('FondesoProfile', ['$http', function($http){
     var baseUrl = 'http://fondeso.herokuapp.com/profile';
     var api = {
       all: function(){
@@ -9,13 +9,11 @@ angular.module('questionaryApp')
         // var url = "http://ip.jsontest.com/";
         return $http.get(url);
       },
-      category: function(category, stage){
-        var url = baseUrl + '/categoria/' + category + '/';
-        if(angular.isDefined(stage)) url += stage + '/';
+      category: function(category){
+        var url = baseUrl + '/' + category + '/';
         console.log(url);
         return $http.get(url);
       }
     }
-
     return api;
   }]);
