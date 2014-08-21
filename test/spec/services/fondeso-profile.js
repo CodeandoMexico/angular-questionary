@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: fondesoProfile', function () {
+describe('Service: fondesoSpecialCase', function () {
 
   // load the service's module
   beforeEach(module('questionaryApp'));
 
   // instantiate service
-  var fondesoProfile;
-  beforeEach(inject(function (_fondesoProfile_) {
-    fondesoProfile = _fondesoProfile_;
+  var fondesoSpecialCase;
+  beforeEach(inject(function (_fondesoSpecialCase_) {
+    fondesoSpecialCase = _fondesoSpecialCase_;
   }));
 
   it('should do something', function () {
-    expect(!!fondesoProfile).toBe(true);
+    expect(!!fondesoSpecialCase).toBe(true);
   });
 
 });

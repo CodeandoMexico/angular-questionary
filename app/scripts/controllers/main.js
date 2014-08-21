@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', '$timeout', 'Questionary', 'Fund', 'FondesoProfile', function ($scope, $location, $anchorScroll, $timeout, Questionary, Fund, FondesoProfile) {
+  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', '$timeout', 'Questionary', 'Fund', 'FondesoSpecialCase', function ($scope, $location, $anchorScroll, $timeout, Questionary, Fund, FondesoSpecialCase) {
     // types of questions are: text, number, radio, checkbox
     $scope.sections = Questionary.sections;
     $scope.walkedPath = null;
@@ -30,12 +30,12 @@ angular.module('questionaryApp')
       if (newValue === oldValue) { return ; }
 
       // is it a necessity profile and is on the correct section?
-      if( FondesoProfile.checkForNecessityProfile($scope.sections, newValue) ){
+      if( FondesoSpecialCase.checkForNecessityProfile($scope.sections, newValue) ){
         alert('Se detectó un perfil de necesidad');
       }
 
       // is it a professional profile and is on the correct section?
-      if( FondesoProfile.checkForProfessionalProfile($scope.sections, newValue) ){
+      if( FondesoSpecialCase.checkForProfessionalProfile($scope.sections, newValue) ){
         alert('Se detectó un perfil de profesionista');
       }
     }, true);

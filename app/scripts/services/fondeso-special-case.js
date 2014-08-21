@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name questionaryApp.fondesoProfile
+ * @name questionaryApp.fondesoSpecialCase
  * @description
- * # fondesoProfile
+ * # fondesoSpecialCase
  * Service in the questionaryApp.
  */
 angular.module('questionaryApp')
-  .service('FondesoProfile', ['Questionary', function fondesoProfile(Questionary) {
+  .service('FondesoSpecialCase', ['Questionary', function fondesoSpecialCase(Questionary) {
     var forQuestionAnswerShouldBe =  function (question, givenAnswer){
       // let's see if the question is equal to this.
       switch (question) {
