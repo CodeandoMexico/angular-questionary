@@ -12,7 +12,7 @@ angular.module('questionaryApp')
       selectedItems: $scope.fundSelected,
       multiSelect: false,
       columnDefs: [
-        { field: 'nombre', displayName: 'Nombre del Fondo', cellTemplate: '<div class="cell-background"><div class="ngCellText">{{row.getProperty(col.field)}}</div></div>' },
+        { field: 'name', displayName: 'Nombre del Fondo', cellTemplate: '<div class="cell-background"><div class="ngCellText">{{row.getProperty(col.field)}}</div></div>' },
         // { field: 'institucion', displayName: 'Institución' },
         // { field: 'informes', displayName: 'Informes' }
       ]

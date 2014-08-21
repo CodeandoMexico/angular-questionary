@@ -24,7 +24,7 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/fondos', {
+      .when('/profile', {
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })

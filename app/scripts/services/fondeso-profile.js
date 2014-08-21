@@ -2,15 +2,15 @@
 
 angular.module('questionaryApp')
   .service('FondesoProfile', ['$http', function($http){
-    var baseUrl = 'http://fondeso.herokuapp.com/profile';
+    var baseUrl = 'http://fondeso.herokuapp.com';
     var api = {
       all: function(){
-        var url = baseUrl + '/';
+        var url = baseUrl + '/funds.json';
         // var url = "http://ip.jsontest.com/";
         return $http.get(url);
       },
       category: function(category){
-        var url = baseUrl + '/' + category + '/';
+        var url = baseUrl + '/profile/' + category + '/';
         console.log(url);
         return $http.get(url);
       }
