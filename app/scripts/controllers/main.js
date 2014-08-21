@@ -33,7 +33,7 @@ angular.module('questionaryApp')
       // is it a necessity profile and is on the correct section?
       if( FondesoSpecialCase.checkForNecessityProfile($scope.sections, newValue) ){
         // we've got to redirect this to the necessity funds
-        $location.url( redirectTo('/necesidad-startup/') );
+        $location.url( redirectTo('necesidad-startup') );
       }
 
       // is it a professional profile and is on the correct section?
