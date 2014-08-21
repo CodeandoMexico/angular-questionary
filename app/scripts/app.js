@@ -10,8 +10,6 @@ angular
     'questionModule'
   ])
   .run(['$http', function($http){
-    var baseUrl = 'http://fondeso.herokuapp.com/';
-    $http.get(baseUrl); // establish the first handshake
   }])
   .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
     //Enable cross domain calls
