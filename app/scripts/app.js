@@ -10,12 +10,7 @@ angular
     'questionModule'
   ])
   .run(['$http', function($http){
-<<<<<<< HEAD
-    // var baseUrl = 'http://localhost:3000/';
-    var baseUrl = 'http://fondeso-backend.herokuapp.com/';
-=======
     var baseUrl = 'http://fondeso.herokuapp.com/';
->>>>>>> dev
     $http.get(baseUrl); // establish the first handshake
   }])
   .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
