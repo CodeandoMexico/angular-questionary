@@ -8,11 +8,23 @@ angular.module('questionaryApp')
       type     : 'select',
       body     : {
         options  : [
-          {value: 'a', label: 'Del. 1' },
-          {value: 'b', label: 'Del. 2' },
-          {value: 'c', label: 'Del. 4' },
-          {value: 'd', label: 'Del. 8' },
-          {value: 'e', label: 'Del. 16'}
+          {value: 'a', label: 'Álvaro Obregón' },
+          {value: 'b', label: 'Azcapotzalco' },
+          {value: 'c', label: 'Benito Juárez' },
+          {value: 'd', label: 'Coyoacán' },
+          {value: 'e', label: 'Cuajimalpa de Morelos' },
+          {value: 'f', label: 'Cuauhtémoc' },
+          {value: 'g', label: 'Gustavo A. Madero' },
+          {value: 'h', label: 'Iztacalco' },
+          {value: 'i', label: 'Iztapalapa' },
+          {value: 'j', label: 'Magdalena Contreras' },
+          {value: 'k', label: 'Miguel Hidalgo' },
+          {value: 'l', label: 'Milpa Alta' },
+          {value: 'm', label: 'Tláhuac' },
+          {value: 'n', label: 'Tlalpan' },
+          {value: 'o', label: 'Venustiano Carranza' },
+          {value: 'p', label: 'Xochimilco' },
+          {value: 'q', label: 'Fuera del DF'}
         ]
       }
     };
@@ -287,8 +299,8 @@ angular.module('questionaryApp')
           questions : [
             {
               id     : '3.A.1',
-              title  : '¿Cuánto tiempo lleva este proyecto/negocio en operación?',
-              help   : 'Escribe en el recuadro tu respuesta.',
+              title  : '¿Cuántos años lleva este proyecto/negocio en operación?',
+              help   : 'Escribe el tiempo en años. Si lleva menos de un año, escribe 1.',
               type   : 'number',
               body   : {
                 value  : 1,
