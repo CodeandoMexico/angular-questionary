@@ -299,8 +299,8 @@ angular.module('questionaryApp')
           questions : [
             {
               id     : '3.A.1',
-              title  : '¿Cuánto tiempo lleva este proyecto/negocio en operación?',
-              help   : 'Escribe en el recuadro tu respuesta.',
+              title  : '¿Cuántos años lleva este proyecto/negocio en operación?',
+              help   : 'Escribe el tiempo en años. Si lleva menos de un año, escribe 1.',
               type   : 'number',
               body   : {
                 value  : 1,
