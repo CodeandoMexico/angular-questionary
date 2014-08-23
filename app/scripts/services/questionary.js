@@ -52,6 +52,7 @@ angular.module('questionaryApp')
               // help   : 'Escribe el valor de la respuesta',
               type   : 'number',
               body   : {
+                minimumValue : 1,
                 value  : 35,
               }
             },
@@ -210,7 +211,8 @@ angular.module('questionaryApp')
               help   : 'Escribe en el recuadro tu respuesta.',
               type   : 'number',
               body   : {
-                value  : 0,
+                minimumValue : 1,
+                value  : 1,
               }
             },
           ],
@@ -226,6 +228,7 @@ angular.module('questionaryApp')
               help   : 'Escribe en el recuadro tu respuesta.',
               type   : 'number',
               body   : {
+                minimumValue : 0,
                 value  : 0,
               }
             },
@@ -303,6 +306,7 @@ angular.module('questionaryApp')
               help   : 'Escribe el tiempo en años. Si lleva menos de un año, escribe 1.',
               type   : 'number',
               body   : {
+                minimumValue : 1,
                 value  : 1,
               }
             },
@@ -461,7 +465,7 @@ angular.module('questionaryApp')
         '4.A': {
           identifier : '4.A Prioridades / Problemas',
           grouped    : false,
-          next       : '5.A.1',
+          // next       : '5.A.1',
           questions : [
             {
               id     : '4.A.1',
@@ -484,47 +488,47 @@ angular.module('questionaryApp')
             }
           ]
         },
-        '5.A.1': {
-          identifier : '5.A Sección de desempate',
-          grouped    : false,
-          next       : '5.A.2',
-          questions : [
-            {
-              title  : 'Las siguientes frases describen diferentes tipos de empresas, elige la opción que más se identifique con tu empresa.',
-              help   : 'Selecciona la respuesta con la que más te identificas.',
-              type   : 'radio',
-              body     : {
-                selected_value    : 'a',
-                options  : [
-                  { value: 'a', label: 'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera' },
-                  { value: 'b', label: 'Mi empresa es igual a muchas otras y/o lo que vendo también lo venden muchos otros, pero aun así puedo obtener ganancias' },
-                  { value: 'c', label: 'Lo que más me gusta de mi negocio, independientemente de las ganancias que tenga, es que me permite hacer lo que más me gusta y ser independiente' },
-                  { value: 'd', label: 'Una parte central de mi empresa es desarrollar la creatividad y/o la expresión artística' },
-                  { value: 'e', label: 'El objetivo central de mi empresa es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente' },
-                  { value: 'f', label: 'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora' }
-                ]
-              }
-            },
-          ]
-        },
-        '5.A.2': {
-          identifier : '5.A Sección de desempate',
-          grouped    : false,
-          questions : [
-            {
-              title  : 'Las siguientes frases describen el estado de desarrollo de distintas empresas, elige la opción que más se identifique con tu proyecto',
-              help   : 'Escribe el valor de la respuesta',
-              type   : 'radio',
-              body     : {
-                selected_value    : 'a',
-                options  : [
-                  { value: 'a', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día'},
-                  { value: 'b', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados'},
-                  ]
-              }
-            }
-          ]
-        },
+        // '5.A.1': {
+        //   identifier : '5.A Sección de desempate',
+        //   grouped    : false,
+        //   next       : '5.A.2',
+        //   questions : [
+        //     {
+        //       title  : 'Las siguientes frases describen diferentes tipos de empresas, elige la opción que más se identifique con tu empresa.',
+        //       help   : 'Selecciona la respuesta con la que más te identificas.',
+        //       type   : 'radio',
+        //       body     : {
+        //         selected_value    : 'a',
+        //         options  : [
+        //           { value: 'a', label: 'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera' },
+        //           { value: 'b', label: 'Mi empresa es igual a muchas otras y/o lo que vendo también lo venden muchos otros, pero aun así puedo obtener ganancias' },
+        //           { value: 'c', label: 'Lo que más me gusta de mi negocio, independientemente de las ganancias que tenga, es que me permite hacer lo que más me gusta y ser independiente' },
+        //           { value: 'd', label: 'Una parte central de mi empresa es desarrollar la creatividad y/o la expresión artística' },
+        //           { value: 'e', label: 'El objetivo central de mi empresa es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente' },
+        //           { value: 'f', label: 'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora' }
+        //         ]
+        //       }
+        //     },
+        //   ]
+        // },
+        // '5.A.2': {
+        //   identifier : '5.A Sección de desempate',
+        //   grouped    : false,
+        //   questions : [
+        //     {
+        //       title  : 'Las siguientes frases describen el estado de desarrollo de distintas empresas, elige la opción que más se identifique con tu proyecto',
+        //       help   : 'Escribe el valor de la respuesta',
+        //       type   : 'radio',
+        //       body     : {
+        //         selected_value    : 'a',
+        //         options  : [
+        //           { value: 'a', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día'},
+        //           { value: 'b', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados'},
+        //           ]
+        //       }
+        //     }
+        //   ]
+        // },
         '2.C.1': {
           identifier : '2.C Perfiles',
           grouped    : false,
@@ -686,7 +690,7 @@ angular.module('questionaryApp')
         '4.C': {
           identifier : '4.C Prioridades / Problemas',
           grouped    : false,
-          next: '5.C',
+          // next: '5.C',
           questions : [
             {
               id     : '4.C.1',
@@ -707,29 +711,29 @@ angular.module('questionaryApp')
             },
           ]
         },
-        '5.C': {
-          identifier : '5.C Sección de desempate',
-          grouped    : false,
-          questions : [
-            {
-              id     : '5.C.1',
-              title  : 'Las siguientes frases describen diferentes motivos o maneras de iniciar una empresa, elige la opción que más se identifique con tu proyecto.',
-              help   : 'Escribe el valor de la respuesta',
-              type   : 'radio',
-              body   : {
-                selected_value : 'a',
-                options: [
-                  { value: 'a', label: 'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.' },
-                  { value: 'b', label: 'Mi empresa será similar a muchas otras y mi producto ya se vende, pero aun así puedo obtener ganancias.' },
-                  { value: 'c', label: 'Mi negocio me permitirá hacer lo que más me gusta y ser independiente.' },
-                  { value: 'd', label: 'Lo que quiero es desarrollar mi creatividad y/o expresión artística.' },
-                  { value: 'e', label: 'El objetivo central de mi proyecto es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente.' },
-                  { value: 'f', label: 'Tengo una idea innovadora con el potencial de ser exitosa y rentable.'}
-                ]
-              }
-            },
-          ]
-        },
+        // '5.C': {
+        //   identifier : '5.C Sección de desempate',
+        //   grouped    : false,
+        //   questions : [
+        //     {
+        //       id     : '5.C.1',
+        //       title  : 'Las siguientes frases describen diferentes motivos o maneras de iniciar una empresa, elige la opción que más se identifique con tu proyecto.',
+        //       help   : 'Escribe el valor de la respuesta',
+        //       type   : 'radio',
+        //       body   : {
+        //         selected_value : 'a',
+        //         options: [
+        //           { value: 'a', label: 'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.' },
+        //           { value: 'b', label: 'Mi empresa será similar a muchas otras y mi producto ya se vende, pero aun así puedo obtener ganancias.' },
+        //           { value: 'c', label: 'Mi negocio me permitirá hacer lo que más me gusta y ser independiente.' },
+        //           { value: 'd', label: 'Lo que quiero es desarrollar mi creatividad y/o expresión artística.' },
+        //           { value: 'e', label: 'El objetivo central de mi proyecto es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente.' },
+        //           { value: 'f', label: 'Tengo una idea innovadora con el potencial de ser exitosa y rentable.'}
+        //         ]
+        //       }
+        //     },
+        //   ]
+        // },
       }
     };
 
@@ -737,8 +741,8 @@ angular.module('questionaryApp')
     // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    // var baseUrl = 'http://localhost:3000/';
-    var baseUrl = 'http://fondeso.herokuapp.com/';
+    // var baseUrl = 'http://localhost:3000/profile/';
+    var baseUrl = 'http://fondeso.herokuapp.com/profile/';
     questionary.save = null;
 
     questionary.submit = function(data) {
