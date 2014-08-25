@@ -62,6 +62,11 @@ angular.module('questionaryApp')
       if( FondesoFilter.checkForRuralFilter(sections, walkedPath) ){
         alert('Se detectó que es un negocio rural');
       }
+
+      if( FondesoFilter.checkForYoungFilter(sections, walkedPath) ){
+        alert('Se detectó que es una persona menor a 30 años');
+      }
+
     }
 
   }]);
