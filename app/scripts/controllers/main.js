@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoProfile', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoProfile) {
+  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoFilter', 'FondesoProfile', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile) {
     // types of questions are: text, number, radio, checkbox
     $scope.sections = Questionary.sections;
     $scope.walkedPath = null;
@@ -40,6 +40,10 @@ angular.module('questionaryApp')
       if( FondesoSpecialCase.checkForProfessionalProfile($scope.sections, newValue) ){
         alert('Se detectó un perfil de profesionista');
       }
+
+      // check all filters
+      checkAllFilters($scope.sections, newValue);
+
     }, true);
 
     // private
@@ -47,6 +51,17 @@ angular.module('questionaryApp')
     function redirectTo(uri) {
       console.log('/profile/' + uri);
       return '/profile/' + uri;
+    }
+
+    function checkAllFilters(sections, walkedPath){
+      // is the requesting person a women
+      if( FondesoFilter.checkForWomenFilter(sections, walkedPath) ){
+        alert('Se detectó que es mujer');
+      }
+
+      // if( FondesoFilter.checkForRuralFilter(sections, walkedPath) ){
+      //   alert('Se detectó que es un negocio rural');
+      // }
     }
 
   }]);
