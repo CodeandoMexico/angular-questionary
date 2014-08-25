@@ -185,16 +185,16 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                { value: 'a', label: 'Industrias manufactureras'  },
-                { value: 'b', label: 'Comercio' },
-                { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
-                { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
-                { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
-                { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal' },
-                { value: 'h', label: 'Tecnologías de la información y la comunicación' },
-                { value: 'i', label: 'Otros' },
-                { value: 'j', label: 'No sé' }
+                  { value: 'a', label: 'Industrias manufactureras'  },
+                  { value: 'b', label: 'Comercio' },
+                  { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                  { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
+                  { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                  { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
+                  { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                  { value: 'h', label: 'Tecnologías de la información y la comunicación' },
+                  { value: 'i', label: 'Otros' },
+                  { value: 'j', label: 'No sé' }
                 ]
               }
             },

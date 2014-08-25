@@ -59,9 +59,9 @@ angular.module('questionaryApp')
         alert('Se detectó que es mujer');
       }
 
-      // if( FondesoFilter.checkForRuralFilter(sections, walkedPath) ){
-      //   alert('Se detectó que es un negocio rural');
-      // }
+      if( FondesoFilter.checkForRuralFilter(sections, walkedPath) ){
+        alert('Se detectó que es un negocio rural');
+      }
     }
 
   }]);
