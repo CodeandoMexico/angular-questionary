@@ -49,7 +49,9 @@ angular.module('questionaryApp')
                    angular.equals(givenAnswer[1], 'c') ||
                    angular.equals(givenAnswer[1], 'd')
                  );
-        case 'export':
+        case 'export_entrepeneur':
+          return angular.isNumber(givenAnswer);
+        case 'export_business':
           return (
                    arrayContains(givenAnswer[0], 'b') ||
                    arrayContains(givenAnswer[0], 'c') ||
@@ -143,8 +145,8 @@ angular.module('questionaryApp')
       return extractAnswerFromQuestion(sections['3.A.2'].questions[0]);
     };
 
-    var fetchPriorityAnswers = function(sections, optionValue) {
-      return extractAnswerFromQuestion(sections['4.A'].questions[0], optionValue);
+    var fetchPriorityAnswers = function(sector, optionValue) {
+      return extractAnswerFromQuestion(sector.questions[0], optionValue);
     }
 
     var fetchInnovationAnswers = function(sector) {
@@ -217,9 +219,15 @@ angular.module('questionaryApp')
 
       checkForExportFilter: function (sections, walkedPath) {
         var exportAnswer = fetchExportAnswer(sections);
-        var priorities = fetchPriorityAnswers(sections, 'g');
-        return forFilterAnswerShouldBe('export', [exportAnswer, priorities]) &&
-               hasWalkedPath('4.A', walkedPath);
+        var firstPathPriorities = fetchPriorityAnswers(sections['4.A'], 'g');
+        var secondPathPriorities = fetchPriorityAnswers(sections['4.C'], 'f');
+        return (
+                 forFilterAnswerShouldBe('export_business', [exportAnswer, firstPathPriorities]) &&
+                 hasWalkedPath('4.A', walkedPath)
+               ) || (
+                 forFilterAnswerShouldBe('export_entrepeneur', secondPathPriorities) &&
+                 hasWalkedPath('4.C', walkedPath)
+               );
       },
 
       checkForManufactureFilter: function (sections, walkedPath) {
@@ -269,5 +277,7 @@ angular.module('questionaryApp')
                  forFilterAnswerShouldBe('tourism', secondPathAnswers)
                );
       },
+
+      // checkForAccessToITFilter:
     };
   }]);
