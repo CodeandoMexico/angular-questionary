@@ -82,6 +82,10 @@ angular.module('questionaryApp')
       if( FondesoFilter.checkForCollegeFilter(sections, walkedPath) ){
         alert('Se activó el filtro de colegio');
       }
+
+      if( FondesoFilter.checkForExportFilter(sections, walkedPath) ){
+        alert('Se activó el filtro de exportación');
+      }
     }
 
   }]);

@@ -49,12 +49,20 @@ angular.module('questionaryApp')
                    angular.equals(givenAnswer[1], 'c') ||
                    angular.equals(givenAnswer[1], 'd')
                  );
+        case 'export':
+          return (
+                   arrayContains(givenAnswer[0], 'b') ||
+                   arrayContains(givenAnswer[0], 'c') ||
+                   arrayContains(givenAnswer[0], 'd') ||
+                   arrayContains(givenAnswer[0], 'e')
+                 ) && angular.isNumber(givenAnswer[1]);
+
         default:
           return false;
       }
     };
 
-    var extractAnswerFromQuestion = function (question){
+    var extractAnswerFromQuestion = function (question, optionValue){
       /**
         There are various type of questions: ordinal, select, radio, checkbox, numeric, etc.
         Each of this questions has a different way to access the answers so..
@@ -65,6 +73,22 @@ angular.module('questionaryApp')
         case 'select':
           if ( angular.isUndefined(question.body.selected_value) ) return undefined;
           return question.body.selected_value.value;
+        case 'checkbox':
+          var answers = [];
+          angular.forEach(question.body.options, function(opt){
+            if( opt.checked === true ){
+              this.push(opt.value);
+            }
+          }, answers);
+          return answers;
+        case 'prioritize':
+          var priority = null;
+          angular.forEach(question.body.options, function(opt){
+            if( opt.value === optionValue ){
+              priority = opt.priority;
+            }
+          });
+          return priority;
         case 'number':
           return question.body.value;
 
@@ -75,6 +99,10 @@ angular.module('questionaryApp')
 
     var hasWalkedPath = function(pathId, walkedPath) {
       return Questionary.walkedPathHasSection(pathId, walkedPath);
+    }
+
+    var arrayContains = function(arr, value) {
+      return arr.indexOf(value) !== -1;
     }
 
     /**
@@ -92,13 +120,21 @@ angular.module('questionaryApp')
       return extractAnswerFromQuestion(sector.questions[0]);
     };
 
-    var fetchAgeAnswer = function(sections){
+    var fetchAgeAnswer = function(sections) {
       return extractAnswerFromQuestion(sections['1.B'].questions[0]);
     };
 
-    var fetchEducationAnswer = function(sections){
+    var fetchEducationAnswer = function(sections) {
       return extractAnswerFromQuestion(sections['1.B'].questions[2]);
     };
+
+    var fetchExportAnswer = function(sections) {
+      return extractAnswerFromQuestion(sections['3.A.2'].questions[0]);
+    };
+
+    var fetchPriorityAnswers = function(sections, optionValue) {
+      return extractAnswerFromQuestion(sections['4.A'].questions[0], optionValue);
+    }
 
     return {
       // helpers
@@ -162,6 +198,13 @@ angular.module('questionaryApp')
         var education = fetchEducationAnswer(sections);
         return forFilterAnswerShouldBe('college', [age, education]) &&
                hasWalkedPath('1.B', walkedPath);
+      },
+
+      checkForExportFilter: function (sections, walkedPath) {
+        var exportAnswer = fetchExportAnswer(sections);
+        var priorities = fetchPriorityAnswers(sections, 'g');
+        return forFilterAnswerShouldBe('export', [exportAnswer, priorities]) &&
+               hasWalkedPath('4.A', walkedPath);
       },
     };
   }]);
