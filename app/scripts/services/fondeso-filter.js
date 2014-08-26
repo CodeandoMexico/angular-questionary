@@ -70,6 +70,8 @@ angular.module('questionaryApp')
          case 'access_to_it':
            return angular.isNumber(givenAnswer) ||
                   angular.equals(givenAnswer, 'h');
+         case 'native':
+           return angular.equals(givenAnswer, 'b')
 
         default:
           return false;
@@ -154,6 +156,10 @@ angular.module('questionaryApp')
 
     var fetchInnovationAnswers = function(sector) {
       return extractAnswerFromQuestion(sector.questions[0]);
+    };
+
+    var fetchNativeAnswer = function(sections) {
+      return extractAnswerFromQuestion(sections['1.B'].questions[5]);
     };
 
     return {
@@ -291,6 +297,11 @@ angular.module('questionaryApp')
                  forFilterAnswerShouldBe('access_to_it', access_to_it) &&
                  hasWalkedPath('2.C.5', walkedPath)
                );
+      },
+
+      checkForNativeFilter: function (sections, walkedPath) {
+        return hasWalkedPath('1.B', walkedPath) &&
+               forFilterAnswerShouldBe('native', fetchNativeAnswer(sections));
       },
     };
   }]);

@@ -120,9 +120,9 @@ angular.module('questionaryApp')
               body     : {
                 selected_value    : 'a',
                 options  : [
-                  { value: 'a', label: 'Sí' },
-                  { value: 'b', label: 'No' }
-                  ]
+                  { value: 'a', label: 'No' },
+                  { value: 'b', label: 'Sí' }
+                ]
               }
             },
           ]
