@@ -82,6 +82,7 @@ angular.module('questionaryApp')
       $scope.filters.EXP = FondesoFilter.checkForExportFilter(sections, walkedPath);
       $scope.filters.MAN = FondesoFilter.checkForManufactureFilter(sections, walkedPath);
       $scope.filters.PIN = FondesoFilter.checkForIntellectualPropertyFilter(sections, walkedPath);
+      $scope.filters.CON = FondesoFilter.checkForConstructionFilter(sections, walkedPath);
 
       console.log($scope.filters);
 

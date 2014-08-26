@@ -60,6 +60,8 @@ angular.module('questionaryApp')
            return angular.equals(givenAnswer, 'a');
          case 'intellectual_property':
            return angular.equals(givenAnswer, 'a');
+         case 'construction':
+           return angular.equals(givenAnswer, 'd');
 
         default:
           return false;
@@ -238,6 +240,18 @@ angular.module('questionaryApp')
                ) || (
                  hasWalkedPath('2.C.6', walkedPath) &&
                  forFilterAnswerShouldBe('intellectual_property', secondPathAnswers)
+               );
+      },
+
+      checkForConstructionFilter: function (sections, walkedPath) {
+        var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
+        var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 hasWalkedPath('2.A.3', walkedPath) &&
+                 forFilterAnswerShouldBe('construction', firstPathAnswers)
+               ) || (
+                 hasWalkedPath('2.C.5', walkedPath) &&
+                 forFilterAnswerShouldBe('construction', secondPathAnswers)
                );
       },
     };
