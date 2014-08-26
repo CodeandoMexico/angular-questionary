@@ -49,6 +49,10 @@ angular.module('questionaryApp')
                     angular.equals(givenAnswer[1][1], 'i') ||
                     angular.equals(givenAnswer[1][1], 'j')
                  );
+        case 'convenience_store':
+          return angular.equals(givenAnswer[0], 'b') ||
+                 angular.equals(givenAnswer[1], 'b');
+
         default:
           return false;
       }
@@ -136,6 +140,15 @@ angular.module('questionaryApp')
                  Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
                  Questionary.walkedPathHasSection('2.C.5', walkedPath)
                );
-      }
+      },
+
+      checkForConvenienceStoreFilter: function (sections, walkedPath) {
+        var givenAnswer = fetchBusinessSectorAnswers(sections);
+        return forFilterAnswerShouldBe('convenience_store', givenAnswer) &&
+               (
+                 Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
+                 Questionary.walkedPathHasSection('2.C.5', walkedPath)
+               );
+      },
     };
   }]);

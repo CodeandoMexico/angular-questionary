@@ -75,6 +75,9 @@ angular.module('questionaryApp')
         alert('Se activó el filtro de artesano');
       }
 
+      if( FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath) ){
+        alert('Se activó el filtro de tienda de abarrotes');
+      }
     }
 
   }]);
