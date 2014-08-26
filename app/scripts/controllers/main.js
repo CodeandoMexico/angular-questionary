@@ -74,10 +74,10 @@ angular.module('questionaryApp')
       if( FondesoFilter.checkForArtisanFilter(sections, walkedPath) ){
         alert('Se activó el filtro de artesano');
       }
-      
-      // if( FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath) ){
-      //   alert('Se activó el filtro de tienda de abarrotes');
-      // }
+
+      if( FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath) ){
+        alert('Se activó el filtro de tienda de abarrotes');
+      }
     }
 
   }]);

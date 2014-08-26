@@ -42,8 +42,7 @@ angular.module('questionaryApp')
                     angular.equals(givenAnswer[1], 'j')
                  );
         case 'convenience_store':
-          return angular.equals(givenAnswer[0], 'b') ||
-                 angular.equals(givenAnswer[1], 'b');
+          return angular.equals(givenAnswer, 'b');
 
         default:
           return false;
@@ -137,13 +136,16 @@ angular.module('questionaryApp')
                );
       },
 
-      // checkForConvenienceStoreFilter: function (sections, walkedPath) {
-      //   var givenAnswer = fetchBusinessSectorAnswers(sections);
-      //   return forFilterAnswerShouldBe('convenience_store', givenAnswer) &&
-      //          (
-      //            Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
-      //            Questionary.walkedPathHasSection('2.C.5', walkedPath)
-      //          );
-      // },
+      checkForConvenienceStoreFilter: function (sections, walkedPath) {
+        var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
+        var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 Questionary.walkedPathHasSection('2.A.3', walkedPath) &&
+                 forFilterAnswerShouldBe('convenience_store', firstPathAnswers)
+               ) || (
+                 Questionary.walkedPathHasSection('2.C.5', walkedPath) &&
+                 forFilterAnswerShouldBe('convenience_store', secondPathAnswers)
+               );
+      },
     };
   }]);
