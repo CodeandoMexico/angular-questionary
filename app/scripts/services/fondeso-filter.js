@@ -73,6 +73,10 @@ angular.module('questionaryApp')
       }
     };
 
+    var hasWalkedPath = function(pathId, walkedPath) {
+      return Questionary.walkedPathHasSection(pathId, walkedPath);
+    }
+
     /**
       -- Fetch Methods --
 
@@ -101,17 +105,17 @@ angular.module('questionaryApp')
       checkForWomenFilter: function (sections, walkedPath) {
         var givenAnswer = fetchSexAnswer(sections);
         return forFilterAnswerShouldBe('sex_is_women', givenAnswer) &&
-               Questionary.walkedPathHasSection('1.B', walkedPath);
+               hasWalkedPath('1.B', walkedPath);
       },
 
       checkForRuralFilter: function (sections, walkedPath) {
         var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
         var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
         return (
-                 Questionary.walkedPathHasSection('2.A.3', walkedPath) &&
+                 hasWalkedPath('2.A.3', walkedPath) &&
                  forFilterAnswerShouldBe('business_is_rural_sector', firstPathAnswers)
                ) || (
-                 Questionary.walkedPathHasSection('2.C.5', walkedPath) &&
+                 hasWalkedPath('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('business_is_rural_sector', secondPathAnswers)
                );
       },
@@ -119,13 +123,13 @@ angular.module('questionaryApp')
       checkForYoungFilter: function (sections, walkedPath) {
         var givenAnswer = fetchAgeAnswer(sections);
         return forFilterAnswerShouldBe('younger_than_30', givenAnswer) &&
-               Questionary.walkedPathHasSection('1.B', walkedPath);
+               hasWalkedPath('1.B', walkedPath);
       },
 
       checkForElderlyFilter: function (sections, walkedPath) {
         var givenAnswer = fetchAgeAnswer(sections);
         return forFilterAnswerShouldBe('older_or_equal_to_60', givenAnswer) &&
-               Questionary.walkedPathHasSection('1.B', walkedPath);
+               hasWalkedPath('1.B', walkedPath);
       },
 
       checkForArtisanFilter: function (sections, walkedPath) {
@@ -133,10 +137,10 @@ angular.module('questionaryApp')
         var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
         var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
         return (
-                 Questionary.walkedPathHasSection('2.A.3', walkedPath) &&
+                 hasWalkedPath('2.A.3', walkedPath) &&
                  forFilterAnswerShouldBe('artisans', [education, firstPathAnswers])
                ) || (
-                 Questionary.walkedPathHasSection('2.C.5', walkedPath) &&
+                 hasWalkedPath('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('artisans', [education, secondPathAnswers])
                );
       },
@@ -145,10 +149,10 @@ angular.module('questionaryApp')
         var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
         var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
         return (
-                 Questionary.walkedPathHasSection('2.A.3', walkedPath) &&
+                 hasWalkedPath('2.A.3', walkedPath) &&
                  forFilterAnswerShouldBe('convenience_store', firstPathAnswers)
                ) || (
-                 Questionary.walkedPathHasSection('2.C.5', walkedPath) &&
+                 hasWalkedPath('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('convenience_store', secondPathAnswers)
                );
       },
@@ -157,7 +161,7 @@ angular.module('questionaryApp')
         var age = fetchAgeAnswer(sections);
         var education = fetchEducationAnswer(sections);
         return forFilterAnswerShouldBe('college', [age, education]) &&
-               Questionary.walkedPathHasSection('1.B', walkedPath);
+               hasWalkedPath('1.B', walkedPath);
       },
     };
   }]);
