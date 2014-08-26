@@ -67,6 +67,9 @@ angular.module('questionaryApp')
          case 'tourism':
            return angular.equals(givenAnswer, 'c') ||
                   angular.equals(givenAnswer, 'i');
+         case 'access_to_it':
+           return angular.isNumber(givenAnswer) ||
+                  angular.equals(givenAnswer, 'h');
 
         default:
           return false;
@@ -278,6 +281,16 @@ angular.module('questionaryApp')
                );
       },
 
-      // checkForAccessToITFilter:
+      checkForAccessToITFilter: function (sections, walkedPath) {
+        var firstPathPriorities = fetchPriorityAnswers(sections['4.A'], 'h');
+        var access_to_it = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 forFilterAnswerShouldBe('access_to_it', firstPathPriorities) &&
+                 hasWalkedPath('4.A', walkedPath)
+               ) || (
+                 forFilterAnswerShouldBe('access_to_it', access_to_it) &&
+                 hasWalkedPath('2.C.5', walkedPath)
+               );
+      },
     };
   }]);

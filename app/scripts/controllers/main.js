@@ -84,7 +84,7 @@ angular.module('questionaryApp')
       $scope.filters.PIN = FondesoFilter.checkForIntellectualPropertyFilter(sections, walkedPath);
       $scope.filters.CON = FondesoFilter.checkForConstructionFilter(sections, walkedPath);
       $scope.filters.TUR = FondesoFilter.checkForTourismFilter(sections, walkedPath);
-      // $scope.filters.ATI = FondesoFilter.checkForAccessToITFilter(sections, walkedPath);
+      $scope.filters.ATI = FondesoFilter.checkForAccessToITFilter(sections, walkedPath);
 
       console.log($scope.filters);
 
