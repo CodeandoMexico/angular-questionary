@@ -14,7 +14,6 @@ angular.module('questionaryApp')
         For the given answers this methods checks if a filter should be
         activated(true) or not(false).
        */
-
        if ( angular.isUndefined(givenAnswer) ) {
          filter = 'answer_is_undefined';
        }
@@ -24,8 +23,7 @@ angular.module('questionaryApp')
         case 'sex_is_women':
           return angular.equals(givenAnswer, 'b');
         case 'business_is_rural_sector':
-          return angular.equals(givenAnswer[0], 'g') ||
-                 angular.equals(givenAnswer[1], 'g');
+          return angular.equals(givenAnswer, 'g');
         case 'younger_than_30':
           return givenAnswer < 30;
         case 'older_or_equal_to_60':
@@ -88,11 +86,8 @@ angular.module('questionaryApp')
       return sections['1.B'].questions[1].body.selected_value;
     };
 
-    var fetchBusinessSectorAnswers = function(sections) {
-      return [
-        extractAnswerFromQuestion(sections['2.A.3'].questions[0]),
-        extractAnswerFromQuestion(sections['2.C.5'].questions[0])
-      ];
+    var fetchBusinessSectorAnswers = function(sector) {
+      return extractAnswerFromQuestion(sector.questions[0]);
     };
 
     var fetchAgeAnswer = function(sections){
@@ -112,11 +107,14 @@ angular.module('questionaryApp')
       },
 
       checkForRuralFilter: function (sections, walkedPath) {
-        var givenAnswers = fetchBusinessSectorAnswers(sections);
-        return forFilterAnswerShouldBe('business_is_rural_sector', givenAnswers) &&
-               (
-                 Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
-                 Questionary.walkedPathHasSection('2.C.5', walkedPath)
+        var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
+        var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 Questionary.walkedPathHasSection('2.A.3', walkedPath) &&
+                 forFilterAnswerShouldBe('business_is_rural_sector', firstPathAnswers)
+               ) || (
+                 Questionary.walkedPathHasSection('2.C.5', walkedPath) &&
+                 forFilterAnswerShouldBe('business_is_rural_sector', secondPathAnswers)
                );
       },
 
@@ -131,24 +129,24 @@ angular.module('questionaryApp')
         return forFilterAnswerShouldBe('older_or_equal_to_60', givenAnswer) &&
                Questionary.walkedPathHasSection('1.B', walkedPath);
       },
-
-      checkForArtisanFilter: function (sections, walkedPath) {
-        var education = fetchEducationAnswer(sections);
-        var businessSector = fetchBusinessSectorAnswers(sections);
-        return forFilterAnswerShouldBe('artisans', [education, businessSector]) &&
-               (
-                 Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
-                 Questionary.walkedPathHasSection('2.C.5', walkedPath)
-               );
-      },
-
-      checkForConvenienceStoreFilter: function (sections, walkedPath) {
-        var givenAnswer = fetchBusinessSectorAnswers(sections);
-        return forFilterAnswerShouldBe('convenience_store', givenAnswer) &&
-               (
-                 Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
-                 Questionary.walkedPathHasSection('2.C.5', walkedPath)
-               );
-      },
+      //
+      // checkForArtisanFilter: function (sections, walkedPath) {
+      //   var education = fetchEducationAnswer(sections);
+      //   var businessSector = fetchBusinessSectorAnswers(sections);
+      //   return forFilterAnswerShouldBe('artisans', [education, businessSector]) &&
+      //          (
+      //            Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
+      //            Questionary.walkedPathHasSection('2.C.5', walkedPath)
+      //          );
+      // },
+      //
+      // checkForConvenienceStoreFilter: function (sections, walkedPath) {
+      //   var givenAnswer = fetchBusinessSectorAnswers(sections);
+      //   return forFilterAnswerShouldBe('convenience_store', givenAnswer) &&
+      //          (
+      //            Questionary.walkedPathHasSection('2.A.3', walkedPath) ||
+      //            Questionary.walkedPathHasSection('2.C.5', walkedPath)
+      //          );
+      // },
     };
   }]);
