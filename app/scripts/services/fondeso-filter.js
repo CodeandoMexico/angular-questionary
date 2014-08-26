@@ -56,6 +56,8 @@ angular.module('questionaryApp')
                    arrayContains(givenAnswer[0], 'd') ||
                    arrayContains(givenAnswer[0], 'e')
                  ) && angular.isNumber(givenAnswer[1]);
+         case 'manufacture':
+           return angular.equals(givenAnswer, 'a');
 
         default:
           return false;
@@ -205,6 +207,18 @@ angular.module('questionaryApp')
         var priorities = fetchPriorityAnswers(sections, 'g');
         return forFilterAnswerShouldBe('export', [exportAnswer, priorities]) &&
                hasWalkedPath('4.A', walkedPath);
+      },
+
+      checkForManufactureFilter: function (sections, walkedPath) {
+        var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
+        var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 hasWalkedPath('2.A.3', walkedPath) &&
+                 forFilterAnswerShouldBe('manufacture', firstPathAnswers)
+               ) || (
+                 hasWalkedPath('2.C.5', walkedPath) &&
+                 forFilterAnswerShouldBe('manufacture', secondPathAnswers)
+               );
       },
     };
   }]);

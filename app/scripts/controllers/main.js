@@ -54,38 +54,36 @@ angular.module('questionaryApp')
     }
 
     function checkAllFilters(sections, walkedPath){
+      $scope.filters = {
+        MUJ: false,
+        RUR: false,
+        JOV: false,
+        TER: false,
+        ART: false,
+        TAB: false,
+        BAC: false,
+        EXP: false,
+        MAN: false,
+        PIN: false,
+        CON: false,
+        TUR: false,
+        ATI: false,
+        IND: false,
+        TIC: false
+      };
       // is the requesting person a women
-      if( FondesoFilter.checkForWomenFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de mujer');
-      }
+      $scope.filters.MUJ = FondesoFilter.checkForWomenFilter(sections, walkedPath);
+      $scope.filters.RUR = FondesoFilter.checkForRuralFilter(sections, walkedPath);
+      $scope.filters.JOV = FondesoFilter.checkForYoungFilter(sections, walkedPath);
+      $scope.filters.TER = FondesoFilter.checkForElderlyFilter(sections, walkedPath);
+      $scope.filters.ART = FondesoFilter.checkForArtisanFilter(sections, walkedPath);
+      $scope.filters.TAB = FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath);
+      $scope.filters.BAC = FondesoFilter.checkForCollegeFilter(sections, walkedPath);
+      $scope.filters.EXP = FondesoFilter.checkForExportFilter(sections, walkedPath);
+      $scope.filters.MAN = FondesoFilter.checkForManufactureFilter(sections, walkedPath);
 
-      if( FondesoFilter.checkForRuralFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de un negocio rural');
-      }
+      console.log($scope.filters);
 
-      if( FondesoFilter.checkForYoungFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de una persona menor a 30 años');
-      }
-
-      if( FondesoFilter.checkForElderlyFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de una persona mayor o igual a 60 años');
-      }
-
-      if( FondesoFilter.checkForArtisanFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de artesano');
-      }
-
-      if( FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de tienda de abarrotes');
-      }
-
-      if( FondesoFilter.checkForCollegeFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de colegio');
-      }
-
-      if( FondesoFilter.checkForExportFilter(sections, walkedPath) ){
-        alert('Se activó el filtro de exportación');
-      }
     }
 
   }]);
