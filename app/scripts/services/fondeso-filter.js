@@ -43,7 +43,12 @@ angular.module('questionaryApp')
                  );
         case 'convenience_store':
           return angular.equals(givenAnswer, 'b');
-
+        case 'college':
+          return givenAnswer[0] < 25 &&
+                 (
+                   angular.equals(givenAnswer[1], 'c') ||
+                   angular.equals(givenAnswer[1], 'd')
+                 );
         default:
           return false;
       }
@@ -146,6 +151,13 @@ angular.module('questionaryApp')
                  Questionary.walkedPathHasSection('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('convenience_store', secondPathAnswers)
                );
+      },
+
+      checkForCollegeFilter: function (sections, walkedPath) {
+        var age = fetchAgeAnswer(sections);
+        var education = fetchEducationAnswer(sections);
+        return forFilterAnswerShouldBe('college', [age, education]) &&
+               Questionary.walkedPathHasSection('1.B', walkedPath);
       },
     };
   }]);

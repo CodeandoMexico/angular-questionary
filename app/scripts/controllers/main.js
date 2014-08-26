@@ -78,6 +78,10 @@ angular.module('questionaryApp')
       if( FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath) ){
         alert('Se activó el filtro de tienda de abarrotes');
       }
+
+      if( FondesoFilter.checkForCollegeFilter(sections, walkedPath) ){
+        alert('Se activó el filtro de colegio');
+      }
     }
 
   }]);
