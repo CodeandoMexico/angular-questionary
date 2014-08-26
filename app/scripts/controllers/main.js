@@ -67,6 +67,11 @@ angular.module('questionaryApp')
         alert('Se detectó que es una persona menor a 30 años');
       }
 
+      if( FondesoFilter.checkForElderlyFilter(sections, walkedPath) ){
+        alert('Se detectó que es una persona mayor o igual a 60 años');
+      }
+
+
     }
 
   }]);

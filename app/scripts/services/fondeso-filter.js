@@ -26,8 +26,10 @@ angular.module('questionaryApp')
         case 'business_is_rural_sector':
           return angular.equals(givenAnswer[0], 'g') ||
                  angular.equals(givenAnswer[1], 'g');
-         case 'younger_than_30':
-           return givenAnswer < 30;
+        case 'younger_than_30':
+          return givenAnswer < 30;
+        case 'older_or_equal_to_60':
+          return givenAnswer >= 60;
 
         default:
           return false;
@@ -98,7 +100,10 @@ angular.module('questionaryApp')
                Questionary.walkedPathHasSection('1.B', walkedPath);
       },
 
-
-
+      checkForElderlyFilter: function (sections, walkedPath) {
+        var givenAnswer = fetchAgeAnswer(sections);
+        return forFilterAnswerShouldBe('older_or_equal_to_60', givenAnswer) &&
+               Questionary.walkedPathHasSection('1.B', walkedPath);
+      },
     };
   }]);
