@@ -86,6 +86,7 @@ angular.module('questionaryApp')
       $scope.filters.TUR = FondesoFilter.checkForTourismFilter(sections, walkedPath);
       $scope.filters.ATI = FondesoFilter.checkForAccessToITFilter(sections, walkedPath);
       $scope.filters.IND = FondesoFilter.checkForNativeFilter(sections, walkedPath);
+      $scope.filters.TIC = FondesoFilter.checkForITFilter(sections, walkedPath);
 
       console.log($scope.filters);
 

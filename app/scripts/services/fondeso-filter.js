@@ -70,8 +70,8 @@ angular.module('questionaryApp')
          case 'access_to_it':
            return angular.isNumber(givenAnswer) ||
                   angular.equals(givenAnswer, 'h');
-         case 'native':
-           return angular.equals(givenAnswer, 'b')
+         case 'technology_business':
+           return angular.equals(givenAnswer, 'h');
 
         default:
           return false;
@@ -303,5 +303,17 @@ angular.module('questionaryApp')
         return hasWalkedPath('1.B', walkedPath) &&
                forFilterAnswerShouldBe('native', fetchNativeAnswer(sections));
       },
+
+      checkForITFilter: function (sections, walkedPath) {
+        var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
+        var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 hasWalkedPath('2.A.3', walkedPath) &&
+                 forFilterAnswerShouldBe('technology_business', firstPathAnswers)
+               ) || (
+                 hasWalkedPath('2.C.5', walkedPath) &&
+                 forFilterAnswerShouldBe('technology_business', secondPathAnswers)
+               );
+      }
     };
   }]);
