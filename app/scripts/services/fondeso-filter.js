@@ -62,6 +62,9 @@ angular.module('questionaryApp')
            return angular.equals(givenAnswer, 'a');
          case 'construction':
            return angular.equals(givenAnswer, 'd');
+         case 'tourism':
+           return angular.equals(givenAnswer, 'c') ||
+                  angular.equals(givenAnswer, 'i');
 
         default:
           return false;
@@ -252,6 +255,18 @@ angular.module('questionaryApp')
                ) || (
                  hasWalkedPath('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('construction', secondPathAnswers)
+               );
+      },
+
+      checkForTourismFilter: function (sections, walkedPath) {
+        var firstPathAnswers = fetchBusinessSectorAnswers(sections['2.A.3']);
+        var secondPathAnswers = fetchBusinessSectorAnswers(sections['2.C.5']);
+        return (
+                 hasWalkedPath('2.A.3', walkedPath) &&
+                 forFilterAnswerShouldBe('tourism', firstPathAnswers)
+               ) || (
+                 hasWalkedPath('2.C.5', walkedPath) &&
+                 forFilterAnswerShouldBe('tourism', secondPathAnswers)
                );
       },
     };
