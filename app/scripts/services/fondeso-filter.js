@@ -58,6 +58,8 @@ angular.module('questionaryApp')
                  ) && angular.isNumber(givenAnswer[1]);
          case 'manufacture':
            return angular.equals(givenAnswer, 'a');
+         case 'intellectual_property':
+           return angular.equals(givenAnswer, 'a');
 
         default:
           return false;
@@ -75,6 +77,8 @@ angular.module('questionaryApp')
         case 'select':
           if ( angular.isUndefined(question.body.selected_value) ) return undefined;
           return question.body.selected_value.value;
+        case 'radio':
+          return question.body.selected_value;
         case 'checkbox':
           var answers = [];
           angular.forEach(question.body.options, function(opt){
@@ -137,6 +141,10 @@ angular.module('questionaryApp')
     var fetchPriorityAnswers = function(sections, optionValue) {
       return extractAnswerFromQuestion(sections['4.A'].questions[0], optionValue);
     }
+
+    var fetchInnovationAnswers = function(sector) {
+      return extractAnswerFromQuestion(sector.questions[0]);
+    };
 
     return {
       // helpers
@@ -218,6 +226,18 @@ angular.module('questionaryApp')
                ) || (
                  hasWalkedPath('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('manufacture', secondPathAnswers)
+               );
+      },
+
+      checkForIntellectualPropertyFilter: function (sections, walkedPath) {
+        var firstPathAnswers = fetchInnovationAnswers(sections['2.A.6']);
+        var secondPathAnswers = fetchInnovationAnswers(sections['2.C.6']);
+        return (
+                 hasWalkedPath('2.A.6', walkedPath) &&
+                 forFilterAnswerShouldBe('intellectual_property', firstPathAnswers)
+               ) || (
+                 hasWalkedPath('2.C.6', walkedPath) &&
+                 forFilterAnswerShouldBe('intellectual_property', secondPathAnswers)
                );
       },
     };
