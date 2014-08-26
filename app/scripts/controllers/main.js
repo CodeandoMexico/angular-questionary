@@ -56,21 +56,24 @@ angular.module('questionaryApp')
     function checkAllFilters(sections, walkedPath){
       // is the requesting person a women
       if( FondesoFilter.checkForWomenFilter(sections, walkedPath) ){
-        alert('Se detectó que es mujer');
+        alert('Se activó el filtro de mujer');
       }
 
       if( FondesoFilter.checkForRuralFilter(sections, walkedPath) ){
-        alert('Se detectó que es un negocio rural');
+        alert('Se activó el filtro de un negocio rural');
       }
 
       if( FondesoFilter.checkForYoungFilter(sections, walkedPath) ){
-        alert('Se detectó que es una persona menor a 30 años');
+        alert('Se activó el filtro de una persona menor a 30 años');
       }
 
       if( FondesoFilter.checkForElderlyFilter(sections, walkedPath) ){
-        alert('Se detectó que es una persona mayor o igual a 60 años');
+        alert('Se activó el filtro de una persona mayor o igual a 60 años');
       }
 
+      if( FondesoFilter.checkForArtisanFilter(sections, walkedPath) ){
+        alert('Se activó el filtro de artesano');
+      }
 
     }
 
