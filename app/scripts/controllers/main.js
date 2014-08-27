@@ -9,7 +9,7 @@ angular.module('questionaryApp')
 
     $scope.showResults = function(){
       // submit the data to the service and see if it was successful
-      Questionary.submit($scope.walkedPath).then(function(res){
+      Questionary.submit($scope.walkedPath, $scope.filters).then(function(res){
         console.log(res);
         var profile = res.data;
         // var redirectTo = '/profile' + profile.uri;
