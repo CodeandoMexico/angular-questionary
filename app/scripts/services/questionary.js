@@ -120,9 +120,9 @@ angular.module('questionaryApp')
               body     : {
                 selected_value    : 'a',
                 options  : [
-                  { value: 'a', label: 'Sí' },
-                  { value: 'b', label: 'No' }
-                  ]
+                  { value: 'a', label: 'No' },
+                  { value: 'b', label: 'Sí' }
+                ]
               }
             },
           ]
@@ -185,16 +185,16 @@ angular.module('questionaryApp')
               type     : 'select',
               body     : {
                 options  : [
-                { value: 'a', label: 'Industrias manufactureras'  },
-                { value: 'b', label: 'Comercio' },
-                { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
-                { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
-                { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
-                { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
-                { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal' },
-                { value: 'h', label: 'Tecnologías de la información y la comunicación' },
-                { value: 'i', label: 'Otros' },
-                { value: 'j', label: 'No sé' }
+                  { value: 'a', label: 'Industrias manufactureras'  },
+                  { value: 'b', label: 'Comercio' },
+                  { value: 'c', label: 'Preparación de alimentos y bebidas (restaurantes, puestos y similares) y hoteles' },
+                  { value: 'd', label: 'Servicios profesionales, técnicos, corporativos, financieros, inmobiliarios, educativos, médicos y de apoyo a negocios' },
+                  { value: 'e', label: 'Culturales y de esparcimiento, deportivos y recreativos' },
+                  { value: 'f', label: 'Organizaciones con fines altruistas y medio ambientales' },
+                  { value: 'g', label: 'Agricultura, ganadería, aprovechamiento forestal y pesca' },
+                  { value: 'h', label: 'Tecnologías de la información y la comunicación' },
+                  { value: 'i', label: 'Otros' },
+                  { value: 'j', label: 'No sé' }
                 ]
               }
             },
@@ -745,11 +745,15 @@ angular.module('questionaryApp')
     var baseUrl = 'http://fondeso.herokuapp.com/profile/';
     questionary.save = null;
 
-    questionary.submit = function(data) {
+    questionary.submit = function(answers, filters) {
       // var url = baseUrl + 'respuestas/';
       console.log(questionary.sections);
       var url = baseUrl + 'submit';
-      return $http.post(url, angular.toJson(data));
+      var postData = {
+        answers: answers,
+        filters: filters
+      };
+      return $http.post(url, angular.toJson(postData));
       // return $http.get(url);
     }
 
