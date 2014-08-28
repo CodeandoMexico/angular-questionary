@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('FundCtrl', ['$scope', '$routeParams', 'FondesoProfile', '$location', function ($scope, $routeParams, FondesoProfile, $location) {
+  .controller('FundCtrl', ['$scope', '$routeParams', '$location', 'FondesoProfile', 'FondesoFilter', function ($scope, $routeParams, $location, FondesoProfile, FondesoFilter) {
     var category = $routeParams.category; // save value for later
 
     console.log($routeParams.category);
@@ -20,7 +20,7 @@ angular.module('questionaryApp')
 
     // look if there is a category in the url, if not, return all the funds
     if(angular.isDefined(category)){
-      FondesoProfile.category(category).then(function(res){
+      FondesoProfile.category(category, FondesoFilter.filters).then(function(res){
         $scope.funds = res.data;
         // select the first item
         $scope.fundSelected[0] = $scope.funds[0];

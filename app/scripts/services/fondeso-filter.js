@@ -152,7 +152,7 @@ angular.module('questionaryApp')
 
     var fetchPriorityAnswers = function(sector, optionValue) {
       return extractAnswerFromQuestion(sector.questions[0], optionValue);
-    }
+    };
 
     var fetchInnovationAnswers = function(sector) {
       return extractAnswerFromQuestion(sector.questions[0]);
@@ -163,6 +163,24 @@ angular.module('questionaryApp')
     };
 
     return {
+      filters: {
+        MUJ: false,
+        RUR: false,
+        JOV: false,
+        TER: false,
+        ART: false,
+        TAB: false,
+        BAC: false,
+        EXP: false,
+        MAN: false,
+        PIN: false,
+        CON: false,
+        TUR: false,
+        ATI: false,
+        IND: false,
+        TIC: false
+      },
+
       // helpers
       checkForWomenFilter: function (sections, walkedPath) {
         var givenAnswer = fetchSexAnswer(sections);
@@ -317,24 +335,6 @@ angular.module('questionaryApp')
       },
 
       checkAllFilters: function(sections, walkedPath) {
-        this.filters = {
-          MUJ: false,
-          RUR: false,
-          JOV: false,
-          TER: false,
-          ART: false,
-          TAB: false,
-          BAC: false,
-          EXP: false,
-          MAN: false,
-          PIN: false,
-          CON: false,
-          TUR: false,
-          ATI: false,
-          IND: false,
-          TIC: false
-        };
-        // is the requesting person a women
         this.filters.MUJ = this.checkForWomenFilter(sections, walkedPath);
         this.filters.RUR = this.checkForRuralFilter(sections, walkedPath);
         this.filters.JOV = this.checkForYoungFilter(sections, walkedPath);
