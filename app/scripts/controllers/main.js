@@ -11,7 +11,8 @@ angular.module('questionaryApp')
       // submit the data to the service and see if it was successful
       Questionary.submit($scope.walkedPath, $scope.filters).then(function(res){
         console.log(res);
-        var profile = res.data;
+        var profile = res.data.profile;
+        var filters = res.data.filters;
         // var redirectTo = '/profile' + profile.uri;
         // redirect to the results when they come, it should return the category name
         $location.url( redirectTo(profile.uri) );
@@ -42,7 +43,7 @@ angular.module('questionaryApp')
       }
 
       // check all filters
-      checkAllFilters($scope.sections, newValue);
+      FondesoFilter.checkAllFilters($scope.sections, newValue);
 
     }, true);
 
@@ -52,44 +53,4 @@ angular.module('questionaryApp')
       console.log('/profile/' + uri);
       return '/profile/' + uri;
     }
-
-    function checkAllFilters(sections, walkedPath){
-      $scope.filters = {
-        MUJ: false,
-        RUR: false,
-        JOV: false,
-        TER: false,
-        ART: false,
-        TAB: false,
-        BAC: false,
-        EXP: false,
-        MAN: false,
-        PIN: false,
-        CON: false,
-        TUR: false,
-        ATI: false,
-        IND: false,
-        TIC: false
-      };
-      // is the requesting person a women
-      $scope.filters.MUJ = FondesoFilter.checkForWomenFilter(sections, walkedPath);
-      $scope.filters.RUR = FondesoFilter.checkForRuralFilter(sections, walkedPath);
-      $scope.filters.JOV = FondesoFilter.checkForYoungFilter(sections, walkedPath);
-      $scope.filters.TER = FondesoFilter.checkForElderlyFilter(sections, walkedPath);
-      $scope.filters.ART = FondesoFilter.checkForArtisanFilter(sections, walkedPath);
-      $scope.filters.TAB = FondesoFilter.checkForConvenienceStoreFilter(sections, walkedPath);
-      $scope.filters.BAC = FondesoFilter.checkForCollegeFilter(sections, walkedPath);
-      $scope.filters.EXP = FondesoFilter.checkForExportFilter(sections, walkedPath);
-      $scope.filters.MAN = FondesoFilter.checkForManufactureFilter(sections, walkedPath);
-      $scope.filters.PIN = FondesoFilter.checkForIntellectualPropertyFilter(sections, walkedPath);
-      $scope.filters.CON = FondesoFilter.checkForConstructionFilter(sections, walkedPath);
-      $scope.filters.TUR = FondesoFilter.checkForTourismFilter(sections, walkedPath);
-      $scope.filters.ATI = FondesoFilter.checkForAccessToITFilter(sections, walkedPath);
-      $scope.filters.IND = FondesoFilter.checkForNativeFilter(sections, walkedPath);
-      $scope.filters.TIC = FondesoFilter.checkForITFilter(sections, walkedPath);
-
-      console.log($scope.filters);
-
-    }
-
   }]);

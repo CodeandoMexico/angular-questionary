@@ -314,6 +314,44 @@ angular.module('questionaryApp')
                  hasWalkedPath('2.C.5', walkedPath) &&
                  forFilterAnswerShouldBe('technology_business', secondPathAnswers)
                );
+      },
+
+      checkAllFilters: function(sections, walkedPath) {
+        this.filters = {
+          MUJ: false,
+          RUR: false,
+          JOV: false,
+          TER: false,
+          ART: false,
+          TAB: false,
+          BAC: false,
+          EXP: false,
+          MAN: false,
+          PIN: false,
+          CON: false,
+          TUR: false,
+          ATI: false,
+          IND: false,
+          TIC: false
+        };
+        // is the requesting person a women
+        this.filters.MUJ = this.checkForWomenFilter(sections, walkedPath);
+        this.filters.RUR = this.checkForRuralFilter(sections, walkedPath);
+        this.filters.JOV = this.checkForYoungFilter(sections, walkedPath);
+        this.filters.TER = this.checkForElderlyFilter(sections, walkedPath);
+        this.filters.ART = this.checkForArtisanFilter(sections, walkedPath);
+        this.filters.TAB = this.checkForConvenienceStoreFilter(sections, walkedPath);
+        this.filters.BAC = this.checkForCollegeFilter(sections, walkedPath);
+        this.filters.EXP = this.checkForExportFilter(sections, walkedPath);
+        this.filters.MAN = this.checkForManufactureFilter(sections, walkedPath);
+        this.filters.PIN = this.checkForIntellectualPropertyFilter(sections, walkedPath);
+        this.filters.CON = this.checkForConstructionFilter(sections, walkedPath);
+        this.filters.TUR = this.checkForTourismFilter(sections, walkedPath);
+        this.filters.ATI = this.checkForAccessToITFilter(sections, walkedPath);
+        this.filters.IND = this.checkForNativeFilter(sections, walkedPath);
+        this.filters.TIC = this.checkForITFilter(sections, walkedPath);
+
+        console.log(this.filters);
       }
     };
   }]);
