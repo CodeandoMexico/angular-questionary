@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoProfile', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoProfile) {
+  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoFilter', 'FondesoProfile', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile) {
     // types of questions are: text, number, radio, checkbox
     $scope.sections = Questionary.sections;
     $scope.walkedPath = null;
@@ -9,9 +9,10 @@ angular.module('questionaryApp')
 
     $scope.showResults = function(){
       // submit the data to the service and see if it was successful
-      Questionary.submit($scope.walkedPath).then(function(res){
+      Questionary.submit($scope.walkedPath, FondesoFilter.filters).then(function(res){
         console.log(res);
-        var profile = res.data;
+        var profile = res.data.profile;
+        var filters = res.data.filters;
         // var redirectTo = '/profile' + profile.uri;
         // redirect to the results when they come, it should return the category name
         $location.url( redirectTo(profile.uri) );
@@ -40,6 +41,10 @@ angular.module('questionaryApp')
       if( FondesoSpecialCase.checkForProfessionalProfile($scope.sections, newValue) ){
         alert('Se detectó un perfil de profesionista');
       }
+
+      // check all filters
+      FondesoFilter.checkAllFilters($scope.sections, newValue);
+
     }, true);
 
     // private
@@ -48,5 +53,4 @@ angular.module('questionaryApp')
       console.log('/profile/' + uri);
       return '/profile/' + uri;
     }
-
   }]);
