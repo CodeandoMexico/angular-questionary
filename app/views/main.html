@@ -1,18 +1,4 @@
-<div id="top" class="header">
-  <!-- <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul> -->
-  <h3 class="text-muted">Fondeso</h3>
-</div>
-
-<!-- <div class="jumbotron">
-  <h1>¿Instrucciones?</h1>
-  <p>Pequeño párrafo</p>
-</div> -->
-
-<div class="row marketing">
+<div class="page__content">
   <!--  here starts the questionary -->
   <questionary first-section="1.B" walked-path="walkedPath" sections="sections" current-section="currentSection" on-finish="showResults()" on-change="onSectionChange()">
     <section title="{{currentSection.identifier}}" description="{{currentSection.help}}">
@@ -22,7 +8,4 @@
       </question>
     </section>
   </questionary>
-</div>
-
-<div class="footer">
 </div>
