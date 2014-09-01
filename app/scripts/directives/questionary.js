@@ -5,9 +5,9 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<form name="questionaryForm" novalidate><div class="questionary-container"><div ng-transclude></div><div class="navigation-container"><button class="navigation-control previous pull-left btn btn-default" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;regresar</button><button ng-disabled="questionaryForm.$invalid" class="navigation-control next pull-right btn btn-default" ng-click="moveToNextSection()">continuar&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></button></div></div></form>')
+  $templateCache.put('questionary.html', '<form name="questionaryForm" novalidate><div class="questionary-container"><div ng-transclude></div><div class="button__wraper"><button class="button--back" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"></button><button ng-disabled="questionaryForm.$invalid" class="button--forward" ng-click="moveToNextSection()">Siguiente</button></div></div></form>')
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><p class="text-muted" ng-if="description">{{description}}</p><div class="questions-container" ng-transclude></div></div>');
-  $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p class="question-title">{{ title }}</p><p class="question-description text-muted">{{ description }}</p><div ng-include="\'errors.html\'"></div></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
+  $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p>{{ title }}</p><p class="p--instructions">{{ description }}</p><div ng-include="\'errors.html\'"></div></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
 
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
@@ -16,7 +16,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('checkbox-input.html','<div class="checkbox" ng-repeat="opt in body.options"><label><input type="checkbox" name="checkbox{{idx}}" ng-model="opt.checked">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<select class="form-control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
-  $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="row prioritization-option" ng-repeat="opt in body.options"><div class="col-md-2"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"></div><div class="col-md-10"><p>{{opt.label}}</p></div></div></div>');
+  $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="question--priorities" ng-repeat="opt in body.options"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"><label>{{opt.label}}</label></div></div>');
 
   // errors template
   $templateCache.put('errors.html', '<div class="error-container"><span class="text-error" ng-show="questionForm.$invalid">Por favor revisa tu respuesta.</span></div>');
