@@ -1,28 +1,9 @@
-<div id="top" class="header">
-  <!-- <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul> -->
-  <h3 class="text-muted">Fondeso</h3>
-</div>
-
-<!-- <div class="jumbotron">
-  <h1>¿Instrucciones?</h1>
-  <p>Pequeño párrafo</p>
-</div> -->
-
-<div class="row marketing">
-  <!--  here starts the questionary -->
-  <questionary first-section="1.B" walked-path="walkedPath" sections="sections" current-section="currentSection" on-finish="showResults()" on-change="onSectionChange()">
-    <section title="{{currentSection.identifier}}" description="{{currentSection.help}}">
-      <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" title="q.title" description="q.help" type="q.type" body="q.body" debug="false" nested="true">
-        <!--  the next question is if it depends on the previous question -->
-        <question ng-if="q.body.selected_value.question" ng-init="nestedQuestion=q.body.selected_value.question" idx="outerIdx" title="nestedQuestion.title" description="nestedQuestion.description" type="nestedQuestion.type" body="nestedQuestion.body"></question>
-      </question>
-    </section>
-  </questionary>
-</div>
-
-<div class="footer">
-</div>
+<!--  here starts the questionary -->
+<questionary first-section="1.B" walked-path="walkedPath" sections="sections" current-section="currentSection" on-finish="showResults()" on-change="onSectionChange()">
+  <section title="{{currentSection.identifier}}" description="{{currentSection.help}}">
+    <question ng-repeat="q in currentSection.questions" ng-init="outerIdx=$index" idx="outerIdx" title="q.title" description="q.help" type="q.type" body="q.body" debug="false" nested="true">
+      <!--  the next question is if it depends on the previous question -->
+      <question ng-if="q.body.selected_value.question" ng-init="nestedQuestion=q.body.selected_value.question" idx="outerIdx" title="nestedQuestion.title" description="nestedQuestion.description" type="nestedQuestion.type" body="nestedQuestion.body"></question>
+    </question>
+  </section>
+</questionary>
