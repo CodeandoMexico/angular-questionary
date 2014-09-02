@@ -72,7 +72,6 @@ angular.module('questionaryApp')
             {
               id     : '1.B.3',
               title    : 'Nivel de estudios',
-              // help     : 'Selecciona uno de los valores',
               type     : 'select',
               body     : {
                 options  : [
