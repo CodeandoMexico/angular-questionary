@@ -5,7 +5,7 @@ var app = angular.module('questionModule', ['ui.sortable']);
 app.run(['$templateCache', function($templateCache){
 
   // directive's skeleton templates
-  $templateCache.put('questionary.html', '<form name="questionaryForm" novalidate><div class="questionary-container"><div ng-transclude></div><div class="button__wraper"><button class="button--back" ng-if="navigation.hasPrevious" ng-click="moveToPreviousSection()"></button><button ng-disabled="questionaryForm.$invalid" class="button--forward" ng-click="moveToNextSection()">Siguiente</button></div></div></form>')
+  $templateCache.put('questionary.html', '<form name="questionaryForm" novalidate><div class="questionary-container"><div ng-transclude></div><div class="button__wrapper"><button class="button--back" ng-disabled="!navigation.hasPrevious" ng-click="moveToPreviousSection()"></button><button ng-disabled="questionaryForm.$invalid" class="button--forward" ng-click="moveToNextSection()">Siguiente</button></div></div></form>');
   $templateCache.put('section.html','<div class="section-container"><h2 ng-if="title">{{title}}</h2><p class="text-muted" ng-if="description">{{description}}</p><div class="questions-container" ng-transclude></div></div>');
   $templateCache.put('question.html', '<ng-form name="questionForm"><div class="question-container"><div class="question-header"><p>{{ title }}</p><p class="p--instructions">{{ description }}</p><div ng-include="\'errors.html\'"></div></div><div class="question-body" ng-include="template[type]"></div><div ng-transclude></div><pre ng-if="debug">{{ codeData | json}}</pre></div></ng-form>');
 
