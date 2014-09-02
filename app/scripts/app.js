@@ -19,6 +19,12 @@ angular
 
     $routeProvider
       .when('/', {
+        templateUrl: 'views/intro.html',
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+      })
+      .when('/questionary', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
