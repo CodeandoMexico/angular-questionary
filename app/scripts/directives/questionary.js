@@ -11,7 +11,7 @@ app.run(['$templateCache', function($templateCache){
 
   // answer templates
   $templateCache.put('text-input.html','<input class="form-control" type="text" ng-model="body.value">');
-  $templateCache.put('number-input.html','<div ng-class="{ \'has-error\': questionForm.question.$invalid }"><input name="question" class="form-control" ng-required="true" type="number" min="{{body.minimumValue}}" ng-model="body.value"></div>');
+  $templateCache.put('number-input.html','<div ng-class="{ \'has-error\': questionForm.question.$invalid }"><input name="question" class="question--input" ng-required="true" type="number" min="{{body.minimumValue}}" ng-model="body.value"></div>');
   $templateCache.put('radio-input.html','<div class="question--option" ng-repeat="opt in body.options"><input type="radio" id="radio--opt-{{ idx }}-{{ $index }}" name="radio--opt-{{ idx }}" value="{{opt.value}}" ng-model="body.selected_value"><label for="radio--opt-{{ idx }}-{{ $index }}">{{opt.label}}</label></div>');
   $templateCache.put('checkbox-input.html','<div class="question--checkbox" ng-repeat="opt in body.options"><input type="checkbox" id="checkbox--opt-{{ idx }}-{{ $index }}" name="checkbox--opt-{{ idx }} ng-model="opt.checked"><label for="checkbox--opt-{{ idx }}-{{ $index }}">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<div class="input--select"><select class="form-control select--control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select></div>');
