@@ -17,31 +17,42 @@
           <label for="radio--sex">Sexo:</label><br />
           <div class="button--radio">
               <input type="radio" id="radio--sex__hombre" name="radio--sex" value="{{currentSection.questions[1].body.options[0].value}}" ng-model="currentSection.questions[1].body.selected_value"/>
-              <label for="radio--sex__hombre">Hombre</label>
+              <label for="radio--sex__hombre">{{currentSection.questions[1].body.options[0].label}}</label>
           </div><!--
        --><div class="button--radio">
               <input type="radio" id="radio--sex__mujer" name="radio--sex" value="{{currentSection.questions[1].body.options[1].value}}" ng-model="currentSection.questions[1].body.selected_value"/>
-              <label for="radio--sex__mujer">Mujer</label>
+              <label for="radio--sex__mujer">{{currentSection.questions[1].body.options[1].label}}</label>
           </div>
       </div>
+
       <!--  Study question -->
       <question title="currentSection.questions[2].title" description="currentSection.questions[2].help" type="currentSection.questions[2].type" body="currentSection.questions[2].body" debug="false">
       </question>
-      <div class="question--switch">
-          <label for="input--df">¿Vives en el DF?</label>
-          <input class="input--switch" type="checkbox" name="checkbox--df"/>
-          <div class="input--switch" id="input--df"><span>S&Iacute;</span><span>NO</span></div>
-      </div>
-      <div class="question--switch">
-          <label for="input--operation">¿El negocio ya est&aacute; en operaci&oacute;n?</label>
-          <input class="input--switch" type="checkbox" name="checkbox--df"/>
-          <div class="input--switch  active" id="input--operation"><span>S&Iacute;</span><span>NO</span></div>
-      </div>
-      <div class="question--switch">
-          <label for="input--indigenous">¿Hablas alg&uacute;n dialecto ind&iacute;gena?</label>
-          <input class="input--switch" type="checkbox" name="checkbox--df"/>
-          <div class="input--switch  inactive" id="input--indigenous"><span>S&Iacute;</span><span>NO</span></div>
-      </div>
+
+      <!--  Home delegation question -->
+      <question title="currentSection.questions[3].title" description="currentSection.questions[3].help" type="currentSection.questions[3].type" body="currentSection.questions[3].body" debug="false">
+        <!--  the next question is if it depends on the previous question -->
+        <question ng-if="currentSection.questions[3].body.selected_value.question" ng-init="nestedQuestion=currentSection.questions[3].body.selected_value.question" idx="outerIdx" title="nestedQuestion.title" description="nestedQuestion.description" type="nestedQuestion.type" body="nestedQuestion.body"></question>
+      </question>
+
+      <!--  Business delegation question -->
+      <question title="currentSection.questions[4].title" description="currentSection.questions[4].help" type="currentSection.questions[4].type" body="currentSection.questions[4].body" debug="false">
+        <!--  the next question is if it depends on the previous question -->
+        <question ng-if="currentSection.questions[4].body.selected_value.question" ng-init="nestedQuestion=currentSection.questions[4].body.selected_value.question" idx="outerIdx" title="nestedQuestion.title" description="nestedQuestion.description" type="nestedQuestion.type" body="nestedQuestion.body"></question>
+      </question>
+
+      <div class="question--large">
+           <label for="radio--indigenous">¿Hablas alg&uacute;n dialecto ind&iacute;gena?</label><br />
+           <div class="button--radio">
+               <input type="radio" id="radio--indigenous-yes" name="radio--indigenous" value="{{currentSection.questions[5].body.options[0].value}}" ng-model="currentSection.questions[5].body.selected_value"/>
+               <label for="radio--indigenous-yes">{{currentSection.questions[5].body.options[0].label}}</label>
+           </div><!--
+           --><div class="button--radio">
+               <input type="radio" id="radio--indigenous-no" name="radio--indigenous" value="{{currentSection.questions[5].body.options[1].value}}" ng-model="currentSection.questions[5].body.selected_value"/>
+               <label for="radio--indigenous-no">{{currentSection.questions[5].body.options[1].label}}</label>
+           </div>
+       </div>
+
     </section>
 
     <!--  Every other questionary section -->
