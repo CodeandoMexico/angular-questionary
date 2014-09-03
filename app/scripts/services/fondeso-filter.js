@@ -72,6 +72,8 @@ angular.module('questionaryApp')
                   angular.equals(givenAnswer, 'h');
          case 'technology_business':
            return angular.equals(givenAnswer, 'h');
+         case 'native':
+           return angular.equals(givenAnswer, 'b');
 
         default:
           return false;
