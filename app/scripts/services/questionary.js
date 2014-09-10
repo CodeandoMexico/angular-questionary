@@ -744,12 +744,13 @@ angular.module('questionaryApp')
     var baseUrl = 'http://fondeso.herokuapp.com/profile/';
     questionary.save = null;
 
-    questionary.submit = function(answers, filters, priorities) {
+    questionary.submit = function(answers, filters, priorities, delegations) {
       var url = baseUrl + 'submit';
       var postData = {
         answers: answers,
         filters: filters,
-        priorities: priorities
+        priorities: priorities,
+        delegations: delegations
       };
 
       return $http.post(url, angular.toJson(postData));
