@@ -16,7 +16,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('checkbox-input.html','<div class="question--checkbox" ng-repeat="opt in body.options"><input type="checkbox" id="checkbox--opt-{{ idx }}-{{ $index }}" name="checkbox--opt-{{ idx }} ng-model="opt.checked"><label for="checkbox--opt-{{ idx }}-{{ $index }}">{{opt.label}}</label></div>');
   $templateCache.put('select-input.html','<div class="input--select"><select class="form-control select--control" ng-model="body.selected_value" ng-options="option.label for option in body.options"></select></div>');
   $templateCache.put('order-input.html','<ol ui-sortable ng-model="body.options" class="order-question"><li ng-repeat="opt in body.options">{{opt.label}}</li></ol>');
-  $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="question--priorities" ng-repeat="opt in body.options"><input type="number" min="1" max="{{body.options.length}}" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"><label>{{opt.label}}</label></div></div>');
+  $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="question--priorities" ng-repeat="opt in body.options"><input type="number" min="1" max="3" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"><label>{{opt.label}}</label></div></div>');
 
   // errors template
   $templateCache.put('errors.html', '<div class="error-container"><span class="text-error" ng-show="questionForm.$invalid">Por favor revisa tu respuesta.</span></div>');
