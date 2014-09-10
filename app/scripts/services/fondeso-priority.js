@@ -22,7 +22,7 @@ angular.module('questionaryApp')
     }
 
     return {
-      priorities: null,
+      priorities: [],
       getPriorities: function (sections, walkedPath) {
         var section = null;
         this.priorities = [];
@@ -35,7 +35,7 @@ angular.module('questionaryApp')
           section = sections['4.C'];
           this.priorities = fetchPriorities(section);
         }
-        
+
         console.log(this.priorities);
       }
     };

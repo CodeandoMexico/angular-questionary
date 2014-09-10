@@ -698,9 +698,9 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { priority: null, value: 'a', label: 'Conseguir financiamiento/ Acceder a instrumentos financieros.' },
+                  { priority: null, value: 'a', label: 'Conseguir financiamiento / Acceder a instrumentos financieros.' },
                   { priority: null, value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
-                  { priority: null, value: 'c', label: 'Incrementar la productividad/ Mejorar procesos.' },
+                  { priority: null, value: 'c', label: 'Incrementar la productividad / Mejorar procesos.' },
                   { priority: null, value: 'd', label: 'Entrar a la formalidad.' },
                   { priority: null, value: 'e', label: 'Capacitar al personal de la empresa.' },
                   { priority: null, value: 'f', label: 'Expandir mi mercado.' },
