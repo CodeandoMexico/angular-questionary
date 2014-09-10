@@ -479,7 +479,7 @@ angular.module('questionaryApp')
                   { priority: null, value: 'd', label: 'Entrar a la formalidad.' },
                   { priority: null, value: 'e', label: 'Contratar personal.' },
                   { priority: null, value: 'f', label: 'Capacitar al personal de la empresa.' },
-                  { priority: null, value: 'g', label: 'Expandir mi mercado' },
+                  { priority: null, value: 'g', label: 'Expandir mi mercado.' },
                   { priority: null, value: 'h', label: 'Incorporar tecnología e innovación.' },
 
                 ]
@@ -698,9 +698,9 @@ angular.module('questionaryApp')
               type   : 'prioritize',
               body   : {
                 options: [
-                  { priority: null, value: 'a', label: 'Conseguir financiamiento/ Acceder a instrumentos financieros.' },
+                  { priority: null, value: 'a', label: 'Conseguir financiamiento / Acceder a instrumentos financieros.' },
                   { priority: null, value: 'b', label: 'Diseñar o mejorar mi plan de negocios.' },
-                  { priority: null, value: 'c', label: 'Incrementar la productividad/ Mejorar procesos.' },
+                  { priority: null, value: 'c', label: 'Incrementar la productividad / Mejorar procesos.' },
                   { priority: null, value: 'd', label: 'Entrar a la formalidad.' },
                   { priority: null, value: 'e', label: 'Capacitar al personal de la empresa.' },
                   { priority: null, value: 'f', label: 'Expandir mi mercado.' },
@@ -744,17 +744,16 @@ angular.module('questionaryApp')
     var baseUrl = 'http://fondeso.herokuapp.com/profile/';
     questionary.save = null;
 
-    questionary.submit = function(answers, filters) {
-      // var url = baseUrl + 'respuestas/';
-      console.log(questionary.sections);
+    questionary.submit = function(answers, filters, priorities) {
       var url = baseUrl + 'submit';
       var postData = {
         answers: answers,
-        filters: filters
+        filters: filters,
+        priorities: priorities
       };
+
       return $http.post(url, angular.toJson(postData));
-      // return $http.get(url);
-    }
+    };
 
     return questionary;
   }]);
