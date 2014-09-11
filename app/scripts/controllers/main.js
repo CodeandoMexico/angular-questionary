@@ -21,8 +21,10 @@ angular.module('questionaryApp')
       Questionary.submit($scope.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations).then(function(res){
         console.log(res);
         var profile = res.data.profile;
-        var filters = res.data.filters;
-        var priorities = res.data.priorities;
+        // var filters = res.data.filters;
+        // var priorities = res.data.priorities;
+        // var delegations = res.data.delegations;
+
         // var redirectTo = '/profile' + profile.uri;
         // redirect to the results when they come, it should return the category name
         $location.url( redirectTo(profile.uri) );
