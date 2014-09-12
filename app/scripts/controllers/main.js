@@ -1,24 +1,30 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoFilter', 'FondesoProfile', 'FondesoPriority', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority) {
+  .controller('MainCtrl', ['$scope', '$location', '$anchorScroll', 'Questionary', 'FondesoSpecialCase', 'FondesoFilter', 'FondesoProfile', 'FondesoPriority', 'FondesoDelegation', function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation) {
     // types of questions are: text, number, radio, checkbox
     $scope.sections = Questionary.sections;
     $scope.walkedPath = null;
     $scope.currentSection = null;
 
     $scope.showResults = function(){
+      // check home and business delegations
+      FondesoDelegation.getDelegations($scope.sections, $scope.walkedPath);
+
       // check the priorities
       FondesoPriority.getPriorities($scope.sections, $scope.walkedPath);
+
       // check all filters
       FondesoFilter.checkAllFilters($scope.sections, $scope.walkedPath);
 
       // submit the data to the service and see if it was successful
-      Questionary.submit($scope.walkedPath, FondesoFilter.filters, FondesoPriority.priorities).then(function(res){
+      Questionary.submit($scope.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations).then(function(res){
         console.log(res);
         var profile = res.data.profile;
-        var filters = res.data.filters;
-        var priorities = res.data.priorities;
+        // var filters = res.data.filters;
+        // var priorities = res.data.priorities;
+        // var delegations = res.data.delegations;
+
         // var redirectTo = '/profile' + profile.uri;
         // redirect to the results when they come, it should return the category name
         $location.url( redirectTo(profile.uri) );
