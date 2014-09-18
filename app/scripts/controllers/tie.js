@@ -36,7 +36,7 @@ angular.module('questionaryApp')
         FondesoFilter.checkAllFilters(Questionary.sections, Questionary.walkedPath);
 
         // submit the data to the service and see if it was successful
-        Questionary.submit(this.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations, FondesoTie.walkedPath).then(function(res){
+        Questionary.submit(this.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations, FondesoTie.profiles, FondesoTie.walkedPath).then(function(res){
           console.log(res);
           var profile = res.data.profile;
           // var filters = res.data.filters;

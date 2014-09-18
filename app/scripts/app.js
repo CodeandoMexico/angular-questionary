@@ -21,14 +21,14 @@ angular
       .when('/', {
         templateUrl: 'views/intro.html',
       })
-      .when('/login', {
+      .when('/login/', {
         templateUrl: 'views/login.html',
       })
-      .when('/questionary', {
+      .when('/questionary/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/profile', {
+      .when('/profile/', {
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
@@ -36,12 +36,12 @@ angular
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
-      .when('/tie', {
+      .when('/tie/', {
         templateUrl: 'views/ties.html',
         controller: 'TieCtrl',
         controllerAs: 'tie'
       })
-      .when('/404', {
+      .when('/404/', {
         templateUrl: '404.html'
       })
       .otherwise({
