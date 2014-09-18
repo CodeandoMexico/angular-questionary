@@ -36,6 +36,11 @@ angular
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
+      .when('/tie', {
+        templateUrl: 'views/ties.html',
+        controller: 'TieCtrl',
+        controllerAs: 'tie'
+      })
       .when('/404', {
         templateUrl: '404.html'
       })

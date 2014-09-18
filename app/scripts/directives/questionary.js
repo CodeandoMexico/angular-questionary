@@ -38,9 +38,11 @@ app.directive('questionary', function(){
     },
     controller: ['$scope', function($scope){
       // initialize variables
-      $scope.currentSection = $scope.sections[$scope.firstSection];
-      $scope.nextSection = $scope.sections[$scope.currentSection.next];
-      $scope.walkedPath = [];
+      if(angular.isDefined( $scope.firstSection )){
+        $scope.currentSection = $scope.sections[$scope.firstSection];
+        $scope.nextSection = $scope.sections[$scope.currentSection.next];
+      }
+      // $scope.walkedPath = [];
       $scope.navigation = {
         hasNext: false,
         hasPrevious: false
@@ -75,6 +77,7 @@ app.directive('questionary', function(){
         else{
           console.log('disappear next button');
           $scope.walkedPath.push($scope.currentSection); // let's save where we've been through
+          console.log($scope.currentSection);
           $scope.onFinish();
         }
       };

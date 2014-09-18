@@ -30,6 +30,7 @@ angular.module('questionaryApp')
     };
 
     var questionary = {
+      walkedPath: [],
       walkedPathHasSection: function (lookId, path) {
         var questionarySection = this.sections[lookId];
         for(var sectionId=0; sectionId < path.length; sectionId++){
