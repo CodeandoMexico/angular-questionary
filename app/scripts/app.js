@@ -32,7 +32,7 @@ angular
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
-      .when('/profile/:category', {
+      .when('/profile/:category/', {
         templateUrl: 'views/fund.html',
         controller: 'FundCtrl'
       })
