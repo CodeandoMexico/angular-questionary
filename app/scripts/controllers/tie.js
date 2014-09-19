@@ -15,7 +15,8 @@ angular.module('questionaryApp')
     'FondesoPriority',
     'FondesoFilter',
     '$location',
-    function (FondesoTie, Questionary, FondesoDelegation, FondesoPriority, FondesoFilter, $location) {
+    '$route',
+    function (FondesoTie, Questionary, FondesoDelegation, FondesoPriority, FondesoFilter, $location, $route) {
       if(FondesoTie.numberOfTiedProfiles() <= 1) return $location.url( '/404' );
 
       this.sections = FondesoTie.tieSections;
@@ -39,15 +40,11 @@ angular.module('questionaryApp')
         Questionary.submit(this.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations, FondesoTie.profiles, FondesoTie.walkedPath).then(function(res){
           console.log(res);
           var profile = res.data.profile;
-          // var filters = res.data.filters;
-          // var priorities = res.data.priorities;
-          // var delegations = res.data.delegations;
 
-          // var redirectToProfile = '/profile' + profile.uri;
           // redirect to the results when they come, it should return the category name
           if ( angular.isArray(profile) ){
             FondesoTie.setProfiles( profile );
-            $location.url( resolveTie(profile) );
+            $route.reload( resolveTie(profile) );
           }
           else {
             $location.url( redirectToProfile(profile.uri) );

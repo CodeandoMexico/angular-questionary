@@ -37,10 +37,7 @@ angular.module('questionaryApp')
             type   : 'radio',
             body   : {
               selected_value    : 'a',
-              options: [
-                { value: 'a', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día.' },
-                { value: 'b', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados.' }
-              ]
+              options: []
             }
           },
         ],
@@ -73,6 +70,15 @@ angular.module('questionaryApp')
         case 'h':
           option = { value: profileFirstLetter, label: 'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora.' };
           break;
+        case '1':
+          option = { value: '1', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día.' };
+          break;
+        case '2':
+          option = { value: '2', label: 'Mi proyecto se encuentra en una etapa de crecimiento / tiene una estructura administrativa y de decisión simple en donde yo y otras personas tomamos las decisiones.' };
+          break;
+        case '3':
+          option = { value: '3', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados.' };
+          break;
       }
       question.questions[0].body.options.push(option);
     };
@@ -85,17 +91,32 @@ angular.module('questionaryApp')
     var resolveQuestionToShow = function (profiles) {
       console.log('Perfiles');
       console.log(profiles);
-      var firstProfile = profiles[0].profile_id;
-      var secondProfile = profiles[1].profile_id;
+      var differentCategories = [];
 
-      if ( theyAreFromDifferentCategories(firstProfile, secondProfile) ){
+      // add all differentCategories, but only it's first letter
+      angular.forEach(profiles, function(p){
+        var firstLetter = p.profile_id[0];
+        console.log('First letter: ' + firstLetter);
+        console.log(differentCategories);
+        if(differentCategories.indexOf(firstLetter) === -1){
+          differentCategories.push(firstLetter);
+        }
+      });
+
+      if ( differentCategories.length > 1 ){
         var question = angular.copy(tieSections['business-category']);
-        addOptionToQuestion(question, firstProfile);
-        addOptionToQuestion(question, secondProfile);
-        chooseDefaultSelectedOption(question);
-        return question;
+        angular.forEach(differentCategories, function(categoryLetter){
+          addOptionToQuestion(question, categoryLetter);
+        });
       }
-      return angular.copy(tieSections['opposing-stages']);
+      else {
+        var question = angular.copy(tieSections['opposing-stages']);
+        angular.forEach(profiles, function(p){
+          addOptionToQuestion( question, p.profile_id[1] );
+        });
+      }
+      chooseDefaultSelectedOption(question); // it's the first option
+      return question;
     };
 
     return {
