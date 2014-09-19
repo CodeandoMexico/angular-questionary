@@ -30,6 +30,7 @@ angular.module('questionaryApp')
     };
 
     var questionary = {
+      walkedPath: [],
       walkedPathHasSection: function (lookId, path) {
         var questionarySection = this.sections[lookId];
         for(var sectionId=0; sectionId < path.length; sectionId++){
@@ -740,17 +741,20 @@ angular.module('questionaryApp')
     // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    // var baseUrl = 'http://192.168.1.12:3000/profile/';
+    // var baseUrl = 'http://localhost:3000/profile/';
     var baseUrl = 'http://fondeso.herokuapp.com/profile/';
     questionary.save = null;
 
-    questionary.submit = function(answers, filters, priorities, delegations) {
+    questionary.submit = function(answers, filters, priorities, delegations, profiles, tieAnswers) {
       var url = baseUrl + 'submit';
+
       var postData = {
         answers: answers,
         filters: filters,
         priorities: priorities,
-        delegations: delegations
+        delegations: delegations,
+        profiles: profiles,
+        tie: tieAnswers
       };
 
       return $http.post(url, angular.toJson(postData));
