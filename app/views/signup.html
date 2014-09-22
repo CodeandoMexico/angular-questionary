@@ -1,0 +1,46 @@
+<div class="page__title">
+  <span class="title__text">APP FONDESO</span>
+</div>
+
+<div class="page__content">
+  <form id="registration_form" action="index.html" method="post" novalidate>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Nombre</p>
+      </div>
+      <div class="question-body">
+        <input class="question--input" ng-model="registration.newUser.name" type="text" placeholder="Ra&uacute;l Jim&eacute;nez" />
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Correo Electrónico</p>
+      </div>
+      <div class="question-body">
+        <input class="question--input" ng-model="registration.newUser.email" type="email" placeholder="raul@codeandomexico.org" />
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Contrase&ntilde;a</p>
+      </div>
+      <div class="question-body">
+        <input class="question--input" ng-model="registration.newUser.password" type="password" placeholder="Contrase&ntilde;a" />
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Confirma tu contrase&ntilde;a</p>
+      </div>
+      <div class="question-body">
+        <input class="question--input" ng-model="registration.newUser.passwordConfirmation" type="password" placeholder="Confirma tu contrase&ntilde;a" />
+      </div>
+    </div>
+    <a class="button--full" ng-click="registration.createAccount()">CREAR CUENTA</a>
+  </form>
+</div>
+
+<div class="page__content">
+  <p>o si ya tienes cuenta...</p>
+  <a class="button--full" href="/#/usuario/login/">INICIA SES&Oacute;N</a>
+</div>

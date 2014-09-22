@@ -21,8 +21,15 @@ angular
       .when('/', {
         templateUrl: 'views/intro.html',
       })
-      .when('/login/', {
+      .when('/usuario/login/', {
         templateUrl: 'views/login.html',
+        controller: 'SessionCtrl',
+        controllerAs: 'session'
+      })
+      .when('/usuario/crear/', {
+        templateUrl: 'views/signup.html',
+        controller: 'RegistrationCtrl',
+        controllerAs: 'registration'
       })
       .when('/questionary/', {
         templateUrl: 'views/main.html',
