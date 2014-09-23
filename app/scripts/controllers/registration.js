@@ -16,8 +16,25 @@ angular.module('questionaryApp')
       passwordConfirmation: null
     };
 
-    this.createAccount = function(){
-      FondesoUser.create(this.newUser).
+    this.createAccount = function( resource ){
+      FondesoUser.userIsLoggedIn().
+      success(function(data, status, headers, config){
+        if( userIsLoggedIn(data) ){
+          // redirect to other place
+          alert('A user is already logged in');
+        }
+        else{
+          createUser( resource );
+        }
+      }).
+      error(function(data, status, headers, config){
+        // something bad happened
+      });
+    };
+
+    // private methods
+    var createUser = function( resource ){
+      FondesoUser.create( resource ).
       success(function(data, status, headers, config){
         console.log('Success!');
         console.log(status);
@@ -27,4 +44,9 @@ angular.module('questionaryApp')
         console.log('Error con status: ' + status);
       });
     };
+
+    var userIsLoggedIn = function(args) {
+      return angular.isObject( args );
+    };
+
   }]);

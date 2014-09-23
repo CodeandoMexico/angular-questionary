@@ -11,6 +11,10 @@ angular.module('questionaryApp')
   .service('FondesoUser', ['$http', '$cookies', function fondesoUser($http, $cookies) {
     return {
       backendAddress: 'http://localhost:3000/users/',
+      userIsLoggedIn: function(){
+        var address = this.backendAddress + 'current/';
+        return $http.get(address);
+      },
       session: function(user){
         return ;
       },
@@ -21,26 +25,26 @@ angular.module('questionaryApp')
         return ;
       },
       create: function(args){
-        var name = args.name;
-        var email = args.email;
-        var password = args.password;
-        var passwordConfirmation = args.passwordConfirmation;
+        // var name = args.name;
+        // var email = args.email;
+        // var password = args.password;
+        // var passwordConfirmation = args.passwordConfirmation;
         var address = this.backendAddress;
+        // console.log(email);
 
-        var authenticityToken = $cookies.csrftoken;
-        console.log('cookies');
-        console.log($cookies);
-        console.log('authenticityToken: ' + authenticityToken);
 
         return $http.get(this.backendAddress + 'sign_up/').
         success(function(data, status, headers, config) {
+          var authenticityToken = $cookies['XSRF-TOKEN'];
           return $http.post(address, {
             'authenticity_token': authenticityToken,
-            'user[name]': name,
-            'user[email]': email,
-            'user[password]': password,
-            'user[password_confirmation]': passwordConfirmation,
-            'commit': 'Sign up'
+            'user': {
+              'name': args.name,
+              'email': args.email,
+              'password': args.password,
+              'password_confirmation': args.passwordConfirmation,
+              'commit': 'Sign up'
+            }
           });
 
         }).
