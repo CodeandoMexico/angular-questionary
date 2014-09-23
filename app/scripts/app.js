@@ -9,12 +9,15 @@ angular
     'ngGrid',
     'questionModule'
   ])
-  .run(['$http', function($http){
+  .run(['$http', '$cookies', function($http, $cookies){
+    // $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.post['XSRF-TOKEN'] = $cookies.csrftoken;
   }])
   .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
     //Enable cross domain calls
     // $httpProvider.defaults.useXDomain = true;
-    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+    $httpProvider.defaults.withCredentials = true;
+    // $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
     // delete $httpProvider.defaults.headers.common["X-Requested-With"];
 
     $routeProvider

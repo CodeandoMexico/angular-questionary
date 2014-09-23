@@ -17,6 +17,14 @@ angular.module('questionaryApp')
     };
 
     this.createAccount = function(){
-      FondesoUser.create(this.newUser);
+      FondesoUser.create(this.newUser).
+      success(function(data, status, headers, config){
+        console.log('Success!');
+        console.log(status);
+        console.log(data);
+      }).
+      error(function(data, status, headers, config){
+        console.log('Error con status: ' + status);
+      });
     };
   }]);
