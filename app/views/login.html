@@ -3,9 +3,28 @@
 </div>
 
 <div class="page__content">
-  <input type="email" placeholder="Usuario" />
-  <input type="password" placeholder="Contrase&ntilde;a" />
-  <button>INICIAR SESI&Oacute;N</button>
+  <form name="loginForm" ng-submit="session.logIn( session.user, loginForm.$valid )" novalidate>
+    <p>
+      {{ session.user.email }}
+      {{ session.user.password }}
+    </p>
+    <span class="text-error" ng-show="session.submitted">Correo y/o contrase&ntilde;a incorrecto(s)</span>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <input type="email" class="question--input" placeholder="correo electr&oacute;nico" ng-model="session.user.email"  ng-required="true" />
+        </div>
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <input type="password" class="question--input" placeholder="contrase&ntilde;a" ng-model="session.user.password" ng-minlength="6"  ng-required="true" />
+        </div>
+      </div>
+    </div>
+    <button class="button--full" type="submit">INICIAR SESI&Oacute;N</button>
+  </form>
 </div>
 
 <div class="page__content">

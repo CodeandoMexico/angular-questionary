@@ -19,16 +19,12 @@ angular
       return noAuthRoutes.indexOf( currentRoute ) === -1;
     };
 
-    var userIsLoggedIn = function(args) {
-      return angular.isObject( args );
-    };
-
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
       var currentPath = $location.url();
       FondesoUser.userIsLoggedIn().
       success(function(data, status, headers, config){
         FondesoUser.current = data;
-        if( !routeRequiresAuth( currentPath ) || userIsLoggedIn( data ) ){
+        if( !routeRequiresAuth( currentPath ) || FondesoUser.validateLogin( data ) ){
           // do some stuff before logging in
           console.log('A user is already logged in');
         }
@@ -55,8 +51,8 @@ angular
       // .when('/usuario/login/', {
       .when('/', {
         templateUrl: 'views/login.html',
-        // controller: 'SessionCtrl',
-        // controllerAs: 'session'
+        controller: 'SessionCtrl',
+        controllerAs: 'session'
       })
       .when('/intro/', {
         templateUrl: 'views/intro.html',
