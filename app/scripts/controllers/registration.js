@@ -31,6 +31,7 @@ angular.module('questionaryApp')
         console.log('Success!');
         console.log(status);
         console.log(data);
+        $location.url('/intro/')
       }).
       error(function(data, status, headers, config){
         console.log('Error con status: ' + status);
