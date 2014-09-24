@@ -21,13 +21,14 @@ angular
     // delete $httpProvider.defaults.headers.common["X-Requested-With"];
 
     $routeProvider
-      .when('/intro/', {
-        templateUrl: 'views/intro.html',
-      })
-      .when('/usuario/login/', {
+      // .when('/usuario/login/', {
+      .when('/', {
         templateUrl: 'views/login.html',
         controller: 'SessionCtrl',
         controllerAs: 'session'
+      })
+      .when('/intro/', {
+        templateUrl: 'views/intro.html',
       })
       .when('/usuario/crear/', {
         templateUrl: 'views/signup.html',
