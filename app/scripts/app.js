@@ -14,21 +14,33 @@ angular
     $http.defaults.headers.post['XSRF-TOKEN'] = $cookies.csrftoken;
 
     var noAuthRoutes = ['', '/', '/usuario/crear', '/usuario/crear/'];
-    var routeClean = function(currentRoute) {
-      return noAuthRoutes.indexOf( currentRoute ) >= 0;
+    var routeRequiresAuth = function(currentRoute) {
+      // route requires auth if it's not in the whitelist
+      return noAuthRoutes.indexOf( currentRoute ) === -1;
+    };
+
+    var userIsLoggedIn = function(args) {
+      return angular.isObject( args );
     };
 
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-      // console.log('Changed route:' + $location.url());
-      // if route requires auth and user is not logged in
       var currentPath = $location.url();
-      if ( !routeClean( currentPath ) && FondesoUser.userIsLoggedIn() ) {
-        // redirect to questionary intro
-        $location.url('/intro/');
-        console.log('current route is clean');
-      } else {
-        $location.url('/');
-      }
+      FondesoUser.userIsLoggedIn().
+      success(function(data, status, headers, config){
+        FondesoUser.current = data;
+        if( !routeRequiresAuth( currentPath ) || userIsLoggedIn( data ) ){
+          // do some stuff before logging in
+          console.log('A user is already logged in');
+        }
+        else{
+          console.log('this site require auth');
+          // redirect back to the login page
+          $location.url('/');
+        }
+      }).
+      error(function(data, status, headers, config){
+        // something bad happened
+      });
     });
 
   }])

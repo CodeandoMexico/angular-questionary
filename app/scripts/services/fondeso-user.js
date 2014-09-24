@@ -11,6 +11,7 @@ angular.module('questionaryApp')
   .service('FondesoUser', ['$http', '$cookies', function fondesoUser($http, $cookies) {
     return {
       backendAddress: 'http://localhost:3000/users/',
+      current: null,
       userIsLoggedIn: function(){
         var address = this.backendAddress + 'current/';
         return $http.get(address);
