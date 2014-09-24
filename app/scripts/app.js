@@ -9,9 +9,28 @@ angular
     'ngGrid',
     'questionModule'
   ])
-  .run(['$http', '$cookies', function($http, $cookies){
+  .run(['$rootScope', '$http', '$cookies', '$location', 'FondesoUser',  function($rootScope, $http, $cookies, $location, FondesoUser){
     // $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.post['XSRF-TOKEN'] = $cookies.csrftoken;
+
+    var noAuthRoutes = ['', '/', '/usuario/crear', '/usuario/crear/'];
+    var routeClean = function(currentRoute) {
+      return noAuthRoutes.indexOf( currentRoute ) >= 0;
+    };
+
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
+      // console.log('Changed route:' + $location.url());
+      // if route requires auth and user is not logged in
+      var currentPath = $location.url();
+      if ( !routeClean( currentPath ) && FondesoUser.userIsLoggedIn() ) {
+        // redirect to questionary intro
+        $location.url('/intro/');
+        console.log('current route is clean');
+      } else {
+        $location.url('/');
+      }
+    });
+
   }])
   .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
     //Enable cross domain calls
@@ -24,8 +43,8 @@ angular
       // .when('/usuario/login/', {
       .when('/', {
         templateUrl: 'views/login.html',
-        controller: 'SessionCtrl',
-        controllerAs: 'session'
+        // controller: 'SessionCtrl',
+        // controllerAs: 'session'
       })
       .when('/intro/', {
         templateUrl: 'views/intro.html',
