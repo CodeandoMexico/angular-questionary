@@ -8,7 +8,7 @@
  * Controller of the questionaryApp
  */
 angular.module('questionaryApp')
-  .controller('RegistrationCtrl', ['FondesoUser', function (FondesoUser) {
+  .controller('RegistrationCtrl', ['$location', 'FondesoUser', function ($location, FondesoUser) {
     this.newUser = {
       name: null,
       email: null,

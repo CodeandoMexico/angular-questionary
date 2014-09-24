@@ -21,7 +21,7 @@ angular
     // delete $httpProvider.defaults.headers.common["X-Requested-With"];
 
     $routeProvider
-      .when('/', {
+      .when('/intro/', {
         templateUrl: 'views/intro.html',
       })
       .when('/usuario/login/', {
