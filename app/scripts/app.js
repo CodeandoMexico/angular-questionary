@@ -36,6 +36,7 @@ angular
       }).
       error(function(data, status, headers, config){
         // something bad happened
+        $location.url('/');
       });
     });
 

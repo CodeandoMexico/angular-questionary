@@ -15,12 +15,12 @@ angular.module('questionaryApp')
     };
 
     this.logIn = function( resource, valid ){
-        this.submitted = true;
-        if ( valid ) logUserIn( resource );
+        if ( valid ) return logUserIn( resource, this.error );
+        // this.submitted = true;
     };
 
     // private methods
-    var logUserIn = function( resource ){
+    var logUserIn = function( resource, err ){
       FondesoUser.logIn( resource ).
       success(function(data, status, headers, config){
         FondesoUser.userIsLoggedIn().

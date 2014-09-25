@@ -8,7 +8,8 @@
  * Controller of the questionaryApp
  */
 angular.module('questionaryApp')
-  .controller('RegistrationCtrl', ['$location', 'FondesoUser', function ($location, FondesoUser) {
+  .controller('RegistrationCtrl', ['$scope', '$location', 'FondesoUser', function ($scope, $location, FondesoUser) {
+    var self = this;
     // there is already a logged in user
     if( angular.isObject(FondesoUser.current) ) $location.url('/intro');
 
@@ -20,8 +21,8 @@ angular.module('questionaryApp')
     };
 
     this.createAccount = function( resource, valid ){
-        this.submitted = true;
-        if ( valid ) createUser( resource );
+        if ( valid ) return createUser( resource );
+        $scope.submitted = true;
     };
 
     // private methods
@@ -35,6 +36,9 @@ angular.module('questionaryApp')
       }).
       error(function(data, status, headers, config){
         console.log('Error con status: ' + status);
+        console.log('error');
+        console.log(self);
+        $scope.submitted = true;
       });
     };
   }]);
