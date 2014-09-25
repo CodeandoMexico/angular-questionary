@@ -4,10 +4,6 @@
 
 <div class="page__content">
   <form name="loginForm" ng-submit="session.logIn( session.user, loginForm.$valid )" novalidate>
-    <p>
-      {{ session.user.email }}
-      {{ session.user.password }}
-    </p>
     <span class="text-error" ng-show="session.submitted">Correo y/o contrase&ntilde;a incorrecto(s)</span>
     <div class="question-container">
       <div class="question-header">
